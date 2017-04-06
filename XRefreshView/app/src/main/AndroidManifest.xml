@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.andview.example">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.CustomViewActivity" />
+        <activity android:name=".activity.GridViewActivity" />
+        <activity android:name=".activity.ListViewActivity" />
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.LinearRecyclerViewActivity" />
+        <activity android:name=".activity.BannerRecyclerViewActivity" />
+        <activity android:name=".activity.ScrollViewActivity" />
+        <activity android:name=".activity.HeadAdActivity" />
+        <activity android:name=".activity.RainDropActivity" />
+        <activity android:name=".activity.RecyclerViewsActivity" />
+        <activity android:name=".activity.GridRecyclerViewActivity" />
+        <activity android:name=".activity.StaggeredRecyclerViewActivity" />
+        <activity android:name=".activity.SilenceRecyclerViewActivity" />
+        <activity android:name=".activity.NotFullScreenActivity" />
+        <activity android:name=".activity.EmptyViewActivity" />
+        <activity android:name=".activity.MultiItemRecyclerViewActivity" />
+        <activity android:name=".activity.ShowFooterRecyclerViewActivity" />
+        <activity android:name=".activity.NotFullScreenWithoutFooterActivity" />
+        <activity android:name=".activity.SmileViewActivity" />
+        <activity android:name=".activity.WithoutBaseAdapterRecyclerViewActivity" />
+    </application>
+
+</manifest>
