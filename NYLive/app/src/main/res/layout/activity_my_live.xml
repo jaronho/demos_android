@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="我的直播"
+            android:text="@string/wodezhibo"
             android:textSize="20sp"
             android:textColor="@color/black"/>
 
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="我参与的"
+                android:text="@string/wocanyude"
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
 
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="我收藏的"
+                android:text="@string/woshoucangde"
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
 
@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="我发起的"
+                android:text="@string/wofaqide"
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
 

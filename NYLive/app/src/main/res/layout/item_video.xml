@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+    
+    <ImageView
+        android:id="@+id/imageview_snapshoot"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:src="@mipmap/snapshoot_01"
+        android:layout_marginTop="10dp"/>
+
+    <View
+        android:id="@+id/view_describe_bg"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/black_trans"
+        android:layout_alignParentLeft="true"
+        android:layout_alignBottom="@+id/imageview_snapshoot"/>
+
+    <TextView
+        android:id="@+id/textview_describe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zhibomiaoshu"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignBottom="@+id/imageview_snapshoot"
+        android:layout_marginBottom="5dp"/>
+
+    <ImageView
+        android:id="@+id/imageview_clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/clock"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageview_snapshoot"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/textview_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2017-4-10 9:00-17:00"
+        android:textColor="@color/gray"
+        android:textSize="14sp"
+        android:layout_alignTop="@+id/imageview_clock"
+        android:layout_toRightOf="@+id/imageview_clock"
+        android:layout_marginLeft="10dp" />
+
+    <ImageView
+        android:id="@+id/imageview_earphones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/earphones"
+        android:layout_toLeftOf="@+id/textview_num"
+        android:layout_alignTop="@+id/imageview_clock"/>
+
+    <TextView
+        android:id="@+id/textview_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1239"
+        android:textColor="@color/gray"
+        android:textSize="14sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imageview_clock"/>
+
+</RelativeLayout>

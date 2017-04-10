@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="直播"
+            android:text="@string/zhibo"
             android:textSize="20sp"
             android:textColor="@color/black"/>
 
@@ -36,7 +36,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:padding="15dp"
-            android:text="我的"
+            android:text="@string/wode"
             android:textSize="16sp"
             android:textColor="@color/gray"/>
 
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="直播"
+                android:text="@string/zhibo"
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
 
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="视频"
+                android:text="@string/shipin"
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
 
