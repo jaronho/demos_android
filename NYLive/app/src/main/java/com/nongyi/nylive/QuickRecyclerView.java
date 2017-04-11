@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Author:  jaron.ho
  * Date:    2017-04-10
- * Brief:   QuickRecyclerView
+ * Brief:   QuickRecyclerView(支持多选项布局类型)
  */
 
 public class QuickRecyclerView<T> extends RecyclerView {

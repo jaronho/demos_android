@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Author:  jaron.ho
  * Date:    2017-04-10
- * Brief:   WrapRecyclerView(可以添加头部和底部)
+ * Brief:   WrapRecyclerView(支持多头部和多底部)
  */
 
 public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
@@ -46,32 +46,64 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
     }
 
     // 获取头部
-    public View getHeaderView(int index) {
+    public View getHeaderView(int key) {
         if (null != mAdapter) {
-            return mAdapter.getHeaderView(index);
+            return mAdapter.getHeaderView(key);
+        }
+        return null;
+    }
+
+    // 获取头部
+    public View getHeaderViewAt(int index) {
+        if (null != mAdapter) {
+            return mAdapter.getHeaderViewAt(index);
         }
         return null;
     }
 
     // 获取底部
-    public View getFooterView(int index) {
+    public View getFooterView(int key) {
         if (null != mAdapter) {
-            return mAdapter.getFooterView(index);
+            return mAdapter.getFooterView(key);
         }
         return null;
     }
 
-    // 添加头部
-    public void addHeaderView(View view) {
+    // 获取底部
+    public View getFooterViewAt(int index) {
         if (null != mAdapter) {
-            mAdapter.addHeaderView(view);
+            return mAdapter.getFooterViewAt(index);
+        }
+        return null;
+    }
+
+    // 添加头部(越早添加在越上面)
+    public int addHeaderView(View view) {
+        if (null != mAdapter) {
+            return mAdapter.addHeaderView(view);
+        }
+        return 0;
+    }
+
+    // 添加头部(key越小,越在上面)
+    public void addHeaderView(int key, View view) {
+        if (null != mAdapter) {
+            mAdapter.addHeaderView(key, view);
         }
     }
 
-    // 添加底部
-    public void addFooterView(View view) {
+    // 添加底部(越早添加在越下面)
+    public int addFooterView(View view) {
         if (null != mAdapter) {
-            mAdapter.addFooterView(view);
+            return mAdapter.addFooterView(view);
+        }
+        return 0;
+    }
+
+    // 添加底部(key越大,越在下面)
+    public void addFooterView(int key, View view) {
+        if (null != mAdapter) {
+            mAdapter.addFooterView(key, view);
         }
     }
 
@@ -83,9 +115,16 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
     }
 
     // 移除头部
-    public void removeHeaderView(int index) {
+    public void removeHeaderView(int key) {
         if (null != mAdapter) {
-            mAdapter.removeHeaderView(index);
+            mAdapter.removeHeaderView(key);
+        }
+    }
+
+    // 移除头部
+    public void removeHeaderViewAt(int index) {
+        if (null != mAdapter) {
+            mAdapter.removeHeaderViewAt(index);
         }
     }
 
@@ -97,9 +136,16 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
     }
 
     // 移除底部
-    public void removeFooterView(int index) {
+    public void removeFooterView(int key) {
         if (null != mAdapter) {
-            mAdapter.removeFooterView(index);
+            mAdapter.removeFooterView(key);
+        }
+    }
+
+    // 移除底部
+    public void removeFooterViewAt(int index) {
+        if (null != mAdapter) {
+            mAdapter.removeFooterViewAt(index);
         }
     }
 
@@ -175,29 +221,61 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
             return position >= (mHeaderViews.size() + super.getItemCount());
         }
 
-        public View getHeaderView(int index) {
+        public View getHeaderView(int key) {
+            if (mHeaderViews.indexOfKey(key) >= 0) {
+                return mHeaderViews.get(key);
+            }
+            return null;
+        }
+
+        public View getHeaderViewAt(int index) {
             if (index >= 0 && index < mHeaderViews.size()) {
                 return mHeaderViews.valueAt(index);
             }
             return null;
         }
 
-        public View getFooterView(int index) {
+        public View getFooterView(int key) {
+            if (mFooterViews.indexOfKey(key) >= 0) {
+                return mFooterViews.get(key);
+            }
+            return null;
+        }
+
+        public View getFooterViewAt(int index) {
             if (index >= 0 && index < mFooterViews.size()) {
                 return mFooterViews.valueAt(index);
             }
             return null;
         }
 
-        public void addHeaderView(View view) {
+        public int addHeaderView(View view) {
+            int key = 0;
             if (null != view && mHeaderViews.indexOfValue(view) < 0) {
-                mHeaderViews.put(BASE_ITEM_TYPE_HEADER++, view);
+                key = BASE_ITEM_TYPE_HEADER++;
+                mHeaderViews.put(key, view);
+            }
+            return key;
+        }
+
+        public void addHeaderView(int key, View view) {
+            if (null != view && mHeaderViews.indexOfKey(key) < 0) {
+                mHeaderViews.put(key, view);
             }
         }
 
-        public void addFooterView(View view) {
+        public int addFooterView(View view) {
+            int key = 0;
             if (null != view && mFooterViews.indexOfValue(view) < 0) {
-                mFooterViews.put(BASE_ITEM_TYPE_FOOTER++, view);
+                key = BASE_ITEM_TYPE_FOOTER--;
+                mFooterViews.put(key, view);
+            }
+            return key;
+        }
+
+        public void addFooterView(int key, View view) {
+            if (null != view && mFooterViews.indexOfKey(key) < 0) {
+                mFooterViews.put(key, view);
             }
         }
 
@@ -210,7 +288,13 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
             }
         }
 
-        public void removeHeaderView(int index) {
+        public void removeHeaderView(int key) {
+            if (mHeaderViews.indexOfKey(key) >= 0) {
+                mHeaderViews.remove(key);
+            }
+        }
+
+        public void removeHeaderViewAt(int index) {
             if (index >= 0 && index < mHeaderViews.size()) {
                 mHeaderViews.removeAt(index);
             }
@@ -225,7 +309,13 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
             }
         }
 
-        public void removeFooterView(int index) {
+        public void removeFooterView(int key) {
+            if (mFooterViews.indexOfKey(key) >= 0) {
+                mFooterViews.remove(key);
+            }
+        }
+
+        public void removeFooterViewAt(int index) {
             if (index >= 0 && index < mFooterViews.size()) {
                 mFooterViews.removeAt(index);
             }

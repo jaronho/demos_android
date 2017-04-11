@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:src="@mipmap/snapshoot_01"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
     <View
         android:id="@+id/view_describe_bg"
@@ -17,7 +19,9 @@
         android:layout_height="30dp"
         android:background="@color/black_trans"
         android:layout_alignParentLeft="true"
-        android:layout_alignBottom="@+id/imageview_snapshoot"/>
+        android:layout_alignBottom="@+id/imageview_snapshoot"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
     <TextView
         android:id="@+id/textview_describe"
@@ -28,7 +32,8 @@
         android:textSize="16sp"
         android:layout_alignParentLeft="true"
         android:layout_alignBottom="@+id/imageview_snapshoot"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"/>
 
     <ImageView
         android:id="@+id/imageview_clock"
@@ -38,7 +43,8 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageview_snapshoot"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:id="@+id/textview_date"
@@ -67,6 +73,7 @@
         android:textColor="@color/gray"
         android:textSize="14sp"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/imageview_clock"/>
+        android:layout_alignTop="@+id/imageview_clock"
+        android:layout_marginRight="10dp"/>
 
 </RelativeLayout>
