@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,41 +28,6 @@ public class ListFragment extends Fragment {
     private List<VideoData> mDatas = new ArrayList<>();
 
     public ListFragment() {
-        VideoData vd1 = new VideoData();
-        vd1.type = VideoData.TYPE_VIDEO;
-        vd1.date = "2017-03-10 8:00-20:00";
-        vd1.describe = "标题1";
-        vd1.people = 1023;
-        vd1.status = VideoData.STATUS_NOTSTART;
-        vd1.url = "";
-        mDatas.add(vd1);
-
-        VideoData vd2 = new VideoData();
-        vd2.type = VideoData.TYPE_LIVE;
-        vd2.date = "2017-04-06 8:00-22:00";
-        vd2.describe = "标题2";
-        vd2.people = 956;
-        vd2.status = VideoData.STATUS_NOTSTART;
-        vd2.url = "";
-        mDatas.add(vd2);
-
-        VideoData vd3 = new VideoData();
-        vd3.type = VideoData.TYPE_VIDEO;
-        vd3.date = "2017-04-10 9:00-20:00";
-        vd3.describe = "标题3";
-        vd3.people = 3014;
-        vd3.status = VideoData.STATUS_NOTSTART;
-        vd3.url = "";
-        mDatas.add(vd3);
-
-        VideoData vd4 = new VideoData();
-        vd4.type = VideoData.TYPE_LIVE;
-        vd4.date = "2017-04-14 9:00-21:00";
-        vd4.describe = "标题4";
-        vd4.people = 2016;
-        vd4.status = VideoData.STATUS_NOTSTART;
-        vd4.url = "";
-        mDatas.add(vd4);
     }
 
     @Override
@@ -79,6 +45,7 @@ public class ListFragment extends Fragment {
         });
         mRecylerView.setHeadViewCreator(mRefreshViewCreator);
         mRecylerView.setFootViewCreator(mLoadViewCreator);
+        mRecylerView.removeFooterView(RefreshRecyclerView.KEY_FOOT_VIEW);
         mRecylerView.addItemDecoration(new SpaceItemDecoration((int)getResources().getDimension(R.dimen.item_space)));
         return view;
     }
@@ -98,6 +65,8 @@ public class ListFragment extends Fragment {
 
     // 刷新视图构造器
     private Creator mRefreshViewCreator = new Creator() {
+        private int mIndex = 0;
+
         @Override
         public View getView(Context context, RefreshRecyclerView parent) {
             return LayoutInflater.from(getContext()).inflate(R.layout.header_refresh, parent, false);
@@ -105,24 +74,31 @@ public class ListFragment extends Fragment {
 
         @Override
         public void onPull(int viewLength, int dragDistance, int status) {
+            // TODO: 下拉刷新数据
+        }
+
+        @Override
+        public void onPullAbort() {
         }
 
         @Override
         public void onRefreshing() {
+            // TODO: 刷新数据
             mRecylerView.stopHeadRefresh();
-
             VideoData vd = new VideoData();
             vd.type = VideoData.TYPE_LIVE;
             vd.date = "2017-04-14 9:00-21:00";
-            vd.describe = "标题";
+            vd.describe = "标题: " + (++mIndex);
             vd.people = 2016;
             vd.status = VideoData.STATUS_NOTSTART;
             vd.url = "";
-            mRecylerView.addItem(0, vd);
+            mDatas.add(0, vd);
         }
 
         @Override
         public void onStopRefresh() {
+            mRecylerView.getAdapter().notifyDataSetChanged();
+            // TODO: 数据刷新完成
         }
     };
 
@@ -138,20 +114,32 @@ public class ListFragment extends Fragment {
 
         @Override
         public void onPull(int viewLength, int dragDistance, int status) {
+            mRecylerView.addFooterView(RefreshRecyclerView.KEY_FOOT_VIEW, mLoadView);
+            // TODO: 上拉加载数据
+        }
+
+        @Override
+        public void onPullAbort() {
+            mRecylerView.stopFootRefresh();
         }
 
         @Override
         public void onRefreshing() {
+            // TODO: 加载数据数据
             mRecylerView.stopFootRefresh();
         }
 
         @Override
         public void onStopRefresh() {
+            mRecylerView.removeFooterView(RefreshRecyclerView.KEY_FOOT_VIEW);
+            mRecylerView.getAdapter().notifyDataSetChanged();
+            // TODO: 加载数据完成
         }
     };
 
     // 更新数据项
     private void updateItemData(QuickViewHolder holder, final VideoData data) {
+        // TODO:点击数据项
         OnClickListener onClickItem = new OnClickListener() {
             @Override
             public void onClick(View v) {

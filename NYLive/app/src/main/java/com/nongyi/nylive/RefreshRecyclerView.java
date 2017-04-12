@@ -14,14 +14,14 @@ import android.view.View;
  * Brief:   RefreshRecyclerView(支持头部和底部拖动更新)
  */
 
-public class RefreshRecyclerView<T> extends WrapRecyclerView<T> {
+public class RefreshRecyclerView extends WrapRecyclerView {
     public static final int STATUS_NORMAL = 0x01;		// 默认状态
     public static final int STATUS_PULL = 0x02;			// 拖动状态
-    public static final int STATUS_LOOSEN = 0x03;		// 松开状态
+    public static final int STATUS_READY = 0x03;		// 就绪状态
     public static final int STATUS_REFRESHING = 0x04;	// 刷新状态
 
-    private static final int HEAD_VIEW_KEY = Integer.MIN_VALUE;  // 头部键值
-    private static final int FOOT_VIEW_KEY = Integer.MAX_VALUE;  // 底部键值
+    public static final int KEY_HEAD_VIEW = Integer.MIN_VALUE;  // 头部键值
+    public static final int KEY_FOOT_VIEW = Integer.MAX_VALUE;  // 底部键值
 
     private boolean mIsHorizontal = false;           // 横向布局
     private float mDragResistance = 0.35f;              // 拖动的阻力指数
@@ -144,7 +144,7 @@ public class RefreshRecyclerView<T> extends WrapRecyclerView<T> {
         if (null != adapter && null != mHeadCreator && null == mHeadView) {
             View headView = mHeadCreator.getView(getContext(), this);
             if (null != headView) {
-                addHeaderView(HEAD_VIEW_KEY, headView);
+                addHeaderView(KEY_HEAD_VIEW, headView);
                 mHeadView = headView;
             }
         }
@@ -156,7 +156,7 @@ public class RefreshRecyclerView<T> extends WrapRecyclerView<T> {
         if (null != adapter && null != mFootCreator && null == mFootView) {
             View footView = mFootCreator.getView(getContext(), this);
             if (null != footView) {
-                addFooterView(FOOT_VIEW_KEY, footView);
+                addFooterView(KEY_FOOT_VIEW, footView);
                 mFootView = footView;
             }
         }
@@ -168,7 +168,12 @@ public class RefreshRecyclerView<T> extends WrapRecyclerView<T> {
             MarginLayoutParams layoutParams = (MarginLayoutParams)mHeadView.getLayoutParams();
             int currentMargin = mIsHorizontal ? layoutParams.leftMargin : layoutParams.topMargin;
             int finalMargin = -mHeadViewSize + 1;
-            if (STATUS_LOOSEN == mCurrentHeadStatus) {
+            if (STATUS_PULL == mCurrentHeadStatus) {
+                mCurrentHeadStatus = STATUS_NORMAL;
+                if (null != mHeadCreator) {
+                    mHeadCreator.onPullAbort();
+                }
+            } else if (STATUS_READY == mCurrentHeadStatus) {
                 finalMargin = 0;
                 mCurrentHeadStatus = STATUS_REFRESHING;
                 if (null != mHeadCreator) {
@@ -196,7 +201,12 @@ public class RefreshRecyclerView<T> extends WrapRecyclerView<T> {
             MarginLayoutParams layoutParams = (MarginLayoutParams)mFootView.getLayoutParams();
             int currentMargin = mIsHorizontal ? layoutParams.rightMargin : layoutParams.bottomMargin;
             int finalMargin = 0;
-            if (STATUS_LOOSEN == mCurrentFootStatus) {
+            if (STATUS_PULL == mCurrentFootStatus) {
+                mCurrentFootStatus = STATUS_NORMAL;
+                if (null != mFootCreator) {
+                    mFootCreator.onPullAbort();
+                }
+            } else if (STATUS_READY == mCurrentFootStatus) {
                 mCurrentFootStatus = STATUS_REFRESHING;
                 if (null != mFootCreator) {
                     mFootCreator.onRefreshing();
@@ -204,7 +214,7 @@ public class RefreshRecyclerView<T> extends WrapRecyclerView<T> {
             }
             int offset = currentMargin - finalMargin;
             // 回弹到指定位置
-            ValueAnimator animator = ObjectAnimator.ofFloat(currentMargin, finalMargin).setDuration(offset);
+            ValueAnimator animator = ObjectAnimator.ofFloat(currentMargin, finalMargin).setDuration(Math.abs(offset));
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
@@ -256,7 +266,7 @@ public class RefreshRecyclerView<T> extends WrapRecyclerView<T> {
         } else if (margin < 0) {
             mCurrentHeadStatus = STATUS_PULL;
         } else {
-            mCurrentHeadStatus = STATUS_LOOSEN;
+            mCurrentHeadStatus = STATUS_READY;
         }
         if (null != mHeadCreator) {
             mHeadCreator.onPull(mHeadViewSize, margin, mCurrentHeadStatus);
@@ -270,7 +280,7 @@ public class RefreshRecyclerView<T> extends WrapRecyclerView<T> {
         } else if (margin < mFootViewSize) {
             mCurrentFootStatus = STATUS_PULL;
         } else {
-            mCurrentFootStatus = STATUS_LOOSEN;
+            mCurrentFootStatus = STATUS_READY;
         }
         if (null != mFootCreator) {
             mFootCreator.onPull(mFootViewSize, margin, mCurrentFootStatus);
@@ -345,6 +355,9 @@ public class RefreshRecyclerView<T> extends WrapRecyclerView<T> {
          * 返回值: 无
          */
         public abstract void onPull(int viewSize, int dragOffset, int status);
+
+        // 中断拖动
+        public abstract void onPullAbort();
 
         // 正在刷新
         public abstract void onRefreshing();

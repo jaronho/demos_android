@@ -27,51 +27,8 @@ import java.util.List;
  * Brief:   QuickRecyclerView(支持多选项布局类型)
  */
 
-public class QuickRecyclerView<T> extends RecyclerView {
+public class QuickRecyclerView extends RecyclerView {
     private QuickViewAdapter mAdapter = null;
-    private AdapterDataObserver mDataObserver = new AdapterDataObserver() {
-        @Override
-        public void onChanged() {
-            if (null != mAdapter) {
-                mAdapter.notifyDataSetChanged();
-            }
-        }
-
-        @Override
-        public void onItemRangeRemoved(int positionStart, int itemCount) {
-            if (null != mAdapter) {
-                mAdapter.notifyItemRemoved(positionStart);
-            }
-        }
-
-        @Override
-        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
-            if (null != mAdapter) {
-                mAdapter.notifyItemMoved(fromPosition, toPosition);
-            }
-        }
-
-        @Override
-        public void onItemRangeChanged(int positionStart, int itemCount) {
-            if (null != mAdapter) {
-                mAdapter.notifyItemChanged(positionStart);
-            }
-        }
-
-        @Override
-        public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
-            if (null != mAdapter) {
-                mAdapter.notifyItemChanged(positionStart, payload);
-            }
-        }
-
-        @Override
-        public void onItemRangeInserted(int positionStart, int itemCount) {
-            if (null != mAdapter) {
-                mAdapter.notifyItemInserted(positionStart);
-            }
-        }
-    };
 
     public QuickRecyclerView(Context context) {
         super(context);
@@ -95,43 +52,6 @@ public class QuickRecyclerView<T> extends RecyclerView {
         }
         super.setAdapter(adapter);
         mAdapter = (QuickViewAdapter)adapter;
-        mAdapter.registerAdapterDataObserver(mDataObserver);
-    }
-
-    public void setItem(int index, T data) {
-        if (null != mAdapter) {
-            mAdapter.setItem(index, data);
-        }
-    }
-
-    public void addItem(T data) {
-        if (null != mAdapter) {
-            mAdapter.addItem(data);
-        }
-    }
-
-    public void addItem(int index, T data) {
-        if (null != mAdapter) {
-            mAdapter.addItem(index, data);
-        }
-    }
-
-    public void removeItem(T data) {
-        if (null != mAdapter) {
-            mAdapter.removeItem(data);
-        }
-    }
-
-    public void removeItem(int index) {
-        if (null != mAdapter) {
-            mAdapter.removeItem(index);
-        }
-    }
-
-    public void clearItems() {
-        if (null != mAdapter) {
-            mAdapter.clearItems();
-        }
     }
 
     public static abstract class MultiItemType<T> {
@@ -174,6 +94,9 @@ public class QuickRecyclerView<T> extends RecyclerView {
             if (null != mMultiItemType) {
                 mLayoutId = viewType;
             }
+            if (mLayoutId <= 0) {
+                throw new AssertionError("layout id [" + mLayoutId + "] is error");
+            }
             View itemView = LayoutInflater.from(mContext).inflate(mLayoutId, parent, false);
             return new QuickViewHolder(itemView);
         }
@@ -181,46 +104,6 @@ public class QuickRecyclerView<T> extends RecyclerView {
         @Override
         public void onBindViewHolder(QuickViewHolder holder, int position) {
             convert(holder, mDatas.get(position));
-        }
-
-        // 设置数据项
-        public void setItem(int index, T data) {
-            if (index >= 0 && index < mDatas.size() && null != data && !mDatas.contains(data)) {
-                mDatas.set(index, data);
-            }
-        }
-
-        // 添加数据项
-        public void addItem(T data) {
-            if (null != data && !mDatas.contains(data)) {
-                mDatas.add(data);
-            }
-        }
-
-        // 添加数据项
-        public void addItem(int index, T data) {
-            if (index >= 0 && index < mDatas.size() && null != data && !mDatas.contains(data)) {
-                mDatas.add(index, data);
-            }
-        }
-
-        // 移除数据项
-        public void removeItem(T data) {
-            if (null != data && mDatas.contains(data)) {
-                mDatas.remove(data);
-            }
-        }
-
-        // 移除数据项
-        public void removeItem(int index) {
-            if (index >= 0 && index < mDatas.size()) {
-                mDatas.remove(index);
-            }
-        }
-
-        // 清空数据项
-        public void clearItems() {
-            mDatas.clear();
         }
 
         public abstract void convert(QuickViewHolder holder, T data);
@@ -240,7 +123,7 @@ public class QuickRecyclerView<T> extends RecyclerView {
                 view = itemView.findViewById(viewId);
                 mViews.put(viewId, view);
             }
-            return (T) view;
+            return (T)view;
         }
 
         public void setTag(int viewId, Object tag) {

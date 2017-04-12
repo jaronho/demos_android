@@ -17,7 +17,7 @@ import java.util.List;
  * Brief:   WrapRecyclerView(支持多头部和多底部)
  */
 
-public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
+public class WrapRecyclerView extends QuickRecyclerView {
     private WrapViewAdapter mAdapter = null;
 
     public WrapRecyclerView(Context context) {
@@ -77,7 +77,7 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
         return null;
     }
 
-    // 添加头部(越早添加在越上面)
+    // 添加头部
     public int addHeaderView(View view) {
         if (null != mAdapter) {
             return mAdapter.addHeaderView(view);
@@ -92,7 +92,7 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
         }
     }
 
-    // 添加底部(越早添加在越下面)
+    // 添加底部
     public int addFooterView(View view) {
         if (null != mAdapter) {
             return mAdapter.addFooterView(view);
@@ -150,10 +150,10 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
     }
 
     public static abstract class WrapViewAdapter<T> extends QuickViewAdapter<T> {
-        private static int BASE_ITEM_TYPE_HEADER = 10000000;    // 基本的头部类型开始位置
-        private static int BASE_ITEM_TYPE_FOOTER = 20000000;    // 基本的底部类型开始位置
         private SparseArray<View> mHeaderViews;
         private SparseArray<View> mFooterViews;
+        private static int mBaseHeaderKey = 0;
+        private static int mBaseFooterKey = 0;
 
         public WrapViewAdapter(Context context, List<T> datas, int layoutId) {
             super(context, datas, layoutId);
@@ -252,7 +252,7 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
         public int addHeaderView(View view) {
             int key = 0;
             if (null != view && mHeaderViews.indexOfValue(view) < 0) {
-                key = BASE_ITEM_TYPE_HEADER++;
+                key = mBaseHeaderKey++;
                 mHeaderViews.put(key, view);
             }
             return key;
@@ -267,7 +267,7 @@ public class WrapRecyclerView<T> extends QuickRecyclerView<T> {
         public int addFooterView(View view) {
             int key = 0;
             if (null != view && mFooterViews.indexOfValue(view) < 0) {
-                key = BASE_ITEM_TYPE_FOOTER--;
+                key = mBaseFooterKey++;
                 mFooterViews.put(key, view);
             }
             return key;
