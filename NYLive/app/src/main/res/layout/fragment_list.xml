@@ -3,12 +3,12 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.nongyi.nylive.RefreshRecyclerView
+    <com.nongyi.nylive.WrapRecyclerView
         android:id="@+id/recyclerview_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical">
 
-    </com.nongyi.nylive.RefreshRecyclerView>
+    </com.nongyi.nylive.WrapRecyclerView>
 
 </RelativeLayout>
