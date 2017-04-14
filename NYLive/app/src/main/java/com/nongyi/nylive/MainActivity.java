@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.tencent.ilivesdk.ILiveSDK;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnChatRoom = (Button)findViewById(R.id.btn_chat_room);
         btnChatRoom.setOnClickListener(onClickChatRoom);
+
+        int appid = 1400027763;
+        int accountType = 11667;
+        ILiveSDK.getInstance().initSdk(getApplicationContext(), appid, accountType);
     }
 
     OnClickListener onClickBtnGetSig = new OnClickListener() {

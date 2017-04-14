@@ -10,6 +10,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // 删除非armeabi架构so,由于目前只支持armeabi架构,如果工程(或依赖库)中有多架构,需要在build.gradle中添加以下配置(如果包含子工程子工程也要加)
+        ndk {
+            abiFilter 'armeabi'
+        }
     }
     buildTypes {
         release {
@@ -31,5 +35,9 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:recyclerview-v7:23.0.1'
+    // 核心功能
+    compile 'com.tencent.ilivesdk:ilivesdk:1.3.4'
+    // 直播业务功能
+    compile 'com.tencent.livesdk:livesdk:1.1.0'
     testCompile 'junit:junit:4.12'
 }
