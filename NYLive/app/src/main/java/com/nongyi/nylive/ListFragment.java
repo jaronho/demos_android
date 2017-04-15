@@ -15,9 +15,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nongyi.nylive.QuickRecyclerViewAdapter.MultiLayout;
-import com.nongyi.nylive.QuickRecyclerViewAdapter.QuickViewHolder;
-import com.nongyi.nylive.WrapRecyclerView.Creator;
+import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.MultiLayout;
+import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.QuickViewHolder;
+import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
+import com.jaronho.sdk.utils.view.WrapRecyclerView;
+import com.jaronho.sdk.utils.view.WrapRecyclerView.Creator;
 
 import java.util.ArrayList;
 import java.util.List;

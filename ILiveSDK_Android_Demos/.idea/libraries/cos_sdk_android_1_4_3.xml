@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cos-sdk-android-1.4.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/suixinbo/libs/cos-sdk-android-1.4.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

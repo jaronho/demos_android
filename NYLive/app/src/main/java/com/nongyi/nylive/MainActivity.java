@@ -6,9 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.jaronho.sdk.library.MD5;
+import com.jaronho.sdk.third.okhttpwrap.HttpInfo;
+import com.jaronho.sdk.third.okhttpwrap.OkHttpUtil;
+import com.jaronho.sdk.third.okhttpwrap.callback.CallbackOk;
+import com.tencent.ilivesdk.ILiveSDK;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +49,19 @@ public class MainActivity extends AppCompatActivity {
     OnClickListener onClickBtnGetSig = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(MainActivity.this, "点击 \"获取Sig\"", Toast.LENGTH_SHORT).show();
+            NetLogic.reqGetSig("he1", new CallbackOk() {
+                @Override
+                public void onResponse(HttpInfo httpInfo) throws IOException {
+                    try {
+                        JSONObject obj = new JSONObject(httpInfo.getRetDetail());
+                        JSONObject data = obj.getJSONObject("Data");
+                        String sig = data.getString("sig");
+                        Log.d("", sig);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     };
 
