@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_api_bean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="接口解析Bean"
+        />
+
+    <Button
+        android:id="@+id/btn_api_string"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="接口String回调"
+        />
+
+    <Button
+        android:id="@+id/btn_api_jsonobject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="接口JSONObject回调"
+        />
+
+    <Button
+        android:id="@+id/btn_dm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下载管理"
+        />
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="上传文件"
+        />
+
+    <Button
+        android:id="@+id/btn_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="简单文件下载"
+        />
+
+    <Button
+        android:id="@+id/btn_other_funcation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="其他功能"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#cccccc"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"/>
+</LinearLayout>
