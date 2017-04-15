@@ -12,8 +12,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nongyi.nylive.QuickRecyclerViewAdapter.QuickViewHolder;
-import com.nongyi.nylive.TreeRecyclerViewAdapter.TreeItem;
+import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.QuickViewHolder;
+import com.jaronho.sdk.utils.view.WrapRecyclerView;
+import com.jaronho.sdk.utils.adapter.TreeRecyclerViewAdapter;
+import com.jaronho.sdk.utils.adapter.TreeRecyclerViewAdapter.TreeItem;
 
 public class testFragment extends Fragment {
     private static final String TAG = testFragment.class.getSimpleName();
