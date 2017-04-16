@@ -9,6 +9,8 @@ import com.jaronho.sdk.third.okhttpwrap.annotation.CacheType;
 import com.jaronho.sdk.third.okhttpwrap.cookie.PersistentCookieJar;
 import com.jaronho.sdk.third.okhttpwrap.cookie.cache.SetCookieCache;
 import com.jaronho.sdk.third.okhttpwrap.cookie.persistence.SharedPrefsCookiePersistor;
+import com.nongyi.nylive.Model.Global;
+import com.nongyi.nylive.Model.NetLogic;
 import com.tencent.ilivesdk.ILiveSDK;
 
 public class BaseApplication extends Application {
@@ -24,6 +26,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         baseApplication = this;
 
+        NetLogic.init(getApplicationContext());
         // 初始化ILiveSDK
         ILiveSDK.getInstance().initSdk(getApplicationContext(), Global.APP_ID, Global.ACCOUNT_TYPE);
         // 初始化okhttp

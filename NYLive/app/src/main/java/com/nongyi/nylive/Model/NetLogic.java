@@ -1,12 +1,18 @@
-package com.nongyi.nylive;
+package com.nongyi.nylive.Model;
 
-import android.widget.Toast;
+import android.content.Context;
+import android.util.Log;
 
 import com.jaronho.sdk.library.MD5;
 import com.jaronho.sdk.third.okhttpwrap.HttpInfo;
 import com.jaronho.sdk.third.okhttpwrap.HttpInfo.Builder;
 import com.jaronho.sdk.third.okhttpwrap.OkHttpUtil;
 import com.jaronho.sdk.third.okhttpwrap.callback.CallbackOk;
+import com.jaronho.sdk.utils.ViewUtil;
+import com.nongyi.nylive.Model.Global;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Date;
@@ -14,10 +20,12 @@ import java.util.Date;
 /**
  * Author:  jaron.ho
  * Date:    2017-04-15
- * Brief:   与后台的接口对接
+ * Brief:   与服务器接口对接
  */
 
 public class NetLogic {
+    private static Context mContext = null;
+
     // 获取时间戳
     private static String getTimeStamp() {
         return String.valueOf((new Date().getTime())/1000);
@@ -43,6 +51,30 @@ public class NetLogic {
         return builder;
     }
 
+    // 获取数据
+    private static JSONObject getData(HttpInfo httpInfo) {
+        try {
+            JSONObject obj = new JSONObject(httpInfo.getRetDetail());
+            int status = obj.getInt("Status");
+            if (401 == status || 500 == status) {   // 参数异常,系统异常
+                ViewUtil.showToast(mContext, obj.getString("Message"));
+            }
+            return obj.getJSONObject("Data");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /*
+     * 功  能: 初始化
+     * 参  数: context - 应用上下文
+     * 返回值: 无
+     */
+    public static void init(Context context) {
+        mContext = context;
+    }
+
     /*
      * 功  能: 请求获取Sig
      * 参  数: userid - 用户id
@@ -52,11 +84,23 @@ public class NetLogic {
      *                  sig - String,Sig值
      *                }
      */
-    public static void reqGetSig(String userid, CallbackOk cb) {
+    public static void reqGetSig(String userid, final NetCallback<String> cb) {
         String url = "http://livemanager.16899.com/Rest/TLS/GetSig";
         Builder builder = getBuilder(url);
         builder.addParam("userid", userid);
-        OkHttpUtil.getDefault().doGetAsync(builder.build(), cb);
+        OkHttpUtil.getDefault().doGetAsync(builder.build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo httpInfo) throws IOException {
+                try {
+                    JSONObject data = getData(httpInfo);
+                    if (null != data && null != cb) {
+                        cb.onData(data.getString("sig"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /*
@@ -87,7 +131,7 @@ public class NetLogic {
      *                  CreatedDate - long,创建时间
      *                }
      */
-    public static void reqGetLiveList(int status, int pageIndex, int pageSize, CallbackOk cb) {
+    public static void reqGetLiveList(int status, int pageIndex, int pageSize, final NetCallback<DataChannel> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/GetLiveList";
         Builder builder = getBuilder(url);
         if (0 == status || 1 == status || 2 == status) {
@@ -95,7 +139,19 @@ public class NetLogic {
         }
         builder.addParam("PageIndex", String.valueOf(pageIndex));
         builder.addParam("PageSize", String.valueOf(pageSize));
-        OkHttpUtil.getDefault().doGetAsync(builder.build(), cb);
+        OkHttpUtil.getDefault().doGetAsync(builder.build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo httpInfo) throws IOException {
+                try {
+                    JSONObject data = getData(httpInfo);
+                    if (null != data && null != cb) {
+                        cb.onData(new DataChannel(data));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /*
@@ -126,7 +182,7 @@ public class NetLogic {
      *                  CreatedDate - long,创建时间
      *                }
      */
-    public static void reqGetChatroomList(int status, int pageIndex, int pageSize, CallbackOk cb) {
+    public static void reqGetChatroomList(int status, int pageIndex, int pageSize, final NetCallback<DataChannel> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/GetChatroomList";
         Builder builder = getBuilder(url);
         if (0 == status || 1 == status || 2 == status) {
@@ -134,7 +190,19 @@ public class NetLogic {
         }
         builder.addParam("PageIndex", String.valueOf(pageIndex));
         builder.addParam("PageSize", String.valueOf(pageSize));
-        OkHttpUtil.getDefault().doGetAsync(builder.build(), cb);
+        OkHttpUtil.getDefault().doGetAsync(builder.build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo httpInfo) throws IOException {
+                try {
+                    JSONObject data = getData(httpInfo);
+                    if (null != data && null != cb) {
+                        cb.onData(new DataChannel(data));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /*
@@ -163,11 +231,23 @@ public class NetLogic {
      *                  CreatedDate - long,创建时间
      *                }
      */
-    public static void reqGetChannelView(int id, CallbackOk cb) {
+    public static void reqGetChannelView(int id, final NetCallback<DataChannel> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/GetChannelView";
         Builder builder = getBuilder(url);
         builder.addParam("id", String.valueOf(id));
-        OkHttpUtil.getDefault().doGetAsync(builder.build(), cb);
+        OkHttpUtil.getDefault().doGetAsync(builder.build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo httpInfo) throws IOException {
+                try {
+                    JSONObject data = getData(httpInfo);
+                    if (null != data && null != cb) {
+                        cb.onData(new DataChannel(data));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /*
@@ -177,15 +257,27 @@ public class NetLogic {
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
      *         Message - String,信息提示
      *         Data - {
-     *                  sysMsg - int,true:更新成功,false-更新失败
+     *                  sysMsg - boolean,true:更新成功,false-更新失败
      *                }
      */
-    public static void reqUpdateChannelUrl(int id, String newUrl, CallbackOk cb) {
+    public static void reqUpdateChannelUrl(int id, String newUrl, final NetCallback<Boolean> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/UpdateChannelUrl";
         Builder builder = getBuilder(url);
         builder.addParam("id", String.valueOf(id));
         builder.addParam("Url", newUrl);
-        OkHttpUtil.getDefault().doPostAsync(builder.build(), cb);
+        OkHttpUtil.getDefault().doPostAsync(builder.build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo httpInfo) throws IOException {
+                try {
+                    JSONObject data = getData(httpInfo);
+                    if (null != data && null != cb) {
+                        cb.onData(data.getBoolean("sysMsg"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /*
@@ -196,16 +288,28 @@ public class NetLogic {
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
      *         Message - String,信息提示
      *         Data - {
-     *                  sysMsg - int,true:更新成功,false-更新失败
+     *                  sysMsg - boolean,true:更新成功,false-更新失败
      *                }
      */
-    public static void reqInteractiveAdd(int channelid, int userid, int type, CallbackOk cb) {
+    public static void reqInteractiveAdd(int channelid, int userid, int type, final NetCallback<Boolean> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/InteractiveAdd";
         Builder builder = getBuilder(url);
         builder.addParam("ChannelId", String.valueOf(channelid));
         builder.addParam("UserId", String.valueOf(userid));
         builder.addParam("TYPE", String.valueOf(type));
-        OkHttpUtil.getDefault().doPostAsync(builder.build(), cb);
+        OkHttpUtil.getDefault().doPostAsync(builder.build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo httpInfo) throws IOException {
+                try {
+                    JSONObject data = getData(httpInfo);
+                    if (null != data && null != cb) {
+                        cb.onData(data.getBoolean("sysMsg"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /*
@@ -215,14 +319,26 @@ public class NetLogic {
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
      *         Message - String,信息提示
      *         Data - {
-     *                  sysMsg - int,true:更新成功,false-更新失败
+     *                  sysMsg - boolean,true:更新成功,false-更新失败
      *                }
      */
-    public static void reqChannelUserAdd(int channelid, int userid, CallbackOk cb) {
+    public static void reqChannelUserAdd(int channelid, int userid, final NetCallback<Boolean> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/ChannelUserAdd";
         Builder builder = getBuilder(url);
         builder.addParam("ChannelId", String.valueOf(channelid));
         builder.addParam("UserId", String.valueOf(userid));
-        OkHttpUtil.getDefault().doPostAsync(builder.build(), cb);
+        OkHttpUtil.getDefault().doPostAsync(builder.build(), new CallbackOk() {
+            @Override
+            public void onResponse(HttpInfo httpInfo) throws IOException {
+                try {
+                    JSONObject data = getData(httpInfo);
+                    if (null != data && null != cb) {
+                        cb.onData(data.getBoolean("sysMsg"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
