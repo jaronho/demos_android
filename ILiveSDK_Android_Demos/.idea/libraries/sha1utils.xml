@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="sha1utils">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/suixinbo/libs/sha1utils.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
