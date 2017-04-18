@@ -40,9 +40,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".LiveActivity">
+        <activity android:name=".LiveListActivity">
         </activity>
-        <activity android:name=".MyLiveActivity">
+        <activity android:name=".MyLiveListActivity">
+        </activity>
+        <activity android:name=".AnchorLiveActivity">
         </activity>
 
         <!--TLS Qal 一些服务-->

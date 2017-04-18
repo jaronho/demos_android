@@ -9,10 +9,15 @@ import android.widget.Button;
 
 import com.jaronho.sdk.utils.ViewUtil;
 import com.nongyi.nylive.Model.DataChannel;
-import com.nongyi.nylive.Model.NetCallback;
-import com.nongyi.nylive.Model.NetLogic;
+import com.nongyi.nylive.Model.ILiveHelper;
+import com.nongyi.nylive.Model.NetHelper;
+import com.nongyi.nylive.Model.NetHelper.Callback;
+import com.tencent.av.sdk.AVRoomMulti;
 import com.tencent.ilivesdk.ILiveCallBack;
+import com.tencent.ilivesdk.ILiveConstants;
 import com.tencent.ilivesdk.core.ILiveLoginManager;
+import com.tencent.livesdk.ILVLiveManager;
+import com.tencent.livesdk.ILVLiveRoomOption;
 
 public class MainActivity extends AppCompatActivity {
     private String mUserid = "he1";
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     OnClickListener onClickBtnGetSig = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            NetLogic.reqGetSig(mUserid, new NetCallback<String>() {
+            NetHelper.reqGetSig(mUserid, new Callback<String>() {
                 @Override
                 public void onData(String data) {
                     mSig = data;
@@ -72,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             int status = 0;
             int pageIndex = 1;
             int pageSize = 10;
-            NetLogic.reqGetLiveList(status, pageIndex, pageSize, new NetCallback<DataChannel>() {
+            NetHelper.reqGetLiveList(status, pageIndex, pageSize, new Callback<DataChannel>() {
                 @Override
                 public void onData(DataChannel data) {
 
@@ -87,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             int status = 0;
             int pageIndex = 1;
             int pageSize = 10;
-            NetLogic.reqGetChatroomList(status, pageIndex, pageSize, new NetCallback<DataChannel>() {
+            NetHelper.reqGetChatroomList(status, pageIndex, pageSize, new Callback<DataChannel>() {
                 @Override
                 public void onData(DataChannel data) {
 
@@ -100,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             int channelId = 1;
-            NetLogic.reqGetChannelView(channelId, new NetCallback<DataChannel>() {
+            NetHelper.reqGetChannelView(channelId, new Callback<DataChannel>() {
                 @Override
                 public void onData(DataChannel data) {
 
@@ -114,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             int channelId = 1;
             String newUrl = "";
-            NetLogic.reqUpdateChannelUrl(channelId, newUrl, new NetCallback<Boolean>() {
+            NetHelper.reqUpdateChannelUrl(channelId, newUrl, new Callback<Boolean>() {
                 @Override
                 public void onData(Boolean data) {
 
@@ -129,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             int channelId = 1;
             int userId = 1;
             int type = 0;
-            NetLogic.reqInteractiveAdd(channelId, userId, type, new NetCallback<Boolean>() {
+            NetHelper.reqInteractiveAdd(channelId, userId, type, new Callback<Boolean>() {
                 @Override
                 public void onData(Boolean data) {
 
@@ -143,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             int channelId = 1;
             int userId = 1;
-            NetLogic.reqChannelUserAdd(channelId, userId, new NetCallback<Boolean>() {
+            NetHelper.reqChannelUserAdd(channelId, userId, new Callback<Boolean>() {
                 @Override
                 public void onData(Boolean data) {
 
@@ -172,14 +177,35 @@ public class MainActivity extends AppCompatActivity {
     OnClickListener onClickBtnLive = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            startActivity(new Intent(MainActivity.this, LiveActivity.class));
+            startActivity(new Intent(MainActivity.this, LiveListActivity.class));
         }
     };
 
     OnClickListener onClickMyLive = new OnClickListener() {
+        int roomId = 1;
+        String role = "Host";
         @Override
         public void onClick(View v) {
-            startActivity(new Intent(MainActivity.this, MyLiveActivity.class));
+            // 创建房间配置项
+            ILVLiveRoomOption hostOption = new ILVLiveRoomOption(ILiveLoginManager.getInstance().getMyUserId()).
+                    controlRole(role)// 角色设置
+                    .imsupport(false)
+                    .videoMode(ILiveConstants.VIDEOMODE_BSUPPORT)// 支持后台模式
+                    .authBits(AVRoomMulti.AUTH_BITS_DEFAULT)// 权限设置
+                    .cameraId(ILiveConstants.FRONT_CAMERA)// 摄像头前置后置
+                    .videoRecvMode(AVRoomMulti.VIDEO_RECV_MODE_SEMI_AUTO_RECV_CAMERA_VIDEO);// 是否开始半自动接收
+            //创建房间
+            ILVLiveManager.getInstance().createRoom(roomId, hostOption, new ILiveCallBack() {
+                @Override
+                public void onSuccess(Object data) {
+                    startActivity(new Intent(MainActivity.this, AnchorLiveActivity.class));
+                }
+
+                @Override
+                public void onError(String module, int errCode, String errMsg) {
+                    ViewUtil.showToast(MainActivity.this, module + "|create fail " + errMsg + " " + errMsg);
+                }
+            });
         }
     };
 }

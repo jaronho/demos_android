@@ -23,7 +23,11 @@ import java.util.Date;
  * Brief:   与服务器接口对接
  */
 
-public class NetLogic {
+public class NetHelper {
+    public static abstract class Callback<T> {
+        public abstract void onData(T data);
+    }
+
     private static Context mContext = null;
 
     // 获取时间戳
@@ -84,7 +88,7 @@ public class NetLogic {
      *                  sig - String,Sig值
      *                }
      */
-    public static void reqGetSig(String userid, final NetCallback<String> cb) {
+    public static void reqGetSig(String userid, final Callback<String> cb) {
         String url = "http://livemanager.16899.com/Rest/TLS/GetSig";
         Builder builder = getBuilder(url);
         builder.addParam("userid", userid);
@@ -131,7 +135,7 @@ public class NetLogic {
      *                  CreatedDate - long,创建时间
      *                }
      */
-    public static void reqGetLiveList(int status, int pageIndex, int pageSize, final NetCallback<DataChannel> cb) {
+    public static void reqGetLiveList(int status, int pageIndex, int pageSize, final Callback<DataChannel> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/GetLiveList";
         Builder builder = getBuilder(url);
         if (0 == status || 1 == status || 2 == status) {
@@ -182,7 +186,7 @@ public class NetLogic {
      *                  CreatedDate - long,创建时间
      *                }
      */
-    public static void reqGetChatroomList(int status, int pageIndex, int pageSize, final NetCallback<DataChannel> cb) {
+    public static void reqGetChatroomList(int status, int pageIndex, int pageSize, final Callback<DataChannel> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/GetChatroomList";
         Builder builder = getBuilder(url);
         if (0 == status || 1 == status || 2 == status) {
@@ -231,7 +235,7 @@ public class NetLogic {
      *                  CreatedDate - long,创建时间
      *                }
      */
-    public static void reqGetChannelView(int id, final NetCallback<DataChannel> cb) {
+    public static void reqGetChannelView(int id, final Callback<DataChannel> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/GetChannelView";
         Builder builder = getBuilder(url);
         builder.addParam("id", String.valueOf(id));
@@ -260,7 +264,7 @@ public class NetLogic {
      *                  sysMsg - boolean,true:更新成功,false-更新失败
      *                }
      */
-    public static void reqUpdateChannelUrl(int id, String newUrl, final NetCallback<Boolean> cb) {
+    public static void reqUpdateChannelUrl(int id, String newUrl, final Callback<Boolean> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/UpdateChannelUrl";
         Builder builder = getBuilder(url);
         builder.addParam("id", String.valueOf(id));
@@ -291,7 +295,7 @@ public class NetLogic {
      *                  sysMsg - boolean,true:更新成功,false-更新失败
      *                }
      */
-    public static void reqInteractiveAdd(int channelid, int userid, int type, final NetCallback<Boolean> cb) {
+    public static void reqInteractiveAdd(int channelid, int userid, int type, final Callback<Boolean> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/InteractiveAdd";
         Builder builder = getBuilder(url);
         builder.addParam("ChannelId", String.valueOf(channelid));
@@ -322,7 +326,7 @@ public class NetLogic {
      *                  sysMsg - boolean,true:更新成功,false-更新失败
      *                }
      */
-    public static void reqChannelUserAdd(int channelid, int userid, final NetCallback<Boolean> cb) {
+    public static void reqChannelUserAdd(int channelid, int userid, final Callback<Boolean> cb) {
         String url = "http://livemanager.16899.com/rest/Channel/ChannelUserAdd";
         Builder builder = getBuilder(url);
         builder.addParam("ChannelId", String.valueOf(channelid));

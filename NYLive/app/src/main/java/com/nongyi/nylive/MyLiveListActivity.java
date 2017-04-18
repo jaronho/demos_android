@@ -15,13 +15,13 @@ import com.jaronho.sdk.utils.adapter.QuickFragmentPageAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyLiveActivity extends AppCompatActivity {
+public class MyLiveListActivity extends AppCompatActivity {
     private ViewPager mViewpagerList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_live);
+        setContentView(R.layout.activity_my_live_list);
 
         ImageView imageviewBack = (ImageView)findViewById(R.id.imageview_back);
         imageviewBack.setOnClickListener(onClickImageviewBack);
