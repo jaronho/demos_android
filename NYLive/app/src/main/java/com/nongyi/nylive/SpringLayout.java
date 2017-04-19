@@ -7,12 +7,15 @@ import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.NestedScrollingChild;
 import android.support.v4.view.NestedScrollingChildHelper;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewParentCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.ViewParent;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import static android.support.v4.widget.ViewDragHelper.INVALID_POINTER;
@@ -90,14 +93,14 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent e) {
-        return handleGesture(e, new GestureListener() {
+        handleGesture(e, new GestureListener() {
             @Override
             public void onDown(MotionEvent downEvent) {
                 Log.d("SpringLayout", "onDown");
             }
 
             @Override
-            public void onScroll(MotionEvent downEvent, MotionEvent moveEvent, float distanceX, float distanceY) {
+            public void onScroll(MotionEvent downEvent, MotionEvent moveEvent, float distanceX, float distanceY, float velocityX, float velocityY) {
                 Log.d("SpringLayout", "onScroll => distanceX: "+distanceX+", distanceY: "+distanceY+", velocityX: "+mVelocityX+", velocityY: "+mVelocityY);
             }
 
@@ -110,7 +113,9 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
             public void onUp(MotionEvent upEvent, boolean isFling) {
                 Log.d("SpringLayout", "onUp => isFling: "+String.valueOf(isFling));
             }
-        }) || handleNestedScroll(e) || super.dispatchTouchEvent(e);
+        });
+        handleNestedScroll(e);
+        return super.dispatchTouchEvent(e);
     }
 
     @Override
@@ -169,7 +174,7 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
     }
 
     // 处理手势
-    private boolean handleGesture(MotionEvent ev, GestureListener listener) {
+    private void handleGesture(MotionEvent ev, GestureListener listener) {
         int action = ev.getAction();
         if (null == mVelocityTracker) {
             mVelocityTracker = VelocityTracker.obtain();
@@ -194,7 +199,7 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
         case MotionEvent.ACTION_POINTER_DOWN:
             mDownFocusX = mLastFocusX = focusX;
             mDownFocusY = mLastFocusY = focusY;
-            return true;
+            break;
         case MotionEvent.ACTION_POINTER_UP:
             mDownFocusX = mLastFocusX = focusX;
             mDownFocusY = mLastFocusY = focusY;
@@ -217,7 +222,7 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
                     }
                 }
             }
-            return true;
+            break;
         case MotionEvent.ACTION_DOWN:
             mDownFocusX = mLastFocusX = focusX;
             mDownFocusY = mLastFocusY = focusY;
@@ -229,7 +234,7 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
             if (null != listener) {
                 listener.onDown(ev);
             }
-            return true;
+            break;
         case MotionEvent.ACTION_MOVE:
             float scrollX = mLastFocusX - focusX;
             float scrollY = mLastFocusY - focusY;
@@ -239,7 +244,7 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
                 int distance = (deltaX * deltaX) + (deltaY * deltaY);
                 if (distance > TOUCH_SLOP_SQUARE) {
                     if (null != listener) {
-                        listener.onScroll(mCurrentDownEvent, ev, scrollX, scrollY);
+                        listener.onScroll(mCurrentDownEvent, ev, scrollX, scrollY, mVelocityX, mVelocityY);
                     }
                     mLastFocusX = focusX;
                     mLastFocusY = focusY;
@@ -247,12 +252,12 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
                 }
             } else if ((Math.abs(scrollX) >= 1) || (Math.abs(scrollY) >= 1)) {
                 if (null != listener) {
-                    listener.onScroll(mCurrentDownEvent, ev, scrollX, scrollY);
+                    listener.onScroll(mCurrentDownEvent, ev, scrollX, scrollY, mVelocityX, mVelocityY);
                 }
                 mLastFocusX = focusX;
                 mLastFocusY = focusY;
             }
-            return true;
+            break;
         case MotionEvent.ACTION_UP:
             int pointerId = ev.getPointerId(0);
             mVelocityTracker.computeCurrentVelocity(1000, MAX_FLING_VELOCITY);
@@ -272,16 +277,15 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
                 mVelocityTracker.recycle();
                 mVelocityTracker = null;
             }
-            return true;
+            break;
         case MotionEvent.ACTION_CANCEL:
             mAlwaysInTapRegion = false;
             if (null != mVelocityTracker) {
                 mVelocityTracker.recycle();
                 mVelocityTracker = null;
             }
-            return true;
+            break;
         }
-        return false;
     }
 
     // 处理嵌套滚动
@@ -326,7 +330,7 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
                     mNestedOffsets[0] += mScrollOffset[0];
                     mNestedOffsets[1] += mScrollOffset[1];
                 }
-                if (!mIsBeingDragged && Math.abs(dy) > TOUCH_SLOP) {
+                if (!mIsBeingDragged) {
                     if (HORIZONTAL == mSpringDirect) {
                         if (Math.abs(dx) > TOUCH_SLOP) {
                             if (null != getParent()) {
@@ -363,7 +367,7 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
                     int unconsumedX = dx - scrolledDeltaX;
                     int scrolledDeltaY = 0;
                     int unconsumedY = dy - scrolledDeltaY;
-                    if (dispatchNestedScroll(scrolledDeltaX, scrolledDeltaY, unconsumedX, unconsumedY, mScrollOffset)) {
+                    if (dispatchNestedScroll(0, scrolledDeltaY, 0, unconsumedY, mScrollOffset)) {
                         mLastTouchX -= mScrollOffset[0];
                         mLastTouchY -= mScrollOffset[1];
                         vtev.offsetLocation(mScrollOffset[0], mScrollOffset[1]);
@@ -512,9 +516,11 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
          *         moveEvent - 移动事件
          *         distanceX - x轴拖动距离
          *         distanceY - y轴拖动距离
+         *         velocityX - x轴划动速度
+         *         velocityY - y轴划动速度
          * 返回值: 无
          */
-        public abstract void onScroll(MotionEvent downEvent, MotionEvent moveEvent, float distanceX, float distanceY);
+        public abstract void onScroll(MotionEvent downEvent, MotionEvent moveEvent, float distanceX, float distanceY, float velocityX, float velocityY);
 
         /**
          * 功  能: 划动
