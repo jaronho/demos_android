@@ -28,26 +28,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnGetSig = (Button)findViewById(R.id.btn_get_sig);
-        btnGetSig.setOnClickListener(onClickBtnGetSig);
-
-        Button btnGetLiveList = (Button)findViewById(R.id.btn_get_live_list);
-        btnGetLiveList.setOnClickListener(onClickBtnGetLiveList);
-
-        Button btnGetChatroomList = (Button)findViewById(R.id.btn_get_chatroom_list);
-        btnGetChatroomList.setOnClickListener(onClickBtnGetChatroomList);
-
-        Button btnGetChannelView = (Button)findViewById(R.id.btn_get_channel_view);
-        btnGetChannelView.setOnClickListener(onClickBtnGetChannelView);
-
-        Button btnUpdateCHannelUrl = (Button)findViewById(R.id.btn_update_channel_url);
-        btnUpdateCHannelUrl.setOnClickListener(onClickBtnUpdateChannelUrl);
-
-        Button btnAddInteractive = (Button)findViewById(R.id.btn_add_interactive);
-        btnAddInteractive.setOnClickListener(onClickBtnAddInteractive);
-
-        Button btnAddChannelUser = (Button)findViewById(R.id.btn_add_channel_user);
-        btnAddChannelUser.setOnClickListener(onClickBtnAddChannelUser);
+//        Button btnGetSig = (Button)findViewById(R.id.btn_get_sig);
+//        btnGetSig.setOnClickListener(onClickBtnGetSig);
+//
+//        Button btnGetLiveList = (Button)findViewById(R.id.btn_get_live_list);
+//        btnGetLiveList.setOnClickListener(onClickBtnGetLiveList);
+//
+//        Button btnGetChatroomList = (Button)findViewById(R.id.btn_get_chatroom_list);
+//        btnGetChatroomList.setOnClickListener(onClickBtnGetChatroomList);
+//
+//        Button btnGetChannelView = (Button)findViewById(R.id.btn_get_channel_view);
+//        btnGetChannelView.setOnClickListener(onClickBtnGetChannelView);
+//
+//        Button btnUpdateCHannelUrl = (Button)findViewById(R.id.btn_update_channel_url);
+//        btnUpdateCHannelUrl.setOnClickListener(onClickBtnUpdateChannelUrl);
+//
+//        Button btnAddInteractive = (Button)findViewById(R.id.btn_add_interactive);
+//        btnAddInteractive.setOnClickListener(onClickBtnAddInteractive);
+//
+//        Button btnAddChannelUser = (Button)findViewById(R.id.btn_add_channel_user);
+//        btnAddChannelUser.setOnClickListener(onClickBtnAddChannelUser);
 
         Button btnLoginTSL = (Button)findViewById(R.id.btn_login_tsl);
         btnLoginTSL.setOnClickListener(onClickBtnLoginTSL);

@@ -3,61 +3,10 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-    <Button
-        android:id="@+id/btn_get_sig"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="获取Sig"
-        android:textAllCaps="false"/>
 
-    <Button
-        android:id="@+id/btn_get_live_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="获取直播室列表"
-        android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/btn_get_chatroom_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="获取群聊列表"
-        android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/btn_get_channel_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="获取频道详情"
-        android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/btn_update_channel_url"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="更新URL（直播室、视频）"
-        android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/btn_add_interactive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="添加互动记录"
-        android:textAllCaps="false"/>
-
-    <Button
-        android:id="@+id/btn_add_channel_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="新增频道用户"
-        android:textAllCaps="false"/>
+    <com.nongyi.nylive.SpringLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -88,5 +37,5 @@
             android:textAllCaps="false"/>
 
     </LinearLayout>
-
+    </com.nongyi.nylive.SpringLayout>
 </LinearLayout>

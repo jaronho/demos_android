@@ -45,10 +45,22 @@ public class ListFragment extends Fragment {
                 updateItemData(holder, data);
             }
         });
-        mRecylerView.setHeadViewCreator(mRefreshViewCreator);
-        mRecylerView.setFootViewCreator(mLoadViewCreator);
-        ((WrapRecyclerViewAdapter)mRecylerView.getAdapter()).removeFooterView(WrapRecyclerView.KEY_FOOT_VIEW);
-        mRecylerView.addItemDecoration(new SpaceItemDecoration((int)getResources().getDimension(R.dimen.item_space)));
+        for (int i = 0; i < 4; ++i) {
+            VideoData vd = new VideoData();
+            vd.type = VideoData.TYPE_LIVE;
+            vd.date = "2017-04-14 9:00-21:00";
+            vd.describe = "标题: " + (i + 1);
+            vd.people = 2016;
+            vd.status = VideoData.STATUS_NOTSTART;
+            vd.url = "";
+            mDatas.add(0, vd);
+        }
+        mRecylerView.getAdapter().notifyDataSetChanged();
+        ((SpringLayout)view.findViewById(R.id.layout_spring)).setTargetView(mRecylerView);
+//        mRecylerView.setHeadViewCreator(mRefreshViewCreator);
+//        mRecylerView.setFootViewCreator(mLoadViewCreator);
+//        ((WrapRecyclerViewAdapter)mRecylerView.getAdapter()).removeFooterView(WrapRecyclerView.KEY_FOOT_VIEW);
+//        mRecylerView.addItemDecoration(new SpaceItemDecoration((int)getResources().getDimension(R.dimen.item_space)));
         return view;
     }
 
