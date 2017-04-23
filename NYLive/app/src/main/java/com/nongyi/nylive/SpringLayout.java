@@ -3,8 +3,6 @@ package com.nongyi.nylive;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.NestedScrollingChild;
@@ -26,6 +24,7 @@ import android.widget.AbsListView;
 import android.widget.RelativeLayout;
 
 import java.lang.reflect.Field;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static android.support.v4.widget.ViewDragHelper.INVALID_POINTER;
 
@@ -63,6 +62,7 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
     private int mLastTouchY = 0;
     private boolean mIsBeingDragged = false;
     /* 其他变量 */
+    private static final AtomicInteger mGeneratedId = new AtomicInteger(99990);
     private GestureListener mGestureListener = null;
     private RelativeLayout mHeaderLayout = null;
     private RelativeLayout mFooterLayout = null;
@@ -73,6 +73,7 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
     private float mHeaderSize = 80;
     private float mMaxFooterSize = 120;
     private float mFooterSize = 80;
+    private float mDragResistance = 0.35f;
 
     public SpringLayout(Context context) {
         this(context, null);
@@ -384,16 +385,14 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
                         float offsetX = decelerateInterpolator.getInterpolation(distanceX / mMaxHeaderSize / 2) * distanceX / 2;
                     } else if (VERTICAL == mSpringDirect) {
                         if (distanceY > 0) {        // 正方向拖动
-                            distanceY = Math.min(mMaxHeaderSize * 2, distanceY);
-                            distanceY = Math.max(0, distanceY);
-                        } else if (distanceY < 0) { // 反方向拖动
-                            distanceY = Math.max(-mMaxHeaderSize * 2, distanceY);
-                            distanceY = Math.min(0, distanceY);
-                            distanceY = Math.abs(distanceY);
+                            distanceY *= mDragResistance;
                         }
-                        float offsetY = decelerateInterpolator.getInterpolation(distanceY / mMaxHeaderSize / 2) * distanceY / 2;
-                        Log.d("SpringLayout", "----- distanceY: "+distanceY+", offsetY: "+offsetY);
-                        mHeaderLayout.setTranslationY(offsetY + mHeaderLayout.getLayoutParams().height);
+                        LayoutParams lp = (LayoutParams)mHeaderLayout.getLayoutParams();
+                        lp.height += distanceY;
+                        if (lp.height < 0) {
+                            lp.height = 0;
+                        }
+                        mHeaderLayout.setLayoutParams(lp);
                     }
                 }
                 if (isViewToFoot()) {
@@ -409,14 +408,16 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
                         float offsetX = decelerateInterpolator.getInterpolation(distanceX / mMaxFooterSize / 2) * distanceX / 2;
                     } else if (VERTICAL == mSpringDirect) {
                         if (distanceY < 0) {        // 正方向拖动
-                            distanceY = Math.max(-mMaxFooterSize * 2, distanceY);
-                            distanceY = Math.min(0, distanceY);
-                            distanceY = Math.abs(distanceY);
-                        } else if (distanceY > 0) { // 反方向拖动
-                            distanceY = Math.min(mMaxFooterSize * 2, distanceY);
-                            distanceY = Math.max(0, distanceY);
+                            distanceY *= mDragResistance;
                         }
-                        float offsetY = decelerateInterpolator.getInterpolation(distanceY / mMaxFooterSize / 2) * distanceY / 2;
+                        LayoutParams lp = (LayoutParams)mFooterLayout.getLayoutParams();
+                        lp.height -= distanceY;
+                        Log.d("SpringLayout", "=============== distanceY: "+distanceY+", "+lp.height);
+                        if (lp.height < 0) {
+                            lp.height = 0;
+                        }
+                        mFooterLayout.setLayoutParams(lp);
+                        mFooterLayout.requestLayout();
                     }
                 }
             }
@@ -433,17 +434,21 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
         };
         addHeader();
         addFooter();
+        setTargetView(getChildAt(2));
     }
 
     // 添加页眉
     private void addHeader() {
+        int id = mGeneratedId.get();
+        mGeneratedId.compareAndSet(id, id + 1);
         mHeaderLayout = new RelativeLayout(getContext());
+        mHeaderLayout.setId(id);
         LayoutParams lp = null;
         if (HORIZONTAL == mSpringDirect) {
-            lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+            lp = new LayoutParams(0, LayoutParams.MATCH_PARENT);
             lp.addRule(ALIGN_PARENT_LEFT);
         } else if (VERTICAL == mSpringDirect) {
-            lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            lp = new LayoutParams(LayoutParams.MATCH_PARENT, 0);
             lp.addRule(ALIGN_PARENT_TOP);
         }
         mHeaderLayout.setLayoutParams(lp);
@@ -452,13 +457,16 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
 
     // 添加页脚
     private void addFooter() {
+        int id = mGeneratedId.get();
+        mGeneratedId.compareAndSet(id, id + 1);
         mFooterLayout = new RelativeLayout(getContext());
+        mHeaderLayout.setId(id);
         LayoutParams lp = null;
         if (HORIZONTAL == mSpringDirect) {
-            lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+            lp = new LayoutParams(0, LayoutParams.MATCH_PARENT);
             lp.addRule(ALIGN_PARENT_RIGHT);
         } else if (VERTICAL == mSpringDirect) {
-            lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            lp = new LayoutParams(LayoutParams.MATCH_PARENT, 0);
             lp.addRule(ALIGN_PARENT_BOTTOM);
         }
         mFooterLayout.setLayoutParams(lp);
@@ -662,10 +670,12 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
      * 返回值: 无
      */
     public void setSpringDirect(int direct) {
-        if (HORIZONTAL != direct && VERTICAL != direct) {
-            direct = VERTICAL;
+        if (direct != mSpringDirect) {
+            if (HORIZONTAL != direct && VERTICAL != direct) {
+                direct = VERTICAL;
+            }
+            mSpringDirect = direct;
         }
-        mSpringDirect = direct;
     }
 
     /**
@@ -717,6 +727,17 @@ public class SpringLayout extends RelativeLayout implements NestedScrollingChild
      */
     public void setTargetView(View view) {
         mTargetView = view;
+        if (null != view) {
+            LayoutParams lp = (LayoutParams)view.getLayoutParams();
+            if (HORIZONTAL == mSpringDirect) {
+                lp.addRule(RelativeLayout.RIGHT_OF, mHeaderLayout.getId());
+                lp.addRule(RelativeLayout.LEFT_OF, mFooterLayout.getId());
+            } else if (VERTICAL == mSpringDirect) {
+                lp.addRule(RelativeLayout.BELOW, mHeaderLayout.getId());
+                lp.addRule(RelativeLayout.ABOVE, mFooterLayout.getId());
+            }
+            view.setLayoutParams(lp);
+        }
     }
 
     /**
