@@ -10,22 +10,22 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="50dp"
-        android:text="砖石"
+        android:text="积分"
         android:textColor="@color/white"
         android:textSize="16sp"/>
 
     <TextView
-        android:id="@+id/textview_money"
+        android:id="@+id/textview_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="5dp"
-        android:text="57176"
+        android:text="77"
         android:textColor="@color/white"
         android:textSize="16sp"/>
 
     <ImageView
-        android:id="@+id/imageview_head_icon"
+        android:id="@+id/imageview_goto"
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_gravity="center_vertical"

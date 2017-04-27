@@ -3,19 +3,19 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.nongyi.nylive.SpringLayout
-        android:id="@+id/layout_spring"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.jaronho.sdk.utils.view.WrapRecyclerView
-            android:id="@+id/recyclerview_list"
+        <com.nongyi.nylive.SpringLayout
+            android:id="@+id/layout_spring"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical">
+            android:layout_height="match_parent">
 
-        </com.jaronho.sdk.utils.view.WrapRecyclerView>
+                <com.jaronho.sdk.utils.view.WrapRecyclerView
+                    android:id="@+id/recyclerview_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical">
 
-    </com.nongyi.nylive.SpringLayout>
+                </com.jaronho.sdk.utils.view.WrapRecyclerView>
+
+        </com.nongyi.nylive.SpringLayout>
 
 </RelativeLayout>

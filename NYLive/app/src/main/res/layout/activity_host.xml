@@ -21,8 +21,8 @@
 
             <include
                 android:id="@+id/layout_head_up"
-                layout="@layout/chunk_anchor_head"
-                android:layout_width="270dp"
+                layout="@layout/chunk_host_head"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"/>
 
@@ -45,13 +45,13 @@
 
             <include
                 android:id="@+id/layout_money"
-                layout="@layout/chunk_anchor_money"
+                layout="@layout/chunk_host_score"
                 android:layout_width="170dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="-35dp"/>
 
             <com.jaronho.sdk.utils.view.WrapRecyclerView
-                android:id="@+id/recyclerview_members"
+                android:id="@+id/recyclerview_guests"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"/>
@@ -68,11 +68,23 @@
 
         <include
             android:id="@+id/layout_bottom"
-            layout="@layout/chunk_anchor_bottom"
+            layout="@layout/chunk_host_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"/>
 
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageview_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="25dp"
+        android:src="@mipmap/icon_goods"
+        android:scaleX="1.5"
+        android:scaleY="1.5"/>
 
 </RelativeLayout>

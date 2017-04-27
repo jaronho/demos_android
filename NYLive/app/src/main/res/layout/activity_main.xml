@@ -4,15 +4,13 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.nongyi.nylive.SpringLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_get_sig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="获取Sig"
+            android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/btn_login_tsl"
@@ -23,19 +21,19 @@
             android:textAllCaps="false"/>
 
         <Button
-            android:id="@+id/btn_live"
+            android:id="@+id/btn_create_room"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="直播"
+            android:layout_gravity="center_horizontal"
+            android:text="创建房间"
             android:textAllCaps="false"/>
 
         <Button
-            android:id="@+id/btn_my_live"
+            android:id="@+id/btn_enter_room"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我的直播"
+            android:layout_gravity="center_horizontal"
+            android:text="进入房间"
             android:textAllCaps="false"/>
 
-    </LinearLayout>
-    </com.nongyi.nylive.SpringLayout>
 </LinearLayout>

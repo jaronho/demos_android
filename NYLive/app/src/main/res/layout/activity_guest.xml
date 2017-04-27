@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.tencent.ilivesdk.view.AVRootView
+        android:id="@+id/view_av_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp">
+
+            <include
+                android:id="@+id/layout_head_up"
+                layout="@layout/chunk_guest_head"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"/>
+
+            <ImageView
+                android:id="@+id/imageview_close"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/icon_close"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp">
+
+            <include
+                android:id="@+id/layout_money"
+                layout="@layout/chunk_host_score"
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-35dp"/>
+
+            <com.jaronho.sdk.utils.view.WrapRecyclerView
+                android:id="@+id/recyclerview_members"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp">
+
+        <include
+            android:id="@+id/layout_bottom"
+            layout="@layout/chunk_guest_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageview_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="25dp"
+        android:src="@mipmap/icon_goods"
+        android:scaleX="1.5"
+        android:scaleY="1.5"/>
+
+</RelativeLayout>

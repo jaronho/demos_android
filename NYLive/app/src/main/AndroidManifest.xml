@@ -44,7 +44,7 @@
         </activity>
         <activity android:name=".MyLiveListActivity">
         </activity>
-        <activity android:name=".AnchorLiveActivity">
+        <activity android:name=".HostLiveActivity">
         </activity>
 
         <!--TLS Qal 一些服务-->

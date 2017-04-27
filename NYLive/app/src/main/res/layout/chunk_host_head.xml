@@ -20,12 +20,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textview_sign"
+            android:id="@+id/textview_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
-            android:text="三生三世桃花季，麻豆与..."
+            android:text="03:30"
             android:textColor="@color/white"
             android:textSize="16sp" />
 

@@ -1,26 +1,27 @@
 package com.nongyi.nylive;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.jaronho.sdk.utils.ViewUtil;
-import com.nongyi.nylive.Model.DataChannel;
-import com.nongyi.nylive.Model.ILiveHelper;
 import com.nongyi.nylive.Model.NetHelper;
 import com.nongyi.nylive.Model.NetHelper.Callback;
 import com.tencent.av.sdk.AVRoomMulti;
 import com.tencent.ilivesdk.ILiveCallBack;
 import com.tencent.ilivesdk.ILiveConstants;
 import com.tencent.ilivesdk.core.ILiveLoginManager;
+import com.tencent.livesdk.ILVLiveConfig;
 import com.tencent.livesdk.ILVLiveManager;
 import com.tencent.livesdk.ILVLiveRoomOption;
 
 public class MainActivity extends AppCompatActivity {
-    private String mUserid = "he1";
+    private String mUserid = "he2";
     private String mSig;
 
     @Override
@@ -28,35 +29,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Button btnGetSig = (Button)findViewById(R.id.btn_get_sig);
-//        btnGetSig.setOnClickListener(onClickBtnGetSig);
-//
-//        Button btnGetLiveList = (Button)findViewById(R.id.btn_get_live_list);
-//        btnGetLiveList.setOnClickListener(onClickBtnGetLiveList);
-//
-//        Button btnGetChatroomList = (Button)findViewById(R.id.btn_get_chatroom_list);
-//        btnGetChatroomList.setOnClickListener(onClickBtnGetChatroomList);
-//
-//        Button btnGetChannelView = (Button)findViewById(R.id.btn_get_channel_view);
-//        btnGetChannelView.setOnClickListener(onClickBtnGetChannelView);
-//
-//        Button btnUpdateCHannelUrl = (Button)findViewById(R.id.btn_update_channel_url);
-//        btnUpdateCHannelUrl.setOnClickListener(onClickBtnUpdateChannelUrl);
-//
-//        Button btnAddInteractive = (Button)findViewById(R.id.btn_add_interactive);
-//        btnAddInteractive.setOnClickListener(onClickBtnAddInteractive);
-//
-//        Button btnAddChannelUser = (Button)findViewById(R.id.btn_add_channel_user);
-//        btnAddChannelUser.setOnClickListener(onClickBtnAddChannelUser);
+        Button btnGetSig = (Button)findViewById(R.id.btn_get_sig);
+        btnGetSig.setOnClickListener(onClickBtnGetSig);
 
         Button btnLoginTSL = (Button)findViewById(R.id.btn_login_tsl);
         btnLoginTSL.setOnClickListener(onClickBtnLoginTSL);
 
-        Button btnLive = (Button)findViewById(R.id.btn_live);
-        btnLive.setOnClickListener(onClickBtnLive);
+        Button btnCreateRoom = (Button)findViewById(R.id.btn_create_room);
+        btnCreateRoom.setOnClickListener(onClickBtnCreateRoom);
 
-        Button btnMyLive = (Button)findViewById(R.id.btn_my_live);
-        btnMyLive.setOnClickListener(onClickMyLive);
+        Button btnEnterRoom = (Button)findViewById(R.id.btn_enter_room);
+        btnEnterRoom.setOnClickListener(onClickBtnEnterRoom);
+
+        ILVLiveConfig liveConfig = new ILVLiveConfig();
+        ILVLiveManager.getInstance().init(liveConfig);
     }
 
     OnClickListener onClickBtnGetSig = new OnClickListener() {
@@ -66,92 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onData(String data) {
                     mSig = data;
-                }
-            });
-        }
-    };
-
-    OnClickListener onClickBtnGetLiveList = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int status = 0;
-            int pageIndex = 1;
-            int pageSize = 10;
-            NetHelper.reqGetLiveList(status, pageIndex, pageSize, new Callback<DataChannel>() {
-                @Override
-                public void onData(DataChannel data) {
-
-                }
-            });
-        }
-    };
-
-    OnClickListener onClickBtnGetChatroomList = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int status = 0;
-            int pageIndex = 1;
-            int pageSize = 10;
-            NetHelper.reqGetChatroomList(status, pageIndex, pageSize, new Callback<DataChannel>() {
-                @Override
-                public void onData(DataChannel data) {
-
-                }
-            });
-        }
-    };
-
-    OnClickListener onClickBtnGetChannelView = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int channelId = 1;
-            NetHelper.reqGetChannelView(channelId, new Callback<DataChannel>() {
-                @Override
-                public void onData(DataChannel data) {
-
-                }
-            });
-        }
-    };
-
-    OnClickListener onClickBtnUpdateChannelUrl = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int channelId = 1;
-            String newUrl = "";
-            NetHelper.reqUpdateChannelUrl(channelId, newUrl, new Callback<Boolean>() {
-                @Override
-                public void onData(Boolean data) {
-
-                }
-            });
-        }
-    };
-
-    OnClickListener onClickBtnAddInteractive = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int channelId = 1;
-            int userId = 1;
-            int type = 0;
-            NetHelper.reqInteractiveAdd(channelId, userId, type, new Callback<Boolean>() {
-                @Override
-                public void onData(Boolean data) {
-
-                }
-            });
-        }
-    };
-
-    OnClickListener onClickBtnAddChannelUser = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int channelId = 1;
-            int userId = 1;
-            NetHelper.reqChannelUserAdd(channelId, userId, new Callback<Boolean>() {
-                @Override
-                public void onData(Boolean data) {
-
+                    ViewUtil.showToast(MainActivity.this, "获取Sig成功");
                 }
             });
         }
@@ -174,22 +75,24 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    OnClickListener onClickBtnLive = new OnClickListener() {
+    OnClickListener onClickBtnCreateRoom = new OnClickListener() {
+        String role = "LiveHost";
         @Override
         public void onClick(View v) {
-            startActivity(new Intent(MainActivity.this, LiveListActivity.class));
-        }
-    };
-
-    OnClickListener onClickMyLive = new OnClickListener() {
-        int roomId = 1;
-        String role = "Host";
-        @Override
-        public void onClick(View v) {
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+            int roomId = sp.getInt("room_id", 0);
+            if (0 == roomId) {
+                roomId = 1000;
+            } else {
+                roomId += 1;
+            }
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putInt("room_id", roomId);
+            editor.commit();
             // 创建房间配置项
             ILVLiveRoomOption hostOption = new ILVLiveRoomOption(ILiveLoginManager.getInstance().getMyUserId()).
                     controlRole(role)// 角色设置
-                    .imsupport(false)
+                    .autoFocus(true)
                     .videoMode(ILiveConstants.VIDEOMODE_BSUPPORT)// 支持后台模式
                     .authBits(AVRoomMulti.AUTH_BITS_DEFAULT)// 权限设置
                     .cameraId(ILiveConstants.FRONT_CAMERA)// 摄像头前置后置
@@ -198,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             ILVLiveManager.getInstance().createRoom(roomId, hostOption, new ILiveCallBack() {
                 @Override
                 public void onSuccess(Object data) {
-                    startActivity(new Intent(MainActivity.this, AnchorLiveActivity.class));
+                    startActivity(new Intent(MainActivity.this, HostLiveActivity.class));
                 }
 
                 @Override
@@ -206,6 +109,14 @@ public class MainActivity extends AppCompatActivity {
                     ViewUtil.showToast(MainActivity.this, module + "|create fail " + errMsg + " " + errMsg);
                 }
             });
+        }
+    };
+
+    OnClickListener onClickBtnEnterRoom = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(MainActivity.this, LiveListActivity.class));
         }
     };
 }

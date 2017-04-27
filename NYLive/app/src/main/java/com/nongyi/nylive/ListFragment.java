@@ -35,6 +35,30 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
+
+        final SpringLayout springLayout = (SpringLayout)view.findViewById(R.id.layout_spring);
+        springLayout.setListener(new SpringLayout.Listener() {
+            @Override
+            public boolean isCanDrag(boolean isHorizontal, boolean isForward) {
+                if (isHorizontal) {
+                    return isForward ? mRecylerView.canScrollHorizontally(-1): mRecylerView.canScrollHorizontally(1);
+                } else {
+                    return isForward ? mRecylerView.canScrollVertically(-1): mRecylerView.canScrollVertically(1);
+                }
+            }
+
+            @Override
+            public void onDrag(float maxOffset, float offset) {
+                Log.d(TAG, "onDrag == maxOffset: "+maxOffset+", offset: "+offset);
+            }
+
+            @Override
+            public void onRelease(float maxOffset, float offset) {
+                Log.d(TAG, "onRelease == maxOffset: "+maxOffset+", offset: "+offset);
+                springLayout.restore();
+            }
+        });
+
         mRecylerView = (WrapRecyclerView)view.findViewById(R.id.recyclerview_list);
         mRecylerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -56,7 +80,6 @@ public class ListFragment extends Fragment {
             mDatas.add(0, vd);
         }
         mRecylerView.getAdapter().notifyDataSetChanged();
-        ((SpringLayout)view.findViewById(R.id.layout_spring)).setTargetView(mRecylerView);
 //        mRecylerView.setHeadViewCreator(mRefreshViewCreator);
 //        mRecylerView.setFootViewCreator(mLoadViewCreator);
 //        ((WrapRecyclerViewAdapter)mRecylerView.getAdapter()).removeFooterView(WrapRecyclerView.KEY_FOOT_VIEW);

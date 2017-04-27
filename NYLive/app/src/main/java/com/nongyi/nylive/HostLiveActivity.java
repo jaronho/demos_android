@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.jaronho.sdk.utils.ViewUtil;
-import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter;
 import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.MultiLayout;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
 import com.jaronho.sdk.utils.view.WrapRecyclerView;
@@ -23,10 +22,10 @@ import com.tencent.livesdk.ILVLiveManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnchorLiveActivity extends AppCompatActivity {
+public class HostLiveActivity extends AppCompatActivity {
     private final int REQUEST_PHONE_PERMISSIONS = 0;
     private AVRootView mAVRootView;
-    private WrapRecyclerView mMembersView;
+    private WrapRecyclerView mGuestsView;
     private List<String> mMemberDatas = new ArrayList<>();
 
     @Override
@@ -35,46 +34,43 @@ public class AnchorLiveActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);   // 不锁屏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
-        setContentView(R.layout.activity_live);
+        setContentView(R.layout.activity_host);
         checkPermission();
         // AV视频控件
         mAVRootView = (AVRootView)findViewById(R.id.view_av_root);
-        mAVRootView.setGravity(AVRootView.LAYOUT_GRAVITY_RIGHT);
-        mAVRootView.setSubMarginX(12);
-        mAVRootView.setSubMarginY(100);
         ILVLiveManager.getInstance().setAvVideoView(mAVRootView);
+        mAVRootView.setGravity(AVRootView.LAYOUT_GRAVITY_RIGHT);
+        mAVRootView.setSubMarginY(getResources().getDimensionPixelSize(R.dimen.small_area_margin_top));
+        mAVRootView.setSubMarginX(getResources().getDimensionPixelSize(R.dimen.small_area_marginright));
+        mAVRootView.setSubPadding(getResources().getDimensionPixelSize(R.dimen.small_area_marginbetween));
+        mAVRootView.setSubWidth(getResources().getDimensionPixelSize(R.dimen.small_area_width));
+        mAVRootView.setSubHeight(getResources().getDimensionPixelSize(R.dimen.small_area_height));
         // 关闭图片
         ImageView imageviewClose = (ImageView)findViewById(R.id.imageview_close);
         imageviewClose.setOnClickListener(onClickImageviewClose);
-        // 闪光图片
-        ImageView imageviewFlash = (ImageView)findViewById(R.id.imageview_flash);
-        imageviewFlash.setOnClickListener(onClickImageviewFlash);
-        // 切换相机图片
-        ImageView imageviewSwitchCamera = (ImageView)findViewById(R.id.imageview_switch_camera);
-        imageviewSwitchCamera.setOnClickListener(onClickImageviewSwitchCamera);
-        // 美颜图片
-        ImageView imageviewBeauty = (ImageView)findViewById(R.id.imageview_beauty);
-        imageviewBeauty.setOnClickListener(onClickImageviewBeauty);
-        // 美白图片
-        ImageView imageviewWhite = (ImageView)findViewById(R.id.imageview_white);
-        imageviewWhite.setOnClickListener(onClickImageviewWhite);
-        // 麦克风图片
-        ImageView imageviewMic = (ImageView)findViewById(R.id.imageview_mic);
-        imageviewMic.setOnClickListener(onClickImageviewMic);
+        // 聊天图片
+        ImageView imageviewMessage = (ImageView)findViewById(R.id.imageview_message);
+        imageviewMessage.setOnClickListener(onClickImageviewMessage);
         // 分享图片
         ImageView imageviewShare = (ImageView)findViewById(R.id.imageview_share);
         imageviewShare.setOnClickListener(onClickImageviewShare);
-        // 屏幕图片
-        ImageView imageviewScreen = (ImageView)findViewById(R.id.imageview_screen);
-        imageviewScreen.setOnClickListener(onClickImageviewScreen);
+        // 美颜图片
+        ImageView imageviewBeauty = (ImageView)findViewById(R.id.imageview_beauty);
+        imageviewBeauty.setOnClickListener(onClickImageviewBeauty);
+        // 切换相机图片
+        ImageView imageviewSwitchCamera = (ImageView)findViewById(R.id.imageview_switch_camera);
+        imageviewSwitchCamera.setOnClickListener(onClickImageviewSwitchCamera);
+        // 物品图片
+        ImageView imageviewGoods = (ImageView)findViewById(R.id.imageview_goods);
+        imageviewGoods.setOnClickListener(onClickImageviewGoods);
         // 观众列表
-        mMembersView = (WrapRecyclerView)findViewById(R.id.recyclerview_members);
-        mMembersView.setHasFixedSize(true);
+        mGuestsView = (WrapRecyclerView)findViewById(R.id.recyclerview_guests);
+        mGuestsView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        mMembersView.setLayoutManager(linearLayoutManager);
-        mMembersView.setHorizontal(true);
-        mMembersView.setAdapter(new WrapRecyclerViewAdapter<String>(this, mMemberDatas, new MultiLayout<String>() {
+        mGuestsView.setLayoutManager(linearLayoutManager);
+        mGuestsView.setHorizontal(true);
+        mGuestsView.setAdapter(new WrapRecyclerViewAdapter<String>(this, mMemberDatas, new MultiLayout<String>() {
             @Override
             public int getLayoutId(int i, String data) {
                 return 0;
@@ -112,43 +108,11 @@ public class AnchorLiveActivity extends AppCompatActivity {
         }
     };
 
-    // 点击闪光
-    OnClickListener onClickImageviewFlash = new OnClickListener() {
+    // 点击聊天
+    OnClickListener onClickImageviewMessage = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(AnchorLiveActivity.this, "点击闪光");
-        }
-    };
-
-    // 点击切换相机
-    OnClickListener onClickImageviewSwitchCamera = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            ViewUtil.showToast(AnchorLiveActivity.this, "点击切换相机");
-        }
-    };
-
-    // 点击美颜
-    OnClickListener onClickImageviewBeauty = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            ViewUtil.showToast(AnchorLiveActivity.this, "点击美颜");
-        }
-    };
-
-    // 点击美白
-    OnClickListener onClickImageviewWhite = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            ViewUtil.showToast(AnchorLiveActivity.this, "点击美白");
-        }
-    };
-
-    // 点击麦克风
-    OnClickListener onClickImageviewMic = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            ViewUtil.showToast(AnchorLiveActivity.this, "点击麦克风");
+            ViewUtil.showToast(HostLiveActivity.this, "点击聊天");
         }
     };
 
@@ -156,15 +120,31 @@ public class AnchorLiveActivity extends AppCompatActivity {
     OnClickListener onClickImageviewShare = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(AnchorLiveActivity.this, "点击分享");
+            ViewUtil.showToast(HostLiveActivity.this, "点击分享");
         }
     };
 
-    // 点击切换全屏
-    OnClickListener onClickImageviewScreen = new OnClickListener() {
+    // 点击美颜
+    OnClickListener onClickImageviewBeauty = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(AnchorLiveActivity.this, "点击切换全屏");
+            ViewUtil.showToast(HostLiveActivity.this, "点击美颜");
+        }
+    };
+
+    // 点击切换相机
+    OnClickListener onClickImageviewSwitchCamera = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ViewUtil.showToast(HostLiveActivity.this, "点击切换相机");
+        }
+    };
+
+    // 点击物品
+    OnClickListener onClickImageviewGoods = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ViewUtil.showToast(HostLiveActivity.this, "点击点击物品");
         }
     };
 }

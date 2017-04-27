@@ -5,18 +5,15 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/imageview_chat"
+        android:id="@+id/imageview_message"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center_vertical"
         android:src="@mipmap/icon_message"/>
 
-    <ImageView
-        android:id="@+id/imageview_like"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_vertical"
-        android:src="@mipmap/icon_like"/>
+    <View
+        android:layout_width="5dp"
+        android:layout_height="match_parent"/>
 
     <ImageView
         android:id="@+id/imageview_share"
@@ -25,11 +22,26 @@
         android:layout_gravity="center_vertical"
         android:src="@mipmap/icon_share"/>
 
+    <View
+        android:layout_width="5dp"
+        android:layout_height="match_parent"/>
+
     <ImageView
-        android:id="@+id/imageview_screen"
+        android:id="@+id/imageview_beauty"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center_vertical"
-        android:src="@mipmap/icon_screen_full"/>
+        android:src="@mipmap/icon_beauty"/>
+
+    <View
+        android:layout_width="5dp"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/imageview_switch_camera"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/icon_switch_camera"/>
 
 </LinearLayout>
