@@ -30,8 +30,6 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
     private View mFooterView = null;
     private int mHeaderViewSize = 0;
     private int mFooterViewSize = 0;
-    private boolean mIsHeaderReady = false;
-    private boolean mIsFooterReady = false;
 
     public RefreshView(Context context) {
         super(context);
@@ -94,23 +92,74 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
     }
 
     @Override
-    public void onDrag(float maxOffset, float offset) {
-        Log.d(RefreshView.class.getSimpleName(), "onDrag == maxOffset: "+maxOffset+", offet: "+offset);
+    public void onDrag(float offset) {
         if (mIsDragRight) {
-            Log.d(RefreshView.class.getSimpleName(), "水平滑动 == 向右");
+            setHeaderMargin(-mHeaderViewSize + (int)offset);
+            if (null != mHeaderCreator && mHeaderViewSize > 0) {
+                mHeaderCreator.onPull(offset, offset >= mHeaderViewSize);
+            }
         } else if (mIsDragLeft) {
-            Log.d(RefreshView.class.getSimpleName(), "水平滑动 == 向左");
+            setFooterMargin(-mFooterViewSize + (int)offset);
+            if (null != mFooterCreator && mFooterViewSize > 0) {
+                mFooterCreator.onPull(offset, offset >= mFooterViewSize);
+            }
         } else if (mIsDragBottom) {
-            Log.d(RefreshView.class.getSimpleName(), "垂直滑动 == 向下");
+            setHeaderMargin(-mHeaderViewSize + (int)offset);
+            if (null != mHeaderCreator && mHeaderViewSize > 0) {
+                mHeaderCreator.onPull(offset, offset >= mHeaderViewSize);
+            }
         } else if (mIsDragTop) {
-            Log.d(RefreshView.class.getSimpleName(), "垂直滑动 == 向上");
+            setFooterMargin(-mFooterViewSize + (int)offset);
+            if (null != mFooterCreator && mFooterViewSize > 0) {
+                mFooterCreator.onPull(offset, offset >= mFooterViewSize);
+            }
         }
     }
 
     @Override
     public void onRelease(float maxOffset, float offset) {
-        Log.d(RefreshView.class.getSimpleName(), "onRelease == maxOffset: "+maxOffset+", offet: "+offset);
-        mViewLayout.restore();
+        boolean isDoRestoreAction = true;
+        if (mIsDragRight) {
+            if (null != mHeaderCreator && mHeaderViewSize > 0) {
+                if (offset < mHeaderViewSize) {
+                    mHeaderCreator.onPullAbort();
+                } else  {
+                    mHeaderCreator.onRefreshing();
+                    isDoRestoreAction = false;
+                }
+            }
+        } else if (mIsDragLeft) {
+            if (null != mFooterCreator && mFooterViewSize > 0) {
+                if (offset < mFooterViewSize) {
+                    mFooterCreator.onPullAbort();
+                } else {
+                    mFooterCreator.onRefreshing();
+                    isDoRestoreAction = false;
+                }
+            }
+        } else if (mIsDragBottom) {
+            if (null != mHeaderCreator && mHeaderViewSize > 0) {
+                if (offset < mHeaderViewSize) {
+                    mHeaderCreator.onPullAbort();
+                } else  {
+                    mHeaderCreator.onRefreshing();
+                    isDoRestoreAction = false;
+                }
+            }
+        } else if (mIsDragTop) {
+            if (null != mFooterCreator && mFooterViewSize > 0) {
+                if (offset < mFooterViewSize) {
+                    mFooterCreator.onPullAbort();
+                } else {
+                    mFooterCreator.onRefreshing();
+                    isDoRestoreAction = false;
+                }
+            }
+        }
+        if (isDoRestoreAction) {
+            restore();
+        }
+        mIsDragRight = mIsDragLeft = mIsDragBottom = mIsDragTop = false;
     }
 
     // 初始化
@@ -129,7 +178,6 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
         // 页脚
         mFooter = new RelativeLayout(getContext());
         addView(mFooter);
-
         setHorizontal(mViewLayout.isHorizontal());
     }
 
@@ -138,7 +186,6 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
         if (margin < -mHeaderViewSize) {
             margin = -mHeaderViewSize;
         }
-        Log.d(RefreshView.class.getSimpleName(), "setHeaderMargin == margin: "+margin);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)mHeader.getLayoutParams();
         if (mViewLayout.isHorizontal()) {
             lp.leftMargin = margin;
@@ -153,7 +200,6 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
         if (margin < -mFooterViewSize) {
             margin = -mFooterViewSize;
         }
-        Log.d(RefreshView.class.getSimpleName(), "setFooterMargin == margin: "+margin);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)mFooter.getLayoutParams();
         if (mViewLayout.isHorizontal()) {
             lp.rightMargin = margin;
@@ -170,38 +216,6 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
      */
     public RecyclerView getView() {
         return mView;
-    }
-
-    /**
-     * 功  能: 设置页眉构造器
-     * 参  数: creator - 页眉构造器
-     * 返回值: 无
-     */
-    public void setHeaderCreator(Creator creator) {
-        if (null != mHeaderCreator) {
-            throw new AssertionError("exist header creator");
-        }
-        mHeaderCreator = creator;
-        mHeaderView = creator.createView(getContext(), mHeader);
-        if (null != mHeaderView) {
-            mHeader.addView(mHeaderView);
-        }
-    }
-
-    /**
-     * 功  能: 设置页脚构造器
-     * 参  数: creator - 页脚构造器
-     * 返回值: 无
-     */
-    public void setFooterCreator(Creator creator) {
-        if (null != mFooterCreator) {
-            throw new AssertionError("exist footer creator");
-        }
-        mFooterCreator = creator;
-        mFooterView = creator.createView(getContext(), mFooter);
-        if (null != mFooterView) {
-            mFooter.addView(mFooterView);
-        }
     }
 
     /**
@@ -238,6 +252,49 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
     }
 
     /**
+     * 功  能: 设置页眉构造器
+     * 参  数: creator - 页眉构造器
+     * 返回值: 无
+     */
+    public void setHeaderCreator(Creator creator) {
+        if (null != mHeaderCreator) {
+            throw new AssertionError("exist header creator");
+        }
+        mHeaderCreator = creator;
+        mHeaderView = creator.createView(getContext(), mHeader);
+        if (null != mHeaderView) {
+            mHeader.addView(mHeaderView);
+        }
+    }
+
+    /**
+     * 功  能: 设置页脚构造器
+     * 参  数: creator - 页脚构造器
+     * 返回值: 无
+     */
+    public void setFooterCreator(Creator creator) {
+        if (null != mFooterCreator) {
+            throw new AssertionError("exist footer creator");
+        }
+        mFooterCreator = creator;
+        mFooterView = creator.createView(getContext(), mFooter);
+        if (null != mFooterView) {
+            mFooter.addView(mFooterView);
+        }
+    }
+
+    /**
+     * 功  能: 复位滑动
+     * 参  数: 无
+     * 返回值: 无
+     */
+    public void restore() {
+        setHeaderMargin(-mHeaderViewSize);
+        setFooterMargin(-mFooterViewSize);
+        mViewLayout.actionBack();
+    }
+
+    /**
      * Brief:   Header/Footer Creator
      */
     public interface Creator {
@@ -251,11 +308,11 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
 
         /**
          * 功  能: 在滑动中
-         * 参  数: maxOffset - 最大偏移
-         *         offset - 当前偏移
+         * 参  数: offset - 当前偏移
+         *         isReady - 是否放开就可以刷新
          * 返回值: 无
          */
-        void onPull(float maxOffset, float offset);
+        void onPull(float offset, boolean isReady);
 
         /**
          * 功  能: 滑动终止
@@ -270,12 +327,5 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
          * 返回值: 无
          */
         void onRefreshing();
-
-        /**
-         * 功  能: 刷新结束
-         * 参  数: 无
-         * 返回值: 无
-         */
-        void onRefreshOver();
     }
 }

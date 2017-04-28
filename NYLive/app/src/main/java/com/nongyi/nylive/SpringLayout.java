@@ -22,15 +22,13 @@ public class SpringLayout extends ViewGroup {
     private VelocityTracker mVelocityTracker = VelocityTracker.obtain(); // 速度辅助类
     private final int TOUCH_SLOP = ViewConfiguration.get(getContext()).getScaledTouchSlop(); // 当前滑动阀值
     private final int MAX_VELOCITY = ViewConfiguration.get(getContext()).getScaledMaximumFlingVelocity();   // Velocity的阀值
-    private boolean mIsHorizontal = false;  // 是否水平滑动(反之垂直滑动)
-    private boolean mIsOnDrag = false; // 是否在滑动
-    private boolean mIsDragForward = true;  // 是否正向滑动
     private int mLastMontionX = 0;  // 记录上次x的位置
     private int mLastMontionY = 0; // 记录上次y的位置
+    private boolean mIsDraging = false;  // 是否滑动中
+    private boolean mIsDragForward = true;  // 是否正向滑动
+    private boolean mIsHorizontal = false;  // 是否水平滑动(反之垂直滑动)
     private int mTotalLength = 0; // 整个控件的长度
-    private int mPointID = 0; // pointID
-    private int mMaxPercent = 70;   // 最大滑动距离,[0,100](百分比,相对于SpringLayout的宽度或高度)
-    private float mDamp = 0.3f;  // 滑动的阻尼系数,(0, 1]
+    private float mDamp = 0.35f;  // 滑动的阻尼系数,(0, 1]
     private Listener mListener = null;  // 监听器
 
     public SpringLayout(Context context) {
@@ -52,105 +50,75 @@ public class SpringLayout extends ViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        int action = event.getAction();
         int x = (int)event.getX();
         int y = (int)event.getY();
-        switch (action) {
-            case MotionEvent.ACTION_POINTER_DOWN:
-                mPointID = event.getPointerId(event.getActionIndex()); // 记录当前pointID
-                break;
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mLastMontionX = x;
                 mLastMontionY = y;
-                if (!mScroller.isFinished()) { // 当动画还没有结束的时候强制结束
-                    mScroller.abortAnimation();
-                    mScroller.forceFinished(true);
-                }
-                mIsOnDrag = false;
+                mIsDraging = false;
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (mIsOnDrag) {
-                    break;
-                }
                 int xDiff = x - mLastMontionX;
                 int yDiff = y - mLastMontionY;
+                mLastMontionX = x;
+                mLastMontionY = y;
                 if (mIsHorizontal) {
                     if (Math.abs(xDiff) > TOUCH_SLOP) {   // x轴超过了最小滑动距离
-                        mIsOnDrag = true;
+                        mIsDraging = true;
                         mIsDragForward = xDiff > 0;
                     }
                 } else {
                     if (Math.abs(yDiff) > TOUCH_SLOP) {   // y轴超过了最小滑动距离
-                        mIsOnDrag = true;
+                        mIsDraging = true;
                         mIsDragForward = yDiff > 0;
                     }
                 }
-                if (mIsOnDrag) {
+                if (mIsDraging) {
                     if (null != mListener) {
-                        mIsOnDrag = !mListener.isCanDrag(mIsHorizontal, mIsDragForward);
+                        mIsDraging = !mListener.isCanDrag(mIsHorizontal, mIsDragForward);
                     }
                 }
-                break;
-            case MotionEvent.ACTION_CANCEL:
-            case MotionEvent.ACTION_UP:
-                mIsOnDrag = false;
-                break;
+                return mIsDraging;
         }
-        return mIsOnDrag;
+        return mIsDraging;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int touchIndex = event.getActionIndex();
+        int x = (int)event.getX();
+        int y = (int)event.getY();
         mVelocityTracker.addMovement(event);
         switch (event.getAction()) {
-            case MotionEvent.ACTION_POINTER_DOWN:   // 添加多点触控的处理
-                mPointID = event.getPointerId(touchIndex);
-                mLastMontionX = (int)event.getX(touchIndex); // 记录按下的x点
-                mLastMontionY = (int)event.getY(touchIndex); // 记录按下的y点
-                break;
-            case MotionEvent.ACTION_POINTER_UP:
-                if (event.getPointerId(touchIndex) == mPointID) {   // 添加多点触控的支持
-                    int newIndex = 0 == touchIndex ? 1 : 0;
-                    mPointID = event.getPointerId(newIndex);
-                    mLastMontionX = (int)event.getX(newIndex);
-                    mLastMontionY = (int)event.getY(newIndex);
-                }
-                break;
             case MotionEvent.ACTION_DOWN:
-                mPointID = event.getPointerId(touchIndex);
-                mLastMontionX = (int)event.getX(); // 记录按下的x点
-                mLastMontionY = (int)event.getY(); // 记录按下的y点
+                mLastMontionX = x; // 记录按下的x点
+                mLastMontionY = y; // 记录按下的y点
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (!mIsOnDrag) {
-                    break;
-                }
-                touchIndex = event.findPointerIndex(mPointID);
-                if (touchIndex < 0) {   // 当前index小于0就返false继续接受下一次事件
-                    mPointID = event.getPointerId(event.getActionIndex());
-                    mIsOnDrag = false;
-                    break;
-                }
-                int detaX = (int)(mLastMontionX - event.getX(touchIndex)); // 计算x滑动的距离
-                int detaY = (int)(mLastMontionY - event.getY(touchIndex)); // 计算y滑动的距离
+                int detaX = mLastMontionX - x; // 计算x滑动的距离
+                int detaY = mLastMontionY - y; // 计算y滑动的距离
+                mLastMontionX = x; // 记录按下的x点
+                mLastMontionY = y; // 记录按下的y点
                 if (mIsHorizontal) {
-                    scrollBy(detaX, 0); // 调用滑动函数
+                    if (mIsDraging) {
+                        scrollBy(detaX, 0); // 调用滑动函数
+                    }
                     if ((mIsDragForward && detaX > 0 && getScrollX() >= 0) || (!mIsDragForward && detaX < 0 && getScrollX() <= 0)) {
-                        mIsOnDrag = false;
+                        mIsDraging = false;
                     }
                 } else {
-                    scrollBy(0, detaY); // 调用滑动函数
+                    if (mIsDraging) {
+                        scrollBy(0, detaY); // 调用滑动函数
+                    }
                     if ((mIsDragForward && detaY > 0 && getScrollY() >= 0) || (!mIsDragForward && detaY < 0 && getScrollY() <= 0)) {
-                        mIsOnDrag = false;
+                        mIsDraging = false;
                     }
                 }
-                mLastMontionX = (int)event.getX(touchIndex); // 记录上一次按下的x点
-                mLastMontionY = (int)event.getY(touchIndex); // 记录上一次按下的y点
                 break;
-            case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
                 mVelocityTracker.computeCurrentVelocity(1000);
+                mIsDraging = false;
                 if (mIsHorizontal) {
                     if (Math.abs(mVelocityTracker.getXVelocity()) > MAX_VELOCITY && !checkIsBroad()) {
                         mScroller.fling(getScrollX(), getScrollY(), -(int)mVelocityTracker.getXVelocity(), 0, 0, 0, 0, mTotalLength - getWidth());
@@ -158,7 +126,7 @@ public class SpringLayout extends ViewGroup {
                         if (null == mListener) {
                             actionBack();
                         } else {
-                            mListener.onRelease(getWidth() * mMaxPercent / 100, Math.abs(getScrollX()));
+                            mListener.onRelease(getWidth(), Math.abs(getScrollX()));
                         }
                     }
                 } else {
@@ -168,11 +136,10 @@ public class SpringLayout extends ViewGroup {
                         if (null == mListener) {
                             actionBack();
                         } else {
-                            mListener.onRelease(getHeight() * mMaxPercent / 100, Math.abs(getScrollY()));
+                            mListener.onRelease(getHeight(), Math.abs(getScrollY()));
                         }
                     }
                 }
-                mIsOnDrag = false;
                 break;
         }
         return super.onTouchEvent(event);
@@ -193,22 +160,18 @@ public class SpringLayout extends ViewGroup {
     @Override
     public void scrollBy(int x, int y) {
         if (mIsHorizontal) {
-            float maxOffsetX = getWidth() * mMaxPercent / 100;
-            float offsetX = Math.abs(getScrollX());
-            if (offsetX < maxOffsetX) {
-                super.scrollBy((int)(x * mDamp), y);
-                if (null != mListener) {
-                    mListener.onDrag(maxOffsetX, offsetX);
-                }
+            int offsetX = (int)(x * mDamp);
+            int scrollX = getScrollX() + offsetX;   // 这里做临时变量是为了避免getScrollX()延迟生效
+            super.scrollBy(offsetX, y);
+            if (null != mListener) {
+                mListener.onDrag(Math.abs(scrollX));
             }
         } else {
-            float maxOffsetY = getHeight() * mMaxPercent / 100;
-            float offsetY = Math.abs(getScrollY());
-            if (offsetY < maxOffsetY) {
-                super.scrollBy(x, (int)(y * mDamp));
-                if (null != mListener) {
-                    mListener.onDrag(maxOffsetY, offsetY);
-                }
+            int offsetY = (int)(y * mDamp);
+            int scrollY = getScrollY() + offsetY;   // 这里做临时变量是为了避免getScrollY()延迟生效
+            super.scrollBy(x, offsetY);
+            if (null != mListener) {
+                mListener.onDrag(Math.abs(scrollY));
             }
         }
     }
@@ -303,8 +266,12 @@ public class SpringLayout extends ViewGroup {
         }
     }
 
-    // 回弹函数
-    private void actionBack() {
+    /**
+     * 功  能: 回弹函数
+     * 参  数: 无
+     * 返回值: 无
+     */
+    public void actionBack() {
         if (mIsHorizontal) {
             if (getScrollX() < 0 || getWidth() > mTotalLength) {   // 左部回弹
                 mScroller.startScroll(getScrollX(), 0, -getScrollX(), 0); // 开启回弹效果
@@ -343,20 +310,6 @@ public class SpringLayout extends ViewGroup {
     }
 
     /**
-     * 功  能: 设置可以滑动的最大距离,相对于宽度或高度的百分比
-     * 参  数: maxPercent - 最大百分比,[0, 100],当为0时,不可滑动
-     * 返回值: 无
-     */
-    public void setMaxPercent(int maxPercent) {
-        if (maxPercent < 0) {
-            maxPercent = 0;
-        } else if (maxPercent > 100) {
-            maxPercent = 100;
-        }
-        mMaxPercent = maxPercent;
-    }
-
-    /**
      * 功  能: 设置滑动的阻尼系数,值越大,阻力越小
      * 参  数: damp - 阻尼系数,(0, 1]
      * 返回值: 无
@@ -368,15 +321,6 @@ public class SpringLayout extends ViewGroup {
             damp = 1;
         }
         mDamp = damp;
-    }
-
-    /**
-     * 功  能: 复位滑动
-     * 参  数: 无
-     * 返回值: 无
-     */
-    public void restore() {
-        actionBack();
     }
 
     /**
@@ -403,11 +347,10 @@ public class SpringLayout extends ViewGroup {
 
         /**
          * 功  能: 正在滑动
-         * 参  数: maxOffset - 可滑动的最大偏移值
-         *         offset - 当前滑动的偏移值
+         * 参  数: offset - 滑动的偏移值
          * 返回值: 无
          */
-        void onDrag(float maxOffset, float offset);
+        void onDrag(float offset);
 
         /**
          * 功  能: 释放滑动

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -82,23 +83,19 @@ public class ListFragment extends Fragment {
         }
 
         @Override
-        public void onPull(float maxOffset, float offset) {
-
+        public void onPull(float offset, boolean isReady) {
+            Log.d("NYLive", "下拉刷新 == 下拉中: " + (isReady ? "可刷新" : "不可刷新"));
         }
 
         @Override
         public void onPullAbort() {
-
+            Log.d("NYLive", "下拉刷新 == 取消刷新");
         }
 
         @Override
         public void onRefreshing() {
-
-        }
-
-        @Override
-        public void onRefreshOver() {
-
+            Log.d("NYLive", "下拉刷新 == 刷新中");
+            mRefresh.restore();
         }
     };
 
@@ -110,23 +107,19 @@ public class ListFragment extends Fragment {
         }
 
         @Override
-        public void onPull(float maxOffset, float offset) {
-
+        public void onPull(float offset, boolean isReady) {
+            Log.d("NYLive", "加载更多 == 上拉中: " + (isReady ? "可加载" : "不可加载"));
         }
 
         @Override
         public void onPullAbort() {
-
+            Log.d("NYLive", "加载更多 == 取消加载");
         }
 
         @Override
         public void onRefreshing() {
-
-        }
-
-        @Override
-        public void onRefreshOver() {
-
+            Log.d("NYLive", "加载更多 == 加载中");
+            mRefresh.restore();
         }
     };
 
