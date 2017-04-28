@@ -7,26 +7,24 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.MultiLayout;
 import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.QuickViewHolder;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
-import com.jaronho.sdk.utils.view.WrapRecyclerView;
-import com.jaronho.sdk.utils.view.WrapRecyclerView.Creator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListFragment extends Fragment {
     private static final String TAG = ListFragment.class.getSimpleName();
-    private WrapRecyclerView mRecylerView = null;
+    private RefreshView mRefresh = null;
     private List<VideoData> mDatas = new ArrayList<>();
 
     public ListFragment() {
@@ -36,40 +34,17 @@ public class ListFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
-        final SpringLayout springLayout = (SpringLayout)view.findViewById(R.id.layout_spring);
-        springLayout.setListener(new SpringLayout.Listener() {
-            @Override
-            public boolean isCanDrag(boolean isHorizontal, boolean isForward) {
-                if (isHorizontal) {
-                    return isForward ? mRecylerView.canScrollHorizontally(-1): mRecylerView.canScrollHorizontally(1);
-                } else {
-                    return isForward ? mRecylerView.canScrollVertically(-1): mRecylerView.canScrollVertically(1);
-                }
-            }
-
-            @Override
-            public void onDrag(float maxOffset, float offset) {
-                Log.d(TAG, "onDrag == maxOffset: "+maxOffset+", offset: "+offset);
-            }
-
-            @Override
-            public void onRelease(float maxOffset, float offset) {
-                Log.d(TAG, "onRelease == maxOffset: "+maxOffset+", offset: "+offset);
-                springLayout.restore();
-            }
-        });
-
-        mRecylerView = (WrapRecyclerView)view.findViewById(R.id.recyclerview_list);
-        mRecylerView.setHasFixedSize(true);
+        mRefresh = (RefreshView)view.findViewById(R.id.layout_refresh);
+        mRefresh.getView().setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        mRecylerView.setLayoutManager(linearLayoutManager);
-        mRecylerView.setAdapter(new WrapRecyclerViewAdapter<VideoData>(getContext(), mDatas, mMultiLayout) {
+        mRefresh.getView().setLayoutManager(linearLayoutManager);
+        mRefresh.getView().setAdapter(new WrapRecyclerViewAdapter<VideoData>(getContext(), mDatas, mMultiLayout) {
             @Override
             public void onBindViewHolder(QuickViewHolder holder, VideoData data) {
                 updateItemData(holder, data);
             }
         });
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < 1; ++i) {
             VideoData vd = new VideoData();
             vd.type = VideoData.TYPE_LIVE;
             vd.date = "2017-04-14 9:00-21:00";
@@ -79,11 +54,10 @@ public class ListFragment extends Fragment {
             vd.url = "";
             mDatas.add(0, vd);
         }
-        mRecylerView.getAdapter().notifyDataSetChanged();
-//        mRecylerView.setHeadViewCreator(mRefreshViewCreator);
-//        mRecylerView.setFootViewCreator(mLoadViewCreator);
-//        ((WrapRecyclerViewAdapter)mRecylerView.getAdapter()).removeFooterView(WrapRecyclerView.KEY_FOOT_VIEW);
-//        mRecylerView.addItemDecoration(new SpaceItemDecoration((int)getResources().getDimension(R.dimen.item_space)));
+        mRefresh.getView().getAdapter().notifyDataSetChanged();
+        mRefresh.setHeaderCreator(mRefreshCreator);
+        mRefresh.setFooterCreator(mLoadCreator);
+        mRefresh.getView().addItemDecoration(new SpaceItemDecoration((int)getResources().getDimension(R.dimen.item_space)));
         return view;
     }
 
@@ -101,76 +75,58 @@ public class ListFragment extends Fragment {
     };
 
     // 刷新视图构造器
-    private Creator mRefreshViewCreator = new Creator() {
-        private int mIndex = 0;
-
+    private RefreshView.Creator mRefreshCreator = new RefreshView.Creator() {
         @Override
-        public View getView(Context context, WrapRecyclerView parent) {
+        public View createView(Context context, RelativeLayout parent) {
             return LayoutInflater.from(getContext()).inflate(R.layout.header_refresh, parent, false);
         }
 
         @Override
-        public void onPull(int viewLength, int dragDistance, int status) {
-            // TODO: 下拉刷新数据
+        public void onPull(float maxOffset, float offset) {
+
         }
 
         @Override
         public void onPullAbort() {
+
         }
 
         @Override
         public void onRefreshing() {
-            // TODO: 刷新数据
-            mRecylerView.stopHeadRefresh();
-            VideoData vd = new VideoData();
-            vd.type = VideoData.TYPE_LIVE;
-            vd.date = "2017-04-14 9:00-21:00";
-            vd.describe = "标题: " + (++mIndex);
-            vd.people = 2016;
-            vd.status = VideoData.STATUS_NOTSTART;
-            vd.url = "";
-            mDatas.add(0, vd);
+
         }
 
         @Override
-        public void onStopRefresh() {
-            mRecylerView.getAdapter().notifyDataSetChanged();
-            // TODO: 数据刷新完成
+        public void onRefreshOver() {
+
         }
     };
 
     // 加载视图构造器
-    private Creator mLoadViewCreator = new Creator() {
-        private View mLoadView = null;
-
+    private RefreshView.Creator mLoadCreator = new RefreshView.Creator() {
         @Override
-        public View getView(Context context, WrapRecyclerView parent) {
-            mLoadView = LayoutInflater.from(getContext()).inflate(R.layout.footer_load, parent, false);
-            return mLoadView;
+        public View createView(Context context, RelativeLayout parent) {
+            return LayoutInflater.from(getContext()).inflate(R.layout.footer_load, parent, false);
         }
 
         @Override
-        public void onPull(int viewLength, int dragDistance, int status) {
-            ((WrapRecyclerViewAdapter)mRecylerView.getAdapter()).addFooterView(WrapRecyclerView.KEY_FOOT_VIEW, mLoadView);
-            // TODO: 上拉加载数据
+        public void onPull(float maxOffset, float offset) {
+
         }
 
         @Override
         public void onPullAbort() {
-            mRecylerView.stopFootRefresh();
+
         }
 
         @Override
         public void onRefreshing() {
-            // TODO: 加载数据数据
-            mRecylerView.stopFootRefresh();
+
         }
 
         @Override
-        public void onStopRefresh() {
-            ((WrapRecyclerViewAdapter)mRecylerView.getAdapter()).removeFooterView(WrapRecyclerView.KEY_FOOT_VIEW);
-            mRecylerView.getAdapter().notifyDataSetChanged();
-            // TODO: 加载数据完成
+        public void onRefreshOver() {
+
         }
     };
 

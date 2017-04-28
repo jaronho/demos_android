@@ -325,6 +325,15 @@ public class SpringLayout extends ViewGroup {
     }
 
     /**
+     * 功  能: 是否水平滑动
+     * 参  数: 无
+     * 返回值: boolean
+     */
+    public boolean isHorizontal() {
+        return mIsHorizontal;
+    }
+
+    /**
      * 功  能: 设置是否水平滑动(默认垂直滑动)
      * 参  数: isHorizontal - 是否水平滑动,true:水平滑动,false:垂直滑动
      * 返回值: 无
