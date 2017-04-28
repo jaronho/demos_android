@@ -95,7 +95,7 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
     public void onDrag(float offset) {
         if (mIsDragRight) {
             setHeaderMargin(-mHeaderViewSize + (int)offset);
-            if (null != mHeaderCreator && mHeaderViewSize > 0) {
+            if (null != mHeaderCreator) {
                 mHeaderCreator.onPull(offset, offset >= mHeaderViewSize);
             }
         } else if (mIsDragLeft) {
@@ -105,7 +105,7 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
             }
         } else if (mIsDragBottom) {
             setHeaderMargin(-mHeaderViewSize + (int)offset);
-            if (null != mHeaderCreator && mHeaderViewSize > 0) {
+            if (null != mHeaderCreator) {
                 mHeaderCreator.onPull(offset, offset >= mHeaderViewSize);
             }
         } else if (mIsDragTop) {
@@ -120,7 +120,7 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
     public void onRelease(float maxOffset, float offset) {
         boolean isDoRestoreAction = true;
         if (mIsDragRight) {
-            if (null != mHeaderCreator && mHeaderViewSize > 0) {
+            if (null != mHeaderCreator) {
                 if (offset < mHeaderViewSize) {
                     mHeaderCreator.onPullAbort();
                 } else  {
@@ -138,7 +138,7 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
                 }
             }
         } else if (mIsDragBottom) {
-            if (null != mHeaderCreator && mHeaderViewSize > 0) {
+            if (null != mHeaderCreator) {
                 if (offset < mHeaderViewSize) {
                     mHeaderCreator.onPullAbort();
                 } else  {
