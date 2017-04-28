@@ -44,7 +44,7 @@ public class ListFragment extends Fragment {
                 updateItemData(holder, data);
             }
         });
-        for (int i = 0; i < 1; ++i) {
+        for (int i = 0; i < 4; ++i) {
             VideoData vd = new VideoData();
             vd.type = VideoData.TYPE_LIVE;
             vd.date = "2017-04-14 9:00-21:00";

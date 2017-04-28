@@ -16,16 +16,22 @@ import android.widget.RelativeLayout;
  */
 
 public class RefreshView extends RelativeLayout implements SpringLayout.Listener {
-    private RelativeLayout mHeader = null;
-    private RelativeLayout mFooter = null;
     private SpringLayout mViewLayout = null;
     private RecyclerView mView = null;
+    private RelativeLayout mHeader = null;
+    private RelativeLayout mFooter = null;
+    private boolean mIsDragRight = false;
+    private boolean mIsDragLeft = false;
+    private boolean mIsDragBottom = false;
+    private boolean mIsDragTop = false;
     private Creator mHeaderCreator = null;
     private Creator mFooterCreator = null;
     private View mHeaderView = null;
     private View mFooterView = null;
     private int mHeaderViewSize = 0;
     private int mFooterViewSize = 0;
+    private boolean mIsHeaderReady = false;
+    private boolean mIsFooterReady = false;
 
     public RefreshView(Context context) {
         super(context);
@@ -63,16 +69,42 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
 
     @Override
     public boolean isCanDrag(boolean isHorizontal, boolean isForward) {
+        mIsDragRight = mIsDragLeft = mIsDragBottom = mIsDragTop = false;
         if (isHorizontal) { // 水平滑动
-            return isForward ? mView.canScrollHorizontally(-1) : mView.canScrollHorizontally(1);
+            if (isForward) {
+                boolean isCanScrollToLeft = mView.canScrollHorizontally(-1);
+                mIsDragRight = !isCanScrollToLeft;
+                return isCanScrollToLeft;
+            } else {
+                boolean isCanScrollToRight = mView.canScrollHorizontally(1);
+                mIsDragLeft = !isCanScrollToRight;
+                return isCanScrollToRight;
+            }
         } else {    // 垂直滑动
-            return isForward ? mView.canScrollVertically(-1) : mView.canScrollVertically(1);
+            if (isForward) {
+                boolean isCanScrollToTop = mView.canScrollVertically(-1);
+                mIsDragBottom = !isCanScrollToTop;
+                return isCanScrollToTop;
+            } else {
+                boolean isCanScrollToBottom = mView.canScrollVertically(1);
+                mIsDragTop = !mIsDragBottom;
+                return isCanScrollToBottom;
+            }
         }
     }
 
     @Override
     public void onDrag(float maxOffset, float offset) {
         Log.d(RefreshView.class.getSimpleName(), "onDrag == maxOffset: "+maxOffset+", offet: "+offset);
+        if (mIsDragRight) {
+            Log.d(RefreshView.class.getSimpleName(), "水平滑动 == 向右");
+        } else if (mIsDragLeft) {
+            Log.d(RefreshView.class.getSimpleName(), "水平滑动 == 向左");
+        } else if (mIsDragBottom) {
+            Log.d(RefreshView.class.getSimpleName(), "垂直滑动 == 向下");
+        } else if (mIsDragTop) {
+            Log.d(RefreshView.class.getSimpleName(), "垂直滑动 == 向上");
+        }
     }
 
     @Override
@@ -83,12 +115,6 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
 
     // 初始化
     private void initialize() {
-        // 页眉
-        mHeader = new RelativeLayout(getContext());
-        addView(mHeader);
-        // 页脚
-        mFooter = new RelativeLayout(getContext());
-        addView(mFooter);
         // 视图
         mViewLayout = new SpringLayout(getContext());
         mViewLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
@@ -97,6 +123,12 @@ public class RefreshView extends RelativeLayout implements SpringLayout.Listener
         mView = new RecyclerView(getContext());
         mView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         mViewLayout.addView(mView);
+        // 页眉
+        mHeader = new RelativeLayout(getContext());
+        addView(mHeader);
+        // 页脚
+        mFooter = new RelativeLayout(getContext());
+        addView(mFooter);
 
         setHorizontal(mViewLayout.isHorizontal());
     }

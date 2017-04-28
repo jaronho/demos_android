@@ -394,7 +394,7 @@ public class SpringLayout extends ViewGroup {
      */
     public interface Listener {
         /**
-         * 功  能: 是否可以滑动
+         * 功  能: 是否还可以滑动
          * 参  数: isHorizontal - 是否水平滑动
          *         isForward - 是否正向滑动(向右或向下为正向滑动,即x值递增或y值递增)
          * 返回值: boolean,当返回true时,SpringLayout不可滑动,当返回false时,SpringLayout可滑动
