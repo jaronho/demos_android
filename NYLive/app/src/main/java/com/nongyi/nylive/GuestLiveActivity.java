@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import com.jaronho.sdk.utils.ViewUtil;
 import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.MultiLayout;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
-import com.jaronho.sdk.utils.view.WrapRecyclerView;
+import com.jaronho.sdk.utils.view.RefreshView;
 import com.tencent.ilivesdk.view.AVRootView;
 import com.tencent.livesdk.ILVLiveManager;
 
@@ -24,8 +24,8 @@ import java.util.List;
 
 public class GuestLiveActivity extends AppCompatActivity {
     private final int REQUEST_PHONE_PERMISSIONS = 0;
-    private AVRootView mAVRootView;
-    private WrapRecyclerView mGuestsView;
+    private AVRootView mAVRootView = null;
+    private RefreshView mGuests = null;
     private List<String> mMemberDatas = new ArrayList<>();
 
     @Override
@@ -64,13 +64,13 @@ public class GuestLiveActivity extends AppCompatActivity {
         ImageView imageviewGoods = (ImageView)findViewById(R.id.imageview_goods);
         imageviewGoods.setOnClickListener(onClickImageviewGoods);
         // 观众列表
-        mGuestsView = (WrapRecyclerView)findViewById(R.id.recyclerview_guests);
-        mGuestsView.setHasFixedSize(true);
+        mGuests = (RefreshView)findViewById(R.id.refreshview_guests);
+        mGuests.setHorizontal(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        mGuestsView.setLayoutManager(linearLayoutManager);
-        mGuestsView.setHorizontal(true);
-        mGuestsView.setAdapter(new WrapRecyclerViewAdapter<String>(this, mMemberDatas, new MultiLayout<String>() {
+        mGuests.getView().setLayoutManager(linearLayoutManager);
+        mGuests.getView().setHasFixedSize(true);
+        mGuests.getView().setAdapter(new WrapRecyclerViewAdapter<String>(this, mMemberDatas, new MultiLayout<String>() {
             @Override
             public int getLayoutId(int i, String data) {
                 return 0;

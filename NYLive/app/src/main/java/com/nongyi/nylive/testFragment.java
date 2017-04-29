@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.QuickViewHolder;
-import com.jaronho.sdk.utils.view.WrapRecyclerView;
 import com.jaronho.sdk.utils.adapter.TreeRecyclerViewAdapter;
 import com.jaronho.sdk.utils.adapter.TreeRecyclerViewAdapter.TreeItem;
+import com.jaronho.sdk.utils.view.RefreshView;
 
 public class testFragment extends Fragment {
     private static final String TAG = testFragment.class.getSimpleName();
-    private WrapRecyclerView mRecylerView = null;
+    private RefreshView mRefresh = null;
     private List<TreeItem> mDatas = new ArrayList<>();
 
     public testFragment() {
@@ -33,11 +33,13 @@ public class testFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_test, container, false);
-        mRecylerView = (WrapRecyclerView)view.findViewById(R.id.recyclerview_test);
-        mRecylerView.setHasFixedSize(true);
+        mRefresh = (RefreshView) view.findViewById(R.id.refreshview_test);
+        mRefresh.setHorizontal(false);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        mRecylerView.setLayoutManager(linearLayoutManager);
-        mRecylerView.setAdapter(new TreeRecyclerViewAdapter(getContext(), mDatas));
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRefresh.getView().setLayoutManager(linearLayoutManager);
+        mRefresh.getView().setHasFixedSize(true);
+        mRefresh.getView().setAdapter(new TreeRecyclerViewAdapter(getContext(), mDatas));
         return view;
     }
 
@@ -199,7 +201,7 @@ public class testFragment extends Fragment {
                 @Override
                 public boolean onLongClick(View v) {
                     self.setData(data + "_选中");
-                    mRecylerView.getAdapter().notifyDataSetChanged();
+                    mRefresh.getView().getAdapter().notifyDataSetChanged();
 //                    Toast.makeText(getContext(), "删除: " + data, Toast.LENGTH_SHORT).show();
 //                    ((TreeRecyclerViewAdapter)mRecylerView.getAdapter()).removeItem(self);
 //                    ((TreeRecyclerViewAdapter)mRecylerView.getAdapter()).addItem(self, mGanSu, 0);

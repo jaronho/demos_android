@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.MultiLayout;
 import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.QuickViewHolder;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
+import com.jaronho.sdk.utils.view.RefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +37,11 @@ public class ListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
         mRefresh = (RefreshView)view.findViewById(R.id.layout_refresh);
-        mRefresh.getView().setHasFixedSize(true);
+        mRefresh.setHorizontal(false);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRefresh.getView().setLayoutManager(linearLayoutManager);
+        mRefresh.getView().setHasFixedSize(true);
         mRefresh.getView().setAdapter(new WrapRecyclerViewAdapter<VideoData>(getContext(), mDatas, mMultiLayout) {
             @Override
             public void onBindViewHolder(QuickViewHolder holder, VideoData data) {
@@ -56,8 +59,8 @@ public class ListFragment extends Fragment {
             mDatas.add(0, vd);
         }
         mRefresh.getView().getAdapter().notifyDataSetChanged();
-        mRefresh.setHeaderCreator(mRefreshCreator);
-        mRefresh.setFooterCreator(mLoadCreator);
+        mRefresh.setHeaderWrapper(mRefreshWrapper);
+        mRefresh.setFooterWrapper(mLoadWrapper);
         mRefresh.getView().addItemDecoration(new SpaceItemDecoration((int)getResources().getDimension(R.dimen.item_space)));
         return view;
     }
@@ -75,8 +78,8 @@ public class ListFragment extends Fragment {
         }
     };
 
-    // 刷新视图构造器
-    private RefreshView.Creator mRefreshCreator = new RefreshView.Creator() {
+    // 刷新包装器
+    private RefreshView.Wrapper mRefreshWrapper = new RefreshView.Wrapper() {
         @Override
         public View createView(Context context, RelativeLayout parent) {
             return LayoutInflater.from(getContext()).inflate(R.layout.header_refresh, parent, false);
@@ -99,8 +102,8 @@ public class ListFragment extends Fragment {
         }
     };
 
-    // 加载视图构造器
-    private RefreshView.Creator mLoadCreator = new RefreshView.Creator() {
+    // 加载包装器
+    private RefreshView.Wrapper mLoadWrapper = new RefreshView.Wrapper() {
         @Override
         public View createView(Context context, RelativeLayout parent) {
             return LayoutInflater.from(getContext()).inflate(R.layout.footer_load, parent, false);

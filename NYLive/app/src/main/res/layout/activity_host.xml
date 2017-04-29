@@ -50,8 +50,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="-35dp"/>
 
-            <com.jaronho.sdk.utils.view.WrapRecyclerView
-                android:id="@+id/recyclerview_guests"
+            <com.jaronho.sdk.utils.view.RefreshView
+                android:id="@+id/refreshview_guests"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"/>

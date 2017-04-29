@@ -3,12 +3,10 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.jaronho.sdk.utils.view.WrapRecyclerView
-        android:id="@+id/recyclerview_test"
+    <com.jaronho.sdk.utils.view.RefreshView
+        android:id="@+id/refreshview_test"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical">
-
-    </com.jaronho.sdk.utils.view.WrapRecyclerView>
+        android:scrollbars="vertical"/>
 
 </RelativeLayout>
