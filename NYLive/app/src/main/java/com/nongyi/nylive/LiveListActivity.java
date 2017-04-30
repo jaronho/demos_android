@@ -102,7 +102,7 @@ public class LiveListActivity extends AppCompatActivity {
         layoutTabLive.setEnabled(true);
 
         TextView textviewLive = (TextView)findViewById(R.id.textview_live);
-        textviewLive.setTextColor(getResources().getColor(R.color.gray));
+        textviewLive.setTextColor(getResources().getColor(R.color.gray5));
 
         View viewLiveUnderline = findViewById(R.id.view_live_underline);
         viewLiveUnderline.setVisibility(View.INVISIBLE);
@@ -111,7 +111,7 @@ public class LiveListActivity extends AppCompatActivity {
         layoutTabVideo.setEnabled(true);
 
         TextView textviewVideo = (TextView)findViewById(R.id.textview_video);
-        textviewVideo.setTextColor(getResources().getColor(R.color.gray));
+        textviewVideo.setTextColor(getResources().getColor(R.color.gray5));
 
         View viewVideoUnderline = (View)findViewById(R.id.view_video_underline);
         viewVideoUnderline.setVisibility(View.INVISIBLE);

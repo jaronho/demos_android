@@ -1,4 +1,4 @@
-package com.nongyi.nylive;
+package com.nongyi.nylive.View;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -13,20 +13,22 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.jaronho.sdk.utils.ViewUtil;
-import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.MultiLayout;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
 import com.jaronho.sdk.utils.view.RefreshView;
+import com.nongyi.nylive.R;
 import com.tencent.ilivesdk.view.AVRootView;
 import com.tencent.livesdk.ILVLiveManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HostLiveActivity extends AppCompatActivity {
+public class GuestLiveActivity extends AppCompatActivity {
     private final int REQUEST_PHONE_PERMISSIONS = 0;
     private AVRootView mAVRootView = null;
-    private RefreshView mGuests = null;
-    private List<String> mMemberDatas = new ArrayList<>();
+    private RefreshView mGuestView = null;
+    private List<String> mGuestDatas = new ArrayList<>();
+    private RefreshView mMessageView = null;
+    private List<String> mMessageDatas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class HostLiveActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);   // 不锁屏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
-        setContentView(R.layout.activity_host);
+        setContentView(R.layout.activity_guest);
         checkPermission();
         // AV视频控件
         mAVRootView = (AVRootView)findViewById(R.id.view_av_root);
@@ -54,31 +56,38 @@ public class HostLiveActivity extends AppCompatActivity {
         // 分享图片
         ImageView imageviewShare = (ImageView)findViewById(R.id.imageview_share);
         imageviewShare.setOnClickListener(onClickImageviewShare);
-        // 美颜图片
-        ImageView imageviewBeauty = (ImageView)findViewById(R.id.imageview_beauty);
-        imageviewBeauty.setOnClickListener(onClickImageviewBeauty);
-        // 切换相机图片
-        ImageView imageviewSwitchCamera = (ImageView)findViewById(R.id.imageview_switch_camera);
-        imageviewSwitchCamera.setOnClickListener(onClickImageviewSwitchCamera);
+        // 礼物图片
+        ImageView imageviewGift = (ImageView)findViewById(R.id.imageview_gift);
+        imageviewGift.setOnClickListener(onClickImageviewGift);
+        // 红包图片
+        ImageView imageviewMoney= (ImageView)findViewById(R.id.imageview_money);
+        imageviewMoney.setOnClickListener(onClickImageviewMoney);
         // 物品图片
         ImageView imageviewGoods = (ImageView)findViewById(R.id.imageview_goods);
         imageviewGoods.setOnClickListener(onClickImageviewGoods);
         // 观众列表
-        mGuests = (RefreshView)findViewById(R.id.refreshview_guests);
-        mGuests.setHorizontal(true);
+        mGuestView = (RefreshView)findViewById(R.id.refreshview_guests);
+        mGuestView.setHorizontal(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        mGuests.getView().setLayoutManager(linearLayoutManager);
-        mGuests.getView().setHasFixedSize(true);
-        mGuests.getView().setAdapter(new WrapRecyclerViewAdapter<String>(this, mMemberDatas, new MultiLayout<String>() {
-            @Override
-            public int getLayoutId(int i, String data) {
-                return 0;
-            }
-        }) {
+        mGuestView.getView().setLayoutManager(linearLayoutManager);
+        mGuestView.getView().setHasFixedSize(true);
+        mGuestView.getView().setAdapter(new WrapRecyclerViewAdapter<String>(this, mGuestDatas, R.layout.chunk_live_guest) {
             @Override
             public void onBindViewHolder(QuickViewHolder quickViewHolder, String data) {
-
+            }
+        });
+        mGuestView.getView().addItemDecoration(new SpaceItemDecoration(true, (int)getResources().getDimension(R.dimen.guest_item_space)));
+        // 聊天列表
+        mMessageView = (RefreshView)findViewById(R.id.refreshview_message);
+        mMessageView.setHorizontal(false);
+        LinearLayoutManager llmMessage = new LinearLayoutManager(this);
+        llmMessage.setOrientation(LinearLayoutManager.VERTICAL);
+        mMessageView.getView().setLayoutManager(llmMessage);
+        mMessageView.getView().setHasFixedSize(true);
+        mMessageView.getView().setAdapter(new WrapRecyclerViewAdapter<String>(this, mMessageDatas, R.layout.chunk_live_message) {
+            @Override
+            public void onBindViewHolder(QuickViewHolder quickViewHolder, String data) {
             }
         });
     }
@@ -100,6 +109,18 @@ public class HostLiveActivity extends AppCompatActivity {
         }
     }
 
+    // 添加观众
+    private void insertGuest(String guest) {
+        mGuestDatas.add(0, guest);
+        mGuestView.getView().getAdapter().notifyDataSetChanged();
+    }
+
+    // 删除观众
+    private void removeGuest(String guest) {
+        mGuestDatas.remove(guest);
+        mGuestView.getView().getAdapter().notifyDataSetChanged();
+    }
+
     // 点击关闭
     OnClickListener onClickImageviewClose = new OnClickListener() {
         @Override
@@ -112,7 +133,7 @@ public class HostLiveActivity extends AppCompatActivity {
     OnClickListener onClickImageviewMessage = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(HostLiveActivity.this, "点击聊天");
+            ViewUtil.showToast(GuestLiveActivity.this, "点击聊天");
         }
     };
 
@@ -120,23 +141,23 @@ public class HostLiveActivity extends AppCompatActivity {
     OnClickListener onClickImageviewShare = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(HostLiveActivity.this, "点击分享");
+            ViewUtil.showToast(GuestLiveActivity.this, "点击分享");
         }
     };
 
-    // 点击美颜
-    OnClickListener onClickImageviewBeauty = new OnClickListener() {
+    // 点击礼物
+    OnClickListener onClickImageviewGift = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(HostLiveActivity.this, "点击美颜");
+            ViewUtil.showToast(GuestLiveActivity.this, "点击礼物");
         }
     };
 
-    // 点击切换相机
-    OnClickListener onClickImageviewSwitchCamera = new OnClickListener() {
+    // 点击红包
+    OnClickListener onClickImageviewMoney = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(HostLiveActivity.this, "点击切换相机");
+            ViewUtil.showToast(GuestLiveActivity.this, "点击红包");
         }
     };
 
@@ -144,7 +165,7 @@ public class HostLiveActivity extends AppCompatActivity {
     OnClickListener onClickImageviewGoods = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(HostLiveActivity.this, "点击点击物品");
+            ViewUtil.showToast(GuestLiveActivity.this, "点击点击物品");
         }
     };
 }

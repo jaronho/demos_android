@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.jaronho.sdk.utils.ViewUtil;
 import com.nongyi.nylive.Model.NetHelper;
 import com.nongyi.nylive.Model.NetHelper.Callback;
+import com.nongyi.nylive.View.HostLiveActivity;
 import com.tencent.av.sdk.AVRoomMulti;
 import com.tencent.ilivesdk.ILiveCallBack;
 import com.tencent.ilivesdk.ILiveConstants;
@@ -116,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            startActivity(new Intent(MainActivity.this, LiveListActivity.class));
+//            startActivity(new Intent(MainActivity.this, LiveListActivity.class));
+            startActivity(new Intent(MainActivity.this, HostLiveActivity.class));
         }
     };
 }

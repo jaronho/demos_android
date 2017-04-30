@@ -1,12 +1,9 @@
 package com.nongyi.nylive;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +17,7 @@ import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.MultiLayout;
 import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.QuickViewHolder;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
 import com.jaronho.sdk.utils.view.RefreshView;
+import com.nongyi.nylive.View.SpaceItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +59,7 @@ public class ListFragment extends Fragment {
         mRefresh.getView().getAdapter().notifyDataSetChanged();
         mRefresh.setHeaderWrapper(mRefreshWrapper);
         mRefresh.setFooterWrapper(mLoadWrapper);
-        mRefresh.getView().addItemDecoration(new SpaceItemDecoration((int)getResources().getDimension(R.dimen.item_space)));
+        mRefresh.getView().addItemDecoration(new SpaceItemDecoration(false, (int)getResources().getDimension(R.dimen.video_item_space)));
         return view;
     }
 
@@ -82,7 +80,7 @@ public class ListFragment extends Fragment {
     private RefreshView.Wrapper mRefreshWrapper = new RefreshView.Wrapper() {
         @Override
         public View createView(Context context, RelativeLayout parent) {
-            return LayoutInflater.from(getContext()).inflate(R.layout.header_refresh, parent, false);
+            return LayoutInflater.from(getContext()).inflate(R.layout.chunk_header_refresh, parent, false);
         }
 
         @Override
@@ -106,7 +104,7 @@ public class ListFragment extends Fragment {
     private RefreshView.Wrapper mLoadWrapper = new RefreshView.Wrapper() {
         @Override
         public View createView(Context context, RelativeLayout parent) {
-            return LayoutInflater.from(getContext()).inflate(R.layout.footer_load, parent, false);
+            return LayoutInflater.from(getContext()).inflate(R.layout.chunk_footer_load, parent, false);
         }
 
         @Override
@@ -139,21 +137,5 @@ public class ListFragment extends Fragment {
         ((TextView)holder.getView(R.id.textview_date)).setText(data.date);
         ((TextView)holder.getView(R.id.textview_num)).setText(String.valueOf(data.people));
         holder.setOnClickListener(onClick);
-    }
-
-    // 选项间距类
-    private class SpaceItemDecoration extends ItemDecoration{
-        private int mSpace = 0;
-
-        public SpaceItemDecoration(int space) {
-            mSpace = space;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            if (0 != parent.getChildAdapterPosition(view)) {
-                outRect.top = mSpace;
-            }
-        }
     }
 }

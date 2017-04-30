@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="item_space">10dp</dimen>
+    <dimen name="guest_item_space">3dp</dimen>
+    <dimen name="video_item_space">10dp</dimen>
 
     <dimen name="small_area_margin_bottom">110dp</dimen>
     <dimen name="small_area_margin_top">130dp</dimen>

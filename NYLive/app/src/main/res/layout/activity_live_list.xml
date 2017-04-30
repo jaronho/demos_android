@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="@color/gray_white">
+              android:background="@color/gray1">
 
     <RelativeLayout
         android:id="@+id/layout_title_bar"
@@ -38,14 +38,14 @@
             android:padding="15dp"
             android:text="@string/wode"
             android:textSize="16sp"
-            android:textColor="@color/gray"/>
+            android:textColor="@color/gray5"/>
 
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray"/>
+        android:background="@color/gray5"/>
 
     <LinearLayout
         android:id="@+id/layout_tab_group"

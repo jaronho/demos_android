@@ -104,7 +104,7 @@ public class MyLiveListActivity extends AppCompatActivity {
         layoutTabJoin.setEnabled(true);
 
         TextView textviewJoin = (TextView)findViewById(R.id.textview_join);
-        textviewJoin.setTextColor(getResources().getColor(R.color.gray));
+        textviewJoin.setTextColor(getResources().getColor(R.color.gray5));
 
         View viewJoinUnderline = findViewById(R.id.view_join_underline);
         viewJoinUnderline.setVisibility(View.INVISIBLE);
@@ -113,7 +113,7 @@ public class MyLiveListActivity extends AppCompatActivity {
         layoutTabCollect.setEnabled(true);
 
         TextView textviewCollect = (TextView)findViewById(R.id.textview_collect);
-        textviewCollect.setTextColor(getResources().getColor(R.color.gray));
+        textviewCollect.setTextColor(getResources().getColor(R.color.gray5));
 
         View viewCollectUnderline = (View)findViewById(R.id.view_collect_underline);
         viewCollectUnderline.setVisibility(View.INVISIBLE);
@@ -122,7 +122,7 @@ public class MyLiveListActivity extends AppCompatActivity {
         layoutTabStart.setEnabled(true);
 
         TextView textviewStart = (TextView)findViewById(R.id.textview_start);
-        textviewStart.setTextColor(getResources().getColor(R.color.gray));
+        textviewStart.setTextColor(getResources().getColor(R.color.gray5));
 
         View viewStartUnderline = (View)findViewById(R.id.view_start_underline);
         viewStartUnderline.setVisibility(View.INVISIBLE);

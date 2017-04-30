@@ -21,7 +21,7 @@
 
             <include
                 android:id="@+id/layout_head_up"
-                layout="@layout/chunk_guest_head"
+                layout="@layout/chunk_live_info_for_guest"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"/>
@@ -37,26 +37,11 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <include
+            android:id="@+id/layout_money"
+            layout="@layout/chunk_live_score_and_guest"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp">
-
-            <include
-                android:id="@+id/layout_money"
-                layout="@layout/chunk_host_score"
-                android:layout_width="170dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="-35dp"/>
-
-            <com.jaronho.sdk.utils.view.RefreshView
-                android:id="@+id/refreshview_guests"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"/>
-
-        </RelativeLayout>
+            android:layout_height="55dp"/>
 
     </LinearLayout>
 
@@ -68,7 +53,7 @@
 
         <include
             android:id="@+id/layout_bottom"
-            layout="@layout/chunk_guest_bottom"
+            layout="@layout/chunk_live_functions_for_guest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"/>
