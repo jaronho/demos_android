@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.text.Editable;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,8 +14,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-
-import com.jaronho.sdk.utils.ViewUtil;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,6 +28,7 @@ public class MessageInputDialog extends Dialog {
     private InputMethodManager mImm = null;
     private EditText mMessageInput = null;
     private int mLastDiff = 0;
+    private Listener mListener = null;
 
     public MessageInputDialog(Context context, int themeResId, int layoutId, int parentId, int exitTextId, int sendId) {
         super(context, themeResId);
@@ -101,12 +101,14 @@ public class MessageInputDialog extends Dialog {
             }
             switch (keyCode) {
                 case KeyEvent.KEYCODE_ENTER:
-                    if (mMessageInput.getText().length() > 0) {
+                    Editable text = mMessageInput.getText();
+                    if (text.length() > 0) {
                         mImm.showSoftInput(mMessageInput, InputMethodManager.SHOW_FORCED);
                         mImm.hideSoftInputFromWindow(mMessageInput.getWindowToken(), 0);
                         dismiss();
-                    } else {
-                        ViewUtil.showToast(getContext(), "输入不能为空！");
+                    }
+                    if (null != mListener) {
+                        mListener.onSend(text.toString());
                     }
                     return true;
             }
@@ -117,12 +119,14 @@ public class MessageInputDialog extends Dialog {
     private View.OnClickListener onClickSend = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mMessageInput.getText().length() > 0) {
+            Editable text = mMessageInput.getText();
+            if (text.length() > 0) {
                 mImm.showSoftInput(mMessageInput, InputMethodManager.SHOW_FORCED);
                 mImm.hideSoftInputFromWindow(mMessageInput.getWindowToken(), 0);
                 dismiss();
-            } else {
-                ViewUtil.showToast(getContext(), "输入不能为空！");
+            }
+            if (null != mListener) {
+                mListener.onSend(text.toString());
             }
         }
     };
@@ -132,11 +136,13 @@ public class MessageInputDialog extends Dialog {
      * 参  数: activity - 活动
      *         themeResId - 主题资源id
      *         layoutId - 布局id
+     *         parentId - 输入框父节点id
      *         exitTextId - 输入框id
      *         sendId - 发送id,可以<=0
+     *         listener - 监听器
      * 返回值: MessageInputDialog
      */
-    public static MessageInputDialog show(Activity activity, int themeResId, int layoutId, int parentId, int exitTextId, int sendId) {
+    public static MessageInputDialog show(Activity activity, int themeResId, int layoutId, int parentId, int exitTextId, int sendId, Listener listener) {
         MessageInputDialog mid = new MessageInputDialog(activity, themeResId, layoutId, parentId, exitTextId, sendId);
         WindowManager windowManager = activity.getWindowManager();
         Display display = windowManager.getDefaultDisplay();
@@ -147,6 +153,14 @@ public class MessageInputDialog extends Dialog {
         mid.getWindow().setAttributes(lp);
         mid.setCancelable(true);
         mid.show();
+        mid.mListener = listener;
         return mid;
+    }
+
+    /**
+     * Brief:   消息发送监听器
+     */
+    public interface Listener {
+        void onSend(String msg);
     }
 }

@@ -6,19 +6,28 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.jaronho.sdk.utils.ViewUtil;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
 import com.jaronho.sdk.utils.view.RefreshView;
 import com.nongyi.nylive.R;
+import com.tencent.TIMElem;
+import com.tencent.TIMMessage;
+import com.tencent.TIMTextElem;
+import com.tencent.TIMUserProfile;
+import com.tencent.ilivesdk.ILiveCallBack;
+import com.tencent.ilivesdk.core.ILiveRoomManager;
 import com.tencent.ilivesdk.view.AVRootView;
 import com.tencent.livesdk.ILVLiveManager;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -139,7 +148,8 @@ public class HostLiveActivity extends AppCompatActivity {
                     R.layout.dialog_message_input,
                     R.id.layout_message_input,
                     R.id.exittext_input,
-                    R.id.textview_send);
+                    R.id.textview_send,
+                    mMessageInputListener);
         }
     };
 
@@ -172,6 +182,63 @@ public class HostLiveActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             ViewUtil.showToast(HostLiveActivity.this, "点击点击物品");
+        }
+    };
+
+    // 消息输入监听器
+    private MessageInputDialog.Listener mMessageInputListener = new MessageInputDialog.Listener() {
+        @Override
+        public void onSend(String msg) {
+            if (0 == msg.length()) {
+                ViewUtil.showToast(HostLiveActivity.this, "输入不能为空");
+                return;
+            }
+            try {
+                byte[] byteNum = msg.getBytes("utf8");
+                if (byteNum.length > 160) {
+                    ViewUtil.showToast(HostLiveActivity.this, "消息输入太长");
+                    return;
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+                return;
+            }
+            TIMTextElem elem = new TIMTextElem();
+            elem.setText(msg);
+            TIMMessage timMessage = new TIMMessage();
+            if (0 != timMessage.addElement(elem)) {
+                return;
+            }
+            ILiveRoomManager.getInstance().sendGroupMessage(timMessage, new ILiveCallBack<TIMMessage>() {
+                @Override
+                public void onSuccess(TIMMessage data) {
+                    // 发送成回显示消息内容
+                    for (int i = 0; i < data.getElementCount(); ++i) {
+                        TIMElem elem = data.getElement(0);
+                        TIMTextElem textElem = (TIMTextElem)elem;
+                        if (data.isSelf()) {
+//                            if (mVideoPlayActivity != null)
+//                                mVideoPlayActivity.refreshText(textElem.getText(), MySelfInfo.getInstance().getNickName());
+                        } else {
+                            TIMUserProfile sendUser = data.getSenderProfile();
+                            String name;
+                            if (sendUser != null) {
+                                name = sendUser.getNickName();
+                            } else {
+                                name = data.getSender();
+                            }
+//                            if (mVideoPlayActivity != null)
+//                                mVideoPlayActivity.refreshText(textElem.getText(), name);
+                        }
+                    }
+                    ViewUtil.showToast(HostLiveActivity.this, "消息发送成功");
+                }
+
+                @Override
+                public void onError(String module, int errCode, String errMsg) {
+                    ViewUtil.showToast(HostLiveActivity.this, "消息发送失败: " + module + "|" + errCode + "|" + errMsg);
+                }
+            });
         }
     };
 }
