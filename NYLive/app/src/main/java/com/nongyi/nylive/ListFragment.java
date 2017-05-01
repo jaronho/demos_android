@@ -17,7 +17,7 @@ import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.MultiLayout;
 import com.jaronho.sdk.utils.adapter.QuickRecyclerViewAdapter.QuickViewHolder;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
 import com.jaronho.sdk.utils.view.RefreshView;
-import com.nongyi.nylive.View.SpaceItemDecoration;
+import com.nongyi.nylive.view.SpaceItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;

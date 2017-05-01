@@ -1,4 +1,4 @@
-package com.nongyi.nylive.Model;
+package com.nongyi.nylive.bean;
 
 import org.json.JSONException;
 import org.json.JSONObject;

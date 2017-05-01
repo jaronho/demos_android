@@ -1,4 +1,4 @@
-package com.nongyi.nylive.View;
+package com.nongyi.nylive.view;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -12,11 +12,13 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.jaronho.sdk.utils.ViewUtil;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
 import com.jaronho.sdk.utils.view.RefreshView;
 import com.nongyi.nylive.R;
+import com.nongyi.nylive.bean.ChatMessage;
 import com.tencent.TIMElem;
 import com.tencent.TIMMessage;
 import com.tencent.TIMTextElem;
@@ -35,8 +37,9 @@ public class HostLiveActivity extends AppCompatActivity {
     private AVRootView mAVRootView = null;
     private RefreshView mGuestView = null;
     private List<String> mGuestDatas = new ArrayList<>();
-    private RefreshView mMessageView = null;
-    private List<String> mMessageDatas = new ArrayList<>();
+    private RefreshView mChatView = null;
+    private List<ChatMessage> mChatDatas = new ArrayList<>();
+    private HeartLayout mHeartLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,17 +90,21 @@ public class HostLiveActivity extends AppCompatActivity {
         });
         mGuestView.getView().addItemDecoration(new SpaceItemDecoration(true, (int)getResources().getDimension(R.dimen.guest_item_space)));
         // 聊天列表
-        mMessageView = (RefreshView)findViewById(R.id.refreshview_message);
-        mMessageView.setHorizontal(false);
+        mChatView = (RefreshView)findViewById(R.id.refreshview_message);
+        mChatView.setHorizontal(false);
         LinearLayoutManager llmMessage = new LinearLayoutManager(this);
         llmMessage.setOrientation(LinearLayoutManager.VERTICAL);
-        mMessageView.getView().setLayoutManager(llmMessage);
-        mMessageView.getView().setHasFixedSize(true);
-        mMessageView.getView().setAdapter(new WrapRecyclerViewAdapter<String>(this, mMessageDatas, R.layout.chunk_live_message) {
+        mChatView.getView().setLayoutManager(llmMessage);
+        mChatView.getView().setHasFixedSize(true);
+        mChatView.getView().setAdapter(new WrapRecyclerViewAdapter<ChatMessage>(this, mChatDatas, R.layout.chunk_live_chat) {
             @Override
-            public void onBindViewHolder(QuickViewHolder quickViewHolder, String data) {
+            public void onBindViewHolder(QuickViewHolder quickViewHolder, ChatMessage data) {
+                String content = "<font color=\"#FFFF00\">" + data.getName() + ": </font>" + data.getContent();
+                ViewUtil.setTextViewHtml((TextView)quickViewHolder.getView(R.id.textview_chat), content);
             }
         });
+        mChatView.getView().addItemDecoration(new SpaceItemDecoration(false, (int)getResources().getDimension(R.dimen.chat_item_space)));
+        mHeartLayout = (HeartLayout)findViewById(R.id.heart_layout);
     }
 
     void checkPermission() {
@@ -141,7 +148,7 @@ public class HostLiveActivity extends AppCompatActivity {
     private OnClickListener onClickImageviewMessage = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            MessageInputDialog.show(HostLiveActivity.this,
+            ChatInputDialog.show(HostLiveActivity.this,
                     R.style.dialog_message_input,
                     R.layout.dialog_message_input,
                     R.id.layout_message_input,
@@ -180,11 +187,12 @@ public class HostLiveActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             ViewUtil.showToast(HostLiveActivity.this, "点击点击物品");
+            mHeartLayout.addFavor();
         }
     };
 
     // 消息输入监听器
-    private MessageInputDialog.Listener mMessageInputListener = new MessageInputDialog.Listener() {
+    private ChatInputDialog.Listener mMessageInputListener = new ChatInputDialog.Listener() {
         @Override
         public void onSend(String msg) {
             if (0 == msg.length()) {
@@ -217,7 +225,7 @@ public class HostLiveActivity extends AppCompatActivity {
                         TIMTextElem textElem = (TIMTextElem)elem;
                         String name;
                         if (data.isSelf()) {
-                            name = "he1";
+                            name = "我";
                         } else {
                             TIMUserProfile sendUser = data.getSenderProfile();
                             if (null != sendUser) {
@@ -241,5 +249,14 @@ public class HostLiveActivity extends AppCompatActivity {
 
     // 刷新消息框
     private void refreshMessageView(String name, String msg) {
+        ChatMessage cm = new ChatMessage();
+        cm.setName(name);
+        cm.setContent(msg);
+        if (mChatDatas.size() > 15) {
+            mChatDatas.remove(0);
+        }
+        mChatDatas.add(cm);
+        mChatView.getView().getAdapter().notifyDataSetChanged();
+        mChatView.getView().scrollToPosition(mChatDatas.size() - 1);
     }
 }

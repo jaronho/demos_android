@@ -1,4 +1,4 @@
-package com.nongyi.nylive.View;
+package com.nongyi.nylive.view;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -27,8 +27,8 @@ public class GuestLiveActivity extends AppCompatActivity {
     private AVRootView mAVRootView = null;
     private RefreshView mGuestView = null;
     private List<String> mGuestDatas = new ArrayList<>();
-    private RefreshView mMessageView = null;
-    private List<String> mMessageDatas = new ArrayList<>();
+    private RefreshView mChatView = null;
+    private List<String> mChatDatas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +79,13 @@ public class GuestLiveActivity extends AppCompatActivity {
         });
         mGuestView.getView().addItemDecoration(new SpaceItemDecoration(true, (int)getResources().getDimension(R.dimen.guest_item_space)));
         // 聊天列表
-        mMessageView = (RefreshView)findViewById(R.id.refreshview_message);
-        mMessageView.setHorizontal(false);
+        mChatView = (RefreshView)findViewById(R.id.refreshview_message);
+        mChatView.setHorizontal(false);
         LinearLayoutManager llmMessage = new LinearLayoutManager(this);
         llmMessage.setOrientation(LinearLayoutManager.VERTICAL);
-        mMessageView.getView().setLayoutManager(llmMessage);
-        mMessageView.getView().setHasFixedSize(true);
-        mMessageView.getView().setAdapter(new WrapRecyclerViewAdapter<String>(this, mMessageDatas, R.layout.chunk_live_message) {
+        mChatView.getView().setLayoutManager(llmMessage);
+        mChatView.getView().setHasFixedSize(true);
+        mChatView.getView().setAdapter(new WrapRecyclerViewAdapter<String>(this, mChatDatas, R.layout.chunk_live_chat) {
             @Override
             public void onBindViewHolder(QuickViewHolder quickViewHolder, String data) {
             }

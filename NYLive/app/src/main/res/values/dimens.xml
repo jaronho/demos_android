@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="guest_item_space">3dp</dimen>
+    <dimen name="chat_item_space">5dp</dimen>
     <dimen name="video_item_space">10dp</dimen>
 
     <dimen name="small_area_margin_bottom">110dp</dimen>
@@ -9,4 +10,12 @@
     <dimen name="small_area_width">60dp</dimen>
     <dimen name="small_area_marginright">10dp</dimen>
     <dimen name="small_area_marginbetween">10dp</dimen>
+
+    <!-- 飘心 -->
+    <dimen name="heart_anim_bezier_x_rand">50.0dp</dimen>
+    <dimen name="heart_anim_init_x">50.0dp</dimen>
+    <dimen name="heart_anim_init_y">25.0dp</dimen>
+    <dimen name="heart_anim_length">400.0dp</dimen>
+    <dimen name="heart_anim_length_rand">350.0dp</dimen>
+    <dimen name="heart_anim_x_point_factor">30.0dp</dimen>
 </resources>

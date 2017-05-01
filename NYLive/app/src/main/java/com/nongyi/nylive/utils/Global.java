@@ -1,4 +1,4 @@
-package com.nongyi.nylive.Model;
+package com.nongyi.nylive.utils;
 
 /**
  * Author:  jaron.ho

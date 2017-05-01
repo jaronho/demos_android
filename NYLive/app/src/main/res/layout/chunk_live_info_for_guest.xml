@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:background="@drawable/layout_head_background">
 
-    <ImageView
+    <com.jaronho.sdk.utils.view.CircleImageView
         android:id="@+id/imageview_head_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"

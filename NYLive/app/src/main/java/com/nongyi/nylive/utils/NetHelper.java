@@ -1,7 +1,6 @@
-package com.nongyi.nylive.Model;
+package com.nongyi.nylive.utils;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.jaronho.sdk.library.MD5;
 import com.jaronho.sdk.third.okhttpwrap.HttpInfo;
@@ -9,7 +8,7 @@ import com.jaronho.sdk.third.okhttpwrap.HttpInfo.Builder;
 import com.jaronho.sdk.third.okhttpwrap.OkHttpUtil;
 import com.jaronho.sdk.third.okhttpwrap.callback.CallbackOk;
 import com.jaronho.sdk.utils.ViewUtil;
-import com.nongyi.nylive.Model.Global;
+import com.nongyi.nylive.bean.DataChannel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,7 +60,7 @@ public class NetHelper {
             JSONObject obj = new JSONObject(httpInfo.getRetDetail());
             int status = obj.getInt("Status");
             if (401 == status || 500 == status) {   // 参数异常,系统异常
-                ViewUtil.showToast(mContext, obj.getString("Message"));
+                ViewUtil.showToast(mContext, obj.getString("ChatMessage"));
             }
             return obj.getJSONObject("Data");
         } catch (JSONException e) {
@@ -83,7 +82,7 @@ public class NetHelper {
      * 功  能: 请求获取Sig
      * 参  数: userid - 用户id
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
-     *         Message - String,信息提示
+     *         ChatMessage - String,信息提示
      *         Data - {
      *                  sig - String,Sig值
      *                }
@@ -113,7 +112,7 @@ public class NetHelper {
      *         PageIndex - int,请求第几页,默认第一页
      *         PageSize - int,请求条数,默认10条
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
-     *         Message - String,信息提示
+     *         ChatMessage - String,信息提示
      *         Data - {
      *                  Id - int,编号
      *                  Title - String,标题
@@ -164,7 +163,7 @@ public class NetHelper {
      *         PageIndex - int,请求第几页,默认第一页
      *         PageSize - int,请求条数,默认10条
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
-     *         Message - String,信息提示
+     *         ChatMessage - String,信息提示
      *         Data - {
      *                  Id - int,编号
      *                  Title - String,标题
@@ -213,7 +212,7 @@ public class NetHelper {
      * 功  能: 请求频道详细
      * 参  数: id - int,频道ID
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
-     *         Message - String,信息提示
+     *         ChatMessage - String,信息提示
      *         Data - {
      *                  Id - int,编号
      *                  Title - String,标题
@@ -259,7 +258,7 @@ public class NetHelper {
      * 参  数: id - int,直播室ID或视频ID
      *         Url - String,新的Url地址
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
-     *         Message - String,信息提示
+     *         ChatMessage - String,信息提示
      *         Data - {
      *                  sysMsg - boolean,true:更新成功,false-更新失败
      *                }
@@ -290,7 +289,7 @@ public class NetHelper {
      *         UserId - int,用户ID
      *         TYPE - int,0=点赞,1=收藏,2=分享
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
-     *         Message - String,信息提示
+     *         ChatMessage - String,信息提示
      *         Data - {
      *                  sysMsg - boolean,true:更新成功,false-更新失败
      *                }
@@ -321,7 +320,7 @@ public class NetHelper {
      * 参  数: ChannelId - int,直播室ID或视频ID
      *         UserId - int,用户ID
      * 返回值: Status - int,请求处理响应状态,200:成功,401:参数异常,500:系统异常
-     *         Message - String,信息提示
+     *         ChatMessage - String,信息提示
      *         Data - {
      *                  sysMsg - boolean,true:更新成功,false-更新失败
      *                }

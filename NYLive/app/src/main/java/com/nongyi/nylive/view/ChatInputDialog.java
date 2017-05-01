@@ -1,4 +1,4 @@
-package com.nongyi.nylive.View;
+package com.nongyi.nylive.view;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -21,16 +21,16 @@ import java.util.TimerTask;
 /**
  * Author:  jaron.ho
  * Date:    2017-04-30
- * Brief:   消息输入对话框
+ * Brief:   聊天输入框
  */
 
-public class MessageInputDialog extends Dialog {
+public class ChatInputDialog extends Dialog {
     private InputMethodManager mImm = null;
     private EditText mMessageInput = null;
     private int mLastDiff = 0;
     private Listener mListener = null;
 
-    public MessageInputDialog(Context context, int themeResId, int layoutId, int parentId, int exitTextId, int sendId) {
+    public ChatInputDialog(Context context, int themeResId, int layoutId, int parentId, int exitTextId, int sendId) {
         super(context, themeResId);
         setContentView(layoutId);
         mImm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -140,10 +140,10 @@ public class MessageInputDialog extends Dialog {
      *         exitTextId - 输入框id
      *         sendId - 发送id,可以<=0
      *         listener - 监听器
-     * 返回值: MessageInputDialog
+     * 返回值: ChatInputDialog
      */
-    public static MessageInputDialog show(Activity activity, int themeResId, int layoutId, int parentId, int exitTextId, int sendId, Listener listener) {
-        MessageInputDialog mid = new MessageInputDialog(activity, themeResId, layoutId, parentId, exitTextId, sendId);
+    public static ChatInputDialog show(Activity activity, int themeResId, int layoutId, int parentId, int exitTextId, int sendId, Listener listener) {
+        ChatInputDialog mid = new ChatInputDialog(activity, themeResId, layoutId, parentId, exitTextId, sendId);
         WindowManager windowManager = activity.getWindowManager();
         Display display = windowManager.getDefaultDisplay();
         WindowManager.LayoutParams lp = mid.getWindow().getAttributes();

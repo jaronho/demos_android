@@ -10,9 +10,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.jaronho.sdk.utils.ViewUtil;
-import com.nongyi.nylive.Model.NetHelper;
-import com.nongyi.nylive.Model.NetHelper.Callback;
-import com.nongyi.nylive.View.HostLiveActivity;
+import com.nongyi.nylive.utils.NetHelper;
+import com.nongyi.nylive.utils.NetHelper.Callback;
+import com.nongyi.nylive.view.HostLiveActivity;
 import com.tencent.av.sdk.AVRoomMulti;
 import com.tencent.ilivesdk.ILiveCallBack;
 import com.tencent.ilivesdk.ILiveConstants;

@@ -9,8 +9,8 @@ import com.jaronho.sdk.third.okhttpwrap.annotation.CacheType;
 import com.jaronho.sdk.third.okhttpwrap.cookie.PersistentCookieJar;
 import com.jaronho.sdk.third.okhttpwrap.cookie.cache.SetCookieCache;
 import com.jaronho.sdk.third.okhttpwrap.cookie.persistence.SharedPrefsCookiePersistor;
-import com.nongyi.nylive.Model.Global;
-import com.nongyi.nylive.Model.NetHelper;
+import com.nongyi.nylive.utils.Global;
+import com.nongyi.nylive.utils.NetHelper;
 import com.tencent.ilivesdk.ILiveSDK;
 
 public class BaseApplication extends Application {
