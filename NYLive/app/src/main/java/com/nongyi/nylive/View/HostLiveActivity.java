@@ -6,13 +6,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.jaronho.sdk.utils.ViewUtil;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
@@ -142,7 +141,6 @@ public class HostLiveActivity extends AppCompatActivity {
     private OnClickListener onClickImageviewMessage = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(HostLiveActivity.this, "点击聊天");
             MessageInputDialog.show(HostLiveActivity.this,
                     R.style.dialog_message_input,
                     R.layout.dialog_message_input,
@@ -203,6 +201,7 @@ public class HostLiveActivity extends AppCompatActivity {
                 e.printStackTrace();
                 return;
             }
+            Log.d("NYLive", "消息 ====>" + msg);
             TIMTextElem elem = new TIMTextElem();
             elem.setText(msg);
             TIMMessage timMessage = new TIMMessage();
@@ -216,20 +215,18 @@ public class HostLiveActivity extends AppCompatActivity {
                     for (int i = 0; i < data.getElementCount(); ++i) {
                         TIMElem elem = data.getElement(0);
                         TIMTextElem textElem = (TIMTextElem)elem;
+                        String name;
                         if (data.isSelf()) {
-//                            if (mVideoPlayActivity != null)
-//                                mVideoPlayActivity.refreshText(textElem.getText(), MySelfInfo.getInstance().getNickName());
+                            name = "he1";
                         } else {
                             TIMUserProfile sendUser = data.getSenderProfile();
-                            String name;
-                            if (sendUser != null) {
+                            if (null != sendUser) {
                                 name = sendUser.getNickName();
                             } else {
                                 name = data.getSender();
                             }
-//                            if (mVideoPlayActivity != null)
-//                                mVideoPlayActivity.refreshText(textElem.getText(), name);
                         }
+                        refreshMessageView(name, textElem.getText());
                     }
                     ViewUtil.showToast(HostLiveActivity.this, "消息发送成功");
                 }
@@ -241,4 +238,8 @@ public class HostLiveActivity extends AppCompatActivity {
             });
         }
     };
+
+    // 刷新消息框
+    private void refreshMessageView(String name, String msg) {
+    }
 }
