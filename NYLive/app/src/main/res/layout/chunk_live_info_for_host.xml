@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
-            android:text="03:30"
+            android:text="00:00"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
-            android:text="451人"
+            android:text="0人"
             android:textColor="@color/white"
             android:textSize="16sp" />
 

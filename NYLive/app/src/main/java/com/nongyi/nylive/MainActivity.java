@@ -79,36 +79,7 @@ public class MainActivity extends AppCompatActivity {
     OnClickListener onClickBtnCreateRoom = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-            int roomId = sp.getInt("room_id", 0);
-            if (0 == roomId) {
-                roomId = 1000;
-            } else {
-                roomId += 1;
-            }
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putInt("room_id", roomId);
-            editor.commit();
-            // 创建房间配置项
-            ILVLiveRoomOption hostOption = new ILVLiveRoomOption(ILiveLoginManager.getInstance().getMyUserId()).
-                    controlRole("LiveHost")// 角色设置
-                    .autoFocus(true)
-                    .videoMode(ILiveConstants.VIDEOMODE_BSUPPORT)// 支持后台模式
-                    .authBits(AVRoomMulti.AUTH_BITS_DEFAULT)// 权限设置
-                    .cameraId(ILiveConstants.FRONT_CAMERA)// 摄像头前置后置
-                    .videoRecvMode(AVRoomMulti.VIDEO_RECV_MODE_SEMI_AUTO_RECV_CAMERA_VIDEO);// 是否开始半自动接收
-            //创建房间
-            ILVLiveManager.getInstance().createRoom(roomId, hostOption, new ILiveCallBack() {
-                @Override
-                public void onSuccess(Object data) {
-                    startActivity(new Intent(MainActivity.this, HostLiveActivity.class));
-                }
-
-                @Override
-                public void onError(String module, int errCode, String errMsg) {
-                    ViewUtil.showToast(MainActivity.this, module + "|create fail " + errMsg + " " + errMsg);
-                }
-            });
+            startActivity(new Intent(MainActivity.this, HostLiveActivity.class));
         }
     };
 
@@ -117,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 //            startActivity(new Intent(MainActivity.this, LiveListActivity.class));
-            startActivity(new Intent(MainActivity.this, HostLiveActivity.class));
+//            startActivity(new Intent(MainActivity.this, HostLiveActivity.class));
         }
     };
 }

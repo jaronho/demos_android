@@ -49,12 +49,12 @@
         android:id="@+id/refreshview_message"
         android:layout_width="220dp"
         android:layout_height="180dp"
-        android:layout_above="@+id/layout_bottom"
+        android:layout_above="@+id/layout_functions"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="25dp"/>
+        android:layout_marginBottom="35dp"/>
 
     <RelativeLayout
-        android:id="@+id/layout_bottom"
+        android:id="@+id/layout_functions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -66,19 +66,27 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"/>
 
+        <ImageView
+            android:id="@+id/imageview_goods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:src="@mipmap/icon_goods"
+            android:scaleX="2"
+            android:scaleY="2"/>
+
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/imageview_goods"
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/chunk_beauty_setting"
+        layout="@layout/chunk_beauty_setting"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="25dp"
-        android:src="@mipmap/icon_goods"
-        android:scaleX="1.5"
-        android:scaleY="1.5"/>
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="15dp" />
 
     <com.nongyi.nylive.view.HeartLayout
         android:id="@+id/heart_layout"

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chunk_beauty_setting"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_marginBottom="30dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <SeekBar
+        android:id="@+id/seekbar_beauty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:maxHeight="3dp"
+        android:minHeight="3dp"
+        android:progressDrawable="@drawable/seekbar_beauty"
+        android:thumb="@drawable/seekbar_spot"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"/>
+    
+    <TextView
+        android:id="@+id/textview_beauty_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="@drawable/btn_beauty_confirm"
+        android:text="提交"
+        android:textSize="14sp"/>
+
+</LinearLayout>
