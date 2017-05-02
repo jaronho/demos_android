@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     OnClickListener onClickBtnCreateRoom = new OnClickListener() {
-        String role = "LiveHost";
         @Override
         public void onClick(View v) {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             editor.commit();
             // 创建房间配置项
             ILVLiveRoomOption hostOption = new ILVLiveRoomOption(ILiveLoginManager.getInstance().getMyUserId()).
-                    controlRole(role)// 角色设置
+                    controlRole("LiveHost")// 角色设置
                     .autoFocus(true)
                     .videoMode(ILiveConstants.VIDEOMODE_BSUPPORT)// 支持后台模式
                     .authBits(AVRoomMulti.AUTH_BITS_DEFAULT)// 权限设置

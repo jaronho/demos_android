@@ -107,6 +107,23 @@ public class HostLiveActivity extends AppCompatActivity {
         mHeartLayout = (HeartLayout)findViewById(R.id.heart_layout);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ILVLiveManager.getInstance().onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ILVLiveManager.getInstance().onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     void checkPermission() {
         final List<String> permissionsList = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -140,7 +157,16 @@ public class HostLiveActivity extends AppCompatActivity {
     private OnClickListener onClickImageviewClose = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            finish();
+            ILVLiveManager.getInstance().quitRoom(new ILiveCallBack() {
+                @Override
+                public void onSuccess(Object data) {
+                    finish();
+                }
+
+                @Override
+                public void onError(String module, int errCode, String errMsg) {
+                }
+            });
         }
     };
 
@@ -150,7 +176,7 @@ public class HostLiveActivity extends AppCompatActivity {
         public void onClick(View v) {
             ChatInputDialog.show(HostLiveActivity.this,
                     R.style.dialog_message_input,
-                    R.layout.dialog_message_input,
+                    R.layout.dialog_chat_input,
                     R.id.layout_message_input,
                     R.id.exittext_input,
                     R.id.textview_send,

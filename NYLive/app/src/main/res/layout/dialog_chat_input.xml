@@ -37,7 +37,7 @@
             android:layout_gravity="center|right"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="#FF447D"
+            android:background="@color/gray2"
             android:gravity="center"
             android:text="发送" />
 
