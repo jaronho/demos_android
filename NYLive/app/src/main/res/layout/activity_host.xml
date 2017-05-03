@@ -74,8 +74,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="60dp"
             android:src="@mipmap/icon_goods"
-            android:scaleX="2"
-            android:scaleY="2"/>
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
 
     </RelativeLayout>
 

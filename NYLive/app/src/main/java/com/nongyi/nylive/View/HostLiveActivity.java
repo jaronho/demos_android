@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -99,6 +100,9 @@ public class HostLiveActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
         setContentView(R.layout.activity_host);
         checkPermission();
+        // 头像
+        ImageView imageviewHeadIcon = (ImageView)findViewById(R.id.imageview_head_icon);
+        imageviewHeadIcon.setOnClickListener(onClickImageviewHeadIcon);
         // 关闭图片
         ImageView imageviewClose = (ImageView)findViewById(R.id.imageview_close);
         imageviewClose.setOnClickListener(onClickImageviewClose);
@@ -435,6 +439,14 @@ public class HostLiveActivity extends AppCompatActivity {
         mGuestView.getView().getAdapter().notifyDataSetChanged();
         mGuestCountTextView.setText(mGuestDatas.size() + "人");
     }
+
+    // 点击头像
+    private OnClickListener onClickImageviewHeadIcon = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ViewUtil.showToast(HostLiveActivity.this, "主播: " + ILiveRoomManager.getInstance().getHostId());
+        }
+    };
 
     // 点击关闭
     private OnClickListener onClickImageviewClose = new OnClickListener() {
