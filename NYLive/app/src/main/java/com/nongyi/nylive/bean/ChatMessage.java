@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Author:  Administrator
  * Date:    2017/5/1
- * Brief:   消息数据
+ * Brief:   聊天消息
  */
 
 public class ChatMessage {
@@ -20,7 +20,8 @@ public class ChatMessage {
     private long mId = 0;                   // 消息id
     private int mType = TYPE_TEXT;          // 内容类型
     private int mState = STATE_SENDING;     // 发送状态
-    private String mName = "";              // 发送者名字
+    private String mSenderId = "";          // 发送者id
+    private String mName = "";        // 发送者名字
     private String mAvatar = "";            // 发送者头像
     private String mContent = "";           // 聊天内容
     private Date mTime;                     // 发送时间
@@ -47,6 +48,14 @@ public class ChatMessage {
 
     public void setState(int state) {
         mState = state;
+    }
+
+    public String getSenderId() {
+        return mSenderId;
+    }
+
+    public void setSenderId(String senderId) {
+        mSenderId = senderId;
     }
 
     public String getName() {

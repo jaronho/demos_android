@@ -41,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnEnterRoom = (Button)findViewById(R.id.btn_enter_room);
         btnEnterRoom.setOnClickListener(onClickBtnEnterRoom);
-
-        ILVLiveConfig liveConfig = new ILVLiveConfig();
-        ILVLiveManager.getInstance().init(liveConfig);
     }
 
     OnClickListener onClickBtnGetSig = new OnClickListener() {

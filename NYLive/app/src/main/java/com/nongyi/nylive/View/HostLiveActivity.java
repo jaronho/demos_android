@@ -27,13 +27,17 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.jaronho.sdk.library.eventdispatcher.EventCenter;
+import com.jaronho.sdk.library.eventdispatcher.EventDispatcher;
 import com.jaronho.sdk.utils.ViewUtil;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
 import com.jaronho.sdk.utils.view.ChatInputDialog;
 import com.jaronho.sdk.utils.view.RefreshView;
 import com.nongyi.nylive.R;
 import com.nongyi.nylive.bean.ChatMessage;
+import com.nongyi.nylive.bean.GuestInfo;
 import com.nongyi.nylive.utils.Constants;
+import com.nongyi.nylive.utils.Global;
 import com.tencent.TIMElem;
 import com.tencent.TIMMessage;
 import com.tencent.TIMTextElem;
@@ -61,8 +65,9 @@ public class HostLiveActivity extends AppCompatActivity {
     private final int REQUEST_PHONE_PERMISSIONS = 0;
     private final int MSG_UPDATE_LIVE_TIME = 1;
     private AVRootView mAVRootView = null;
+    private TextView mGuestCountTextView = null;
     private RefreshView mGuestView = null;
-    private List<String> mGuestDatas = new ArrayList<>();
+    private List<GuestInfo> mGuestDatas = new ArrayList<>();
     private RefreshView mChatView = null;
     private List<ChatMessage> mChatDatas = new ArrayList<>();
     private HeartLayout mHeartLayout = null;
@@ -128,6 +133,8 @@ public class HostLiveActivity extends AppCompatActivity {
         initQuitDialog();
         // 初始美颜设置
         initBeautySetting();
+        // 事件注册
+        initEvents();
     }
 
     @Override
@@ -150,6 +157,7 @@ public class HostLiveActivity extends AppCompatActivity {
             mLiveTimer.cancel();
             mLiveTimer = null;
         }
+        EventCenter.unsubscribe(this);
     }
 
     @Override
@@ -179,15 +187,16 @@ public class HostLiveActivity extends AppCompatActivity {
 
     // 初始观众列表
     private void initGuestView() {
+        mGuestCountTextView = (TextView)findViewById(R.id.textview_guest_count);
         mGuestView = (RefreshView)findViewById(R.id.refreshview_guests);
         mGuestView.setHorizontal(true);
         LinearLayoutManager llmGuest = new LinearLayoutManager(this);
         llmGuest.setOrientation(LinearLayoutManager.HORIZONTAL);
         mGuestView.getView().setLayoutManager(llmGuest);
         mGuestView.getView().setHasFixedSize(true);
-        mGuestView.getView().setAdapter(new WrapRecyclerViewAdapter<String>(this, mGuestDatas, R.layout.chunk_live_guest) {
+        mGuestView.getView().setAdapter(new WrapRecyclerViewAdapter<GuestInfo>(this, mGuestDatas, R.layout.chunk_live_guest) {
             @Override
-            public void onBindViewHolder(QuickViewHolder quickViewHolder, String data) {
+            public void onBindViewHolder(QuickViewHolder quickViewHolder, GuestInfo data) {
             }
         });
         mGuestView.getView().addItemDecoration(new SpaceItemDecoration(true, (int)getResources().getDimension(R.dimen.guest_item_space)));
@@ -333,6 +342,7 @@ public class HostLiveActivity extends AppCompatActivity {
             }
             @Override
             public void onError(String module, int errCode, String errMsg) {
+                finish();
             }
         });
     }
@@ -366,6 +376,13 @@ public class HostLiveActivity extends AppCompatActivity {
         });
     }
 
+    // 事件注册
+    private void initEvents() {
+        EventCenter.subscribe(Constants.EVENT_NEW_TEXT_MSG, handleNewTextMsg, this);
+        EventCenter.subscribe(Constants.EVENT_GUEST_ENTER_ROOM, handleGuestEnterRoom, this);
+        EventCenter.subscribe(Constants.EVENT_GUEST_LEAVE_ROOM, handleGuestLeaveRoom, this);
+    }
+
     // 格式化秒数
     private String formatSeconds(long seconds) {
         String hs, ms, ss;
@@ -396,15 +413,27 @@ public class HostLiveActivity extends AppCompatActivity {
     }
 
     // 添加观众
-    private void insertGuest(String guest) {
+    private void insertGuest(GuestInfo guest) {
+        for (int i = 0, len = mGuestDatas.size(); i < len; ++i) {
+            if (guest.getId().equals(mGuestDatas.get(i).getId())) {
+                return;
+            }
+        }
         mGuestDatas.add(0, guest);
         mGuestView.getView().getAdapter().notifyDataSetChanged();
+        mGuestCountTextView.setText(mGuestDatas.size() + "人");
     }
 
     // 删除观众
-    private void removeGuest(String guest) {
-        mGuestDatas.remove(guest);
+    private void removeGuest(GuestInfo guest) {
+        for (int i = 0, len = mGuestDatas.size(); i < len; ++i) {
+            if (guest.getId().equals(mGuestDatas.get(i).getId())) {
+                mGuestDatas.remove(i);
+                break;
+            }
+        }
         mGuestView.getView().getAdapter().notifyDataSetChanged();
+        mGuestCountTextView.setText(mGuestDatas.size() + "人");
     }
 
     // 点击关闭
@@ -468,7 +497,7 @@ public class HostLiveActivity extends AppCompatActivity {
     private OnClickListener onClickImageviewBeauty = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            mFunctionsLayout.setVisibility(View.GONE);
+            mFunctionsLayout.setVisibility(View.INVISIBLE);
             mBeautyLayout.setVisibility(View.VISIBLE);
             mBeautySeekBar.setProgress(mBeautyRate);
         }
@@ -486,8 +515,7 @@ public class HostLiveActivity extends AppCompatActivity {
     private OnClickListener onClickImageviewGoods = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ViewUtil.showToast(HostLiveActivity.this, "点击点击物品");
-            mHeartLayout.addFavor();
+            ViewUtil.showToast(HostLiveActivity.this, "房间id: " + ILiveRoomManager.getInstance().getRoomId());
         }
     };
 
@@ -499,7 +527,7 @@ public class HostLiveActivity extends AppCompatActivity {
         }
         try {
             byte[] byteNum = msg.getBytes("utf8");
-            if (byteNum.length > 160) {
+            if (byteNum.length > Global.CHAT_MESSAGE_MAX_LENGTH) {
                 ViewUtil.showToast(HostLiveActivity.this, "消息输入太长");
                 return;
             }
@@ -516,8 +544,8 @@ public class HostLiveActivity extends AppCompatActivity {
         ILiveRoomManager.getInstance().sendGroupMessage(timMessage, new ILiveCallBack<TIMMessage>() {
             @Override
             public void onSuccess(TIMMessage data) {
-                // 发送成回显示消息内容
-                for (int i = 0; i < data.getElementCount(); ++i) {
+                if (data.getElementCount() > 0) {
+                    // 发送成回显示消息内容
                     TIMElem elem = data.getElement(0);
                     TIMTextElem textElem = (TIMTextElem)elem;
                     String name;
@@ -531,9 +559,12 @@ public class HostLiveActivity extends AppCompatActivity {
                             name = data.getSender();
                         }
                     }
-                    refreshMessageView(name, textElem.getText());
+                    ChatMessage cm = new ChatMessage();
+                    cm.setSenderId(data.getSender());
+                    cm.setName(name);
+                    cm.setContent(textElem.getText());
+                    refreshMessageView(cm);
                 }
-                ViewUtil.showToast(HostLiveActivity.this, "消息发送成功");
             }
 
             @Override
@@ -544,15 +575,36 @@ public class HostLiveActivity extends AppCompatActivity {
     }
 
     // 刷新消息框
-    private void refreshMessageView(String name, String msg) {
-        ChatMessage cm = new ChatMessage();
-        cm.setName(name);
-        cm.setContent(msg);
-        if (mChatDatas.size() > 15) {
+    private void refreshMessageView(ChatMessage cm) {
+        if (mChatDatas.size() > Global.CHAT_MESSAGE_MAX_COUNT) {
             mChatDatas.remove(0);
         }
         mChatDatas.add(cm);
         mChatView.getView().getAdapter().notifyDataSetChanged();
         mChatView.getView().scrollToPosition(mChatDatas.size() - 1);
     }
+
+    // 处理新文本消息
+    private EventDispatcher.Handler handleNewTextMsg = new EventDispatcher.Handler() {
+        @Override
+        public void onCallback(Object o) {
+            refreshMessageView((ChatMessage)o);
+        }
+    };
+
+    // 处理观众进入房间
+    private EventDispatcher.Handler handleGuestEnterRoom = new EventDispatcher.Handler() {
+        @Override
+        public void onCallback(Object o) {
+            insertGuest((GuestInfo)o);
+        }
+    };
+
+    // 处理观众离开房间
+    private EventDispatcher.Handler handleGuestLeaveRoom = new EventDispatcher.Handler() {
+        @Override
+        public void onCallback(Object o) {
+            removeGuest((GuestInfo)o);
+        }
+    };
 }

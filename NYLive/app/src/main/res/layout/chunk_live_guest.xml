@@ -5,8 +5,9 @@
 
     <com.jaronho.sdk.utils.view.CircleImageView
         android:id="@+id/imageview_guest"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
         android:src="@mipmap/icon_members"/>
 
 </RelativeLayout>

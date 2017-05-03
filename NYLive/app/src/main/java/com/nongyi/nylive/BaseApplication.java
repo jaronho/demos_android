@@ -9,9 +9,12 @@ import com.jaronho.sdk.third.okhttpwrap.annotation.CacheType;
 import com.jaronho.sdk.third.okhttpwrap.cookie.PersistentCookieJar;
 import com.jaronho.sdk.third.okhttpwrap.cookie.cache.SetCookieCache;
 import com.jaronho.sdk.third.okhttpwrap.cookie.persistence.SharedPrefsCookiePersistor;
+import com.nongyi.nylive.bean.MessageListener;
 import com.nongyi.nylive.utils.Global;
 import com.nongyi.nylive.utils.NetHelper;
 import com.tencent.ilivesdk.ILiveSDK;
+import com.tencent.livesdk.ILVLiveConfig;
+import com.tencent.livesdk.ILVLiveManager;
 
 public class BaseApplication extends Application {
 
@@ -29,6 +32,9 @@ public class BaseApplication extends Application {
         NetHelper.init(getApplicationContext());
         // 初始化ILiveSDK
         ILiveSDK.getInstance().initSdk(getApplicationContext(), Global.APP_ID, Global.ACCOUNT_TYPE);
+        ILVLiveConfig liveConfig = new ILVLiveConfig();
+        liveConfig.setLiveMsgListener(MessageListener.getInstance());
+        ILVLiveManager.getInstance().init(liveConfig);
         // 初始化okhttp
         String downloadFileDir = Environment.getExternalStorageDirectory().getPath()+"/okhttp_download/";
         OkHttpUtil.init(this)
