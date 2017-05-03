@@ -2,7 +2,6 @@ package com.nongyi.nylive.view;
 
 import android.Manifest;
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -12,13 +11,16 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.Editable;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -27,8 +29,8 @@ import android.widget.TextView;
 
 import com.jaronho.sdk.utils.ViewUtil;
 import com.jaronho.sdk.utils.adapter.WrapRecyclerViewAdapter;
+import com.jaronho.sdk.utils.view.ChatInputDialog;
 import com.jaronho.sdk.utils.view.RefreshView;
-import com.nongyi.nylive.MainActivity;
 import com.nongyi.nylive.R;
 import com.nongyi.nylive.bean.ChatMessage;
 import com.nongyi.nylive.utils.Constants;
@@ -48,7 +50,6 @@ import com.tencent.livesdk.ILVCustomCmd;
 import com.tencent.livesdk.ILVLiveManager;
 import com.tencent.livesdk.ILVLiveRoomOption;
 import com.tencent.livesdk.ILVText;
-import com.tencent.openqq.protocol.imsdk.msg;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -221,7 +222,7 @@ public class HostLiveActivity extends AppCompatActivity {
         }
         SharedPreferences.Editor editor = sp.edit();
         editor.putInt("room_id", roomId);
-        editor.commit();
+        editor.apply();
         return roomId;
     }
 
@@ -420,13 +421,38 @@ public class HostLiveActivity extends AppCompatActivity {
     private OnClickListener onClickImageviewMessage = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            ChatInputDialog.show(HostLiveActivity.this,
-                    R.style.dialog_message_input,
-                    R.layout.dialog_chat_input,
-                    R.id.layout_message_input,
-                    R.id.exittext_input,
-                    R.id.textview_send,
-                    mMessageInputListener);
+            final ChatInputDialog dlg = new ChatInputDialog(HostLiveActivity.this, R.style.dialog_message_input, R.layout.dialog_chat_input);
+            dlg.show();
+            final EditText editTextInput = (EditText)dlg.findViewById(R.id.edittext_input);
+            editTextInput.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (KeyEvent.ACTION_UP != event.getAction()) {   // 忽略其它事件
+                        return false;
+                    }
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_ENTER:
+                            Editable text = editTextInput.getText();
+                            if (text.length() > 0) {
+                                dlg.dismiss();
+                            }
+                            sendChatMessage(text.toString());
+                            return true;
+                    }
+                    return false;
+                }
+            });
+            TextView textViewSend = (TextView)dlg.findViewById(R.id.textview_send);
+            textViewSend.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Editable text = editTextInput.getText();
+                    if (text.length() > 0) {
+                        dlg.dismiss();
+                    }
+                    sendChatMessage(text.toString());
+                }
+            });
         }
     };
 
@@ -466,59 +492,56 @@ public class HostLiveActivity extends AppCompatActivity {
     };
 
     // 消息输入监听器
-    private ChatInputDialog.Listener mMessageInputListener = new ChatInputDialog.Listener() {
-        @Override
-        public void onSend(String msg) {
-            if (0 == msg.length()) {
-                ViewUtil.showToast(HostLiveActivity.this, "输入不能为空");
-                return;
-            }
-            try {
-                byte[] byteNum = msg.getBytes("utf8");
-                if (byteNum.length > 160) {
-                    ViewUtil.showToast(HostLiveActivity.this, "消息输入太长");
-                    return;
-                }
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-                return;
-            }
-            TIMTextElem elem = new TIMTextElem();
-            elem.setText(msg);
-            TIMMessage timMessage = new TIMMessage();
-            if (0 != timMessage.addElement(elem)) {
-                return;
-            }
-            ILiveRoomManager.getInstance().sendGroupMessage(timMessage, new ILiveCallBack<TIMMessage>() {
-                @Override
-                public void onSuccess(TIMMessage data) {
-                    // 发送成回显示消息内容
-                    for (int i = 0; i < data.getElementCount(); ++i) {
-                        TIMElem elem = data.getElement(0);
-                        TIMTextElem textElem = (TIMTextElem)elem;
-                        String name;
-                        if (data.isSelf()) {
-                            name = "我";
-                        } else {
-                            TIMUserProfile sendUser = data.getSenderProfile();
-                            if (null != sendUser) {
-                                name = sendUser.getNickName();
-                            } else {
-                                name = data.getSender();
-                            }
-                        }
-                        refreshMessageView(name, textElem.getText());
-                    }
-                    ViewUtil.showToast(HostLiveActivity.this, "消息发送成功");
-                }
-
-                @Override
-                public void onError(String module, int errCode, String errMsg) {
-                    ViewUtil.showToast(HostLiveActivity.this, "消息发送失败: " + module + "|" + errCode + "|" + errMsg);
-                }
-            });
+    private void sendChatMessage(String msg) {
+        if (0 == msg.length()) {
+            ViewUtil.showToast(HostLiveActivity.this, "输入不能为空");
+            return;
         }
-    };
+        try {
+            byte[] byteNum = msg.getBytes("utf8");
+            if (byteNum.length > 160) {
+                ViewUtil.showToast(HostLiveActivity.this, "消息输入太长");
+                return;
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return;
+        }
+        TIMTextElem elem = new TIMTextElem();
+        elem.setText(msg);
+        TIMMessage timMessage = new TIMMessage();
+        if (0 != timMessage.addElement(elem)) {
+            return;
+        }
+        ILiveRoomManager.getInstance().sendGroupMessage(timMessage, new ILiveCallBack<TIMMessage>() {
+            @Override
+            public void onSuccess(TIMMessage data) {
+                // 发送成回显示消息内容
+                for (int i = 0; i < data.getElementCount(); ++i) {
+                    TIMElem elem = data.getElement(0);
+                    TIMTextElem textElem = (TIMTextElem)elem;
+                    String name;
+                    if (data.isSelf()) {
+                        name = "我";
+                    } else {
+                        TIMUserProfile sendUser = data.getSenderProfile();
+                        if (null != sendUser) {
+                            name = sendUser.getNickName();
+                        } else {
+                            name = data.getSender();
+                        }
+                    }
+                    refreshMessageView(name, textElem.getText());
+                }
+                ViewUtil.showToast(HostLiveActivity.this, "消息发送成功");
+            }
+
+            @Override
+            public void onError(String module, int errCode, String errMsg) {
+                ViewUtil.showToast(HostLiveActivity.this, "消息发送失败: " + module + "|" + errCode + "|" + errMsg);
+            }
+        });
+    }
 
     // 刷新消息框
     private void refreshMessageView(String name, String msg) {
