@@ -39,6 +39,7 @@ import com.nongyi.nylive.bean.ChatMessage;
 import com.nongyi.nylive.bean.GuestInfo;
 import com.nongyi.nylive.utils.Constants;
 import com.nongyi.nylive.utils.Global;
+import com.squareup.picasso.Picasso;
 import com.tencent.TIMElem;
 import com.tencent.TIMMessage;
 import com.tencent.TIMTextElem;
@@ -201,6 +202,9 @@ public class HostLiveActivity extends AppCompatActivity {
         mGuestView.getView().setAdapter(new WrapRecyclerViewAdapter<GuestInfo>(this, mGuestDatas, R.layout.chunk_live_guest) {
             @Override
             public void onBindViewHolder(QuickViewHolder quickViewHolder, GuestInfo data) {
+                if (!data.getFaceUrl().isEmpty()) {
+                    Picasso.with(HostLiveActivity.this).load(data.getFaceUrl()).into((ImageView)quickViewHolder.getView(R.id.imageview_guest));
+                }
             }
         });
         mGuestView.getView().addItemDecoration(new SpaceItemDecoration(true, (int)getResources().getDimension(R.dimen.guest_item_space)));
