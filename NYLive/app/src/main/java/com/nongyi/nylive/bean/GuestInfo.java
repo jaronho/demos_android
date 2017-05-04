@@ -9,6 +9,7 @@ package com.nongyi.nylive.bean;
 public class GuestInfo {
     private String mId = "";        // 观众id
     private String mName = "";  // 昵称
+    private String mFaceUrl = "";   // 头像
 
     public String getId() {
         return mId;
@@ -24,5 +25,13 @@ public class GuestInfo {
 
     public void setName(String name) {
         mName = name;
+    }
+
+    public String getFaceUrl() {
+        return mFaceUrl;
+    }
+
+    public void setFaceUrl(String faceUrl) {
+        mFaceUrl = faceUrl;
     }
 }

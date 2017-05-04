@@ -65,6 +65,8 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
     private List<ChatMessage> mChatDatas = new ArrayList<>();
     private HeartLayout mHeartLayout = null;
     private Dialog mQuitDialog = null;
+    private String mHostId = "";
+    private Dialog mHostLeaveDialog = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,8 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏
         setContentView(R.layout.activity_guest);
         checkPermission();
+        // 主播id,房间id
+        mHostId = getIntent().getExtras().getString("host_id");
         // 头像
         ImageView imageviewHeadIcon = (ImageView)findViewById(R.id.imageview_head_icon);
         imageviewHeadIcon.setOnClickListener(onClickImageviewHeadIcon);
@@ -102,7 +106,7 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
         // 聊天列表
         initChatView();
         // 初始房间
-        initRoom();
+        initRoom(mHostId, getIntent().getExtras().getInt("room_id"));
         // 初始退出对话框
         initQuitDialog();
         // 事件注册
@@ -130,6 +134,11 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
 
     @Override
     public void onBackPressed() {
+        if (null != mHostLeaveDialog && mHostLeaveDialog.isShowing()) {
+            mHostLeaveDialog.dismiss();
+            mHostLeaveDialog = null;
+            return;
+        }
         if (!mQuitDialog.isShowing()) {
             mQuitDialog.show();
         }
@@ -195,7 +204,7 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
     }
 
     // 初始房间
-    private void initRoom() {
+    private void initRoom(String hostId, int roomId) {
         // step1:AV视频控件
         mAVRootView = (AVRootView)findViewById(R.id.view_av_root);
         ILVLiveManager.getInstance().setAvVideoView(mAVRootView);
@@ -228,7 +237,6 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
             }
         });
         // step2:进入房间配置选项
-        String hostId = getIntent().getExtras().getString("host_id");
         ILVLiveRoomOption memberOption = new ILVLiveRoomOption(hostId)
                 .controlRole("NormalGuest")    // 角色设置
                 .autoCamera(false)
@@ -238,14 +246,19 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
                 .videoRecvMode(AVRoomMulti.VIDEO_RECV_MODE_SEMI_AUTO_RECV_CAMERA_VIDEO)
                 .autoMic(false);
         // step3:进入房间
-        int roomId = getIntent().getExtras().getInt("room_id");
         int ret = ILVLiveManager.getInstance().joinRoom(roomId, memberOption, new ILiveCallBack() {
             @Override
             public void onSuccess(Object data) {
+                Log.d("NYLive", "join room success");
             }
             @Override
             public void onError(String module, int errCode, String errMsg) {
-                ViewUtil.showToast(GuestLiveActivity.this, "join room failed:" + module + "|" + errCode + "|" + errMsg);
+                Log.d("NYLive", "join room error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
+                if (10010 == errCode) {
+                    ViewUtil.showToast(GuestLiveActivity.this, "房间不存在");
+                } else {
+                    ViewUtil.showToast(GuestLiveActivity.this, "join room error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
+                }
                 mAVRootView.clearUserView();
                 finish();
             }
@@ -256,16 +269,19 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
     // 检查进入房间返回类型
     private void checkEnterReturn(int iRet){
         if (ILiveConstants.NO_ERR != iRet){
-            ViewUtil.showToast(GuestLiveActivity.this, "enter room failed:" + iRet);
+            Log.d("NYLive", "join room error, ret: " + iRet);
+            ViewUtil.showToast(GuestLiveActivity.this, "join room error, ret: " + iRet);
             if (ILiveConstants.ERR_ALREADY_IN_ROOM == iRet){     // 上次房间未退出处理做退出处理
                 ILiveRoomManager.getInstance().quitRoom(new ILiveCallBack() {
                     @Override
                     public void onSuccess(Object data) {
+                        Log.d("NYLive", "quit room success");
                         mAVRootView.clearUserView();
                         finish();
                     }
                     @Override
                     public void onError(String module, int errCode, String errMsg) {
+                        Log.d("NYLive", "quit room error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
                         mAVRootView.clearUserView();
                         finish();
                     }
@@ -306,15 +322,17 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
         ILVLiveManager.getInstance().sendCustomCmd(cmd, new ILiveCallBack<TIMMessage>() {
             @Override
             public void onSuccess(TIMMessage data) {
+                Log.d("NYLive", "exit live success");
                 ILVLiveManager.getInstance().quitRoom(new ILiveCallBack() {
                     @Override
                     public void onSuccess(Object data) {
+                        Log.d("NYLive", "quit room success");
                         mAVRootView.clearUserView();
                         finish();
                     }
                     @Override
                     public void onError(String module, int errCode, String errMsg) {
-                        Log.d("NYLive", "ILVB-SXB|quitRoom->failed:" + module + "|" + errCode + "|" + errMsg);
+                        Log.d("NYLive", "quit room error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
                         mAVRootView.clearUserView();
                         finish();
                     }
@@ -322,6 +340,7 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
             }
             @Override
             public void onError(String module, int errCode, String errMsg) {
+                Log.d("NYLive", "exit live error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
                 finish();
             }
         });
@@ -449,6 +468,10 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
 
     // 消息输入监听器
     private void sendChatMessage(String msg) {
+        if ("".equals(mHostId)) {
+            ViewUtil.showToast(GuestLiveActivity.this, "主播已离开，无法发消息");
+            return;
+        }
         if (0 == msg.length()) {
             ViewUtil.showToast(GuestLiveActivity.this, "输入不能为空");
             return;
@@ -494,10 +517,14 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
                     refreshMessageView(cm);
                 }
             }
-
             @Override
             public void onError(String module, int errCode, String errMsg) {
-                ViewUtil.showToast(GuestLiveActivity.this, "消息发送失败: " + module + "|" + errCode + "|" + errMsg);
+                Log.d("NYLive", "send message error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
+                if (10010 == errCode) {
+                    ViewUtil.showToast(GuestLiveActivity.this, "主播已离开，无法发消息");
+                } else {
+                    ViewUtil.showToast(GuestLiveActivity.this, "消息发送失败: module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
+                }
             }
         });
     }
@@ -532,7 +559,29 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
     private EventDispatcher.Handler handleGuestLeaveRoom = new EventDispatcher.Handler() {
         @Override
         public void onCallback(Object o) {
-            removeGuest((GuestInfo)o);
+            GuestInfo gi = (GuestInfo)o;
+            removeGuest(gi);
+            if (mHostId.equals(gi.getId())) {    // 主播离开房间
+                mHostId = "";
+                mHostLeaveDialog = new Dialog(GuestLiveActivity.this, R.style.dialog);
+                mHostLeaveDialog.setContentView(R.layout.dialog_host_leave);
+                TextView tvSure = (TextView)mHostLeaveDialog.findViewById(R.id.btn_sure);
+                tvSure.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        quitLive();
+                        mHostLeaveDialog.dismiss();
+                    }
+                });
+                TextView tvCancel = (TextView)mHostLeaveDialog.findViewById(R.id.btn_cancel);
+                tvCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mHostLeaveDialog.dismiss();
+                    }
+                });
+                mHostLeaveDialog.show();
+            }
         }
     };
 }

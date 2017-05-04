@@ -132,7 +132,7 @@ public class HostLiveActivity extends AppCompatActivity {
         // 聊天列表
         initChatView();
         // 初始房间
-        initRoom();
+        initRoom(getIntent().getExtras().getInt("room_id"));
         // 初始退出对话框
         initQuitDialog();
         // 初始美颜设置
@@ -225,7 +225,7 @@ public class HostLiveActivity extends AppCompatActivity {
     }
 
     // 初始房间
-    private void initRoom() {
+    private void initRoom(final int roomId) {
         // step1:AV视频控件
         mAVRootView = (AVRootView)findViewById(R.id.view_av_root);
         ILVLiveManager.getInstance().setAvVideoView(mAVRootView);
@@ -266,10 +266,10 @@ public class HostLiveActivity extends AppCompatActivity {
                 .cameraId(ILiveConstants.FRONT_CAMERA)  // 摄像头前置后置
                 .videoRecvMode(AVRoomMulti.VIDEO_RECV_MODE_SEMI_AUTO_RECV_CAMERA_VIDEO);    // 是否开始半自动接收
         // step3:创建房间
-        int roomId = getIntent().getExtras().getInt("room_id");
         ILVLiveManager.getInstance().createRoom(roomId, hostOption, new ILiveCallBack() {
             @Override
             public void onSuccess(Object data) {
+                Log.d("NYLive", "create room " + roomId + " success");
                 mAVRootView.getViewByIndex(0).setRotate(true);
                 mLiveTimer = new Timer();
                 mLiveTimer.schedule(new TimerTask() {
@@ -282,7 +282,8 @@ public class HostLiveActivity extends AppCompatActivity {
             }
             @Override
             public void onError(String module, int errCode, String errMsg) {
-                ViewUtil.showToast(HostLiveActivity.this, module + "|create fail " + errMsg + " " + errMsg);
+                Log.d("NYLive", "create room " + roomId + " error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
+                ViewUtil.showToast(HostLiveActivity.this, "create room " + roomId + " error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
             }
         });
     }
@@ -316,15 +317,17 @@ public class HostLiveActivity extends AppCompatActivity {
         ILVLiveManager.getInstance().sendCustomCmd(cmd, new ILiveCallBack<TIMMessage>() {
             @Override
             public void onSuccess(TIMMessage data) {
+                Log.d("NYLive", "exit live success");
                 ILVLiveManager.getInstance().quitRoom(new ILiveCallBack() {
                     @Override
                     public void onSuccess(Object data) {
+                        Log.d("NYLive", "quit room success");
                         mAVRootView.clearUserView();
                         finish();
                     }
                     @Override
                     public void onError(String module, int errCode, String errMsg) {
-                        Log.d("NYLive", "quitRoom->failed:" + module + "|" + errCode + "|" + errMsg);
+                        Log.d("NYLive", "quit room error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
                         mAVRootView.clearUserView();
                         finish();
                     }
@@ -332,6 +335,7 @@ public class HostLiveActivity extends AppCompatActivity {
             }
             @Override
             public void onError(String module, int errCode, String errMsg) {
+                Log.d("NYLive", "exit live error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
                 finish();
             }
         });
@@ -564,10 +568,10 @@ public class HostLiveActivity extends AppCompatActivity {
                     refreshMessageView(cm);
                 }
             }
-
             @Override
             public void onError(String module, int errCode, String errMsg) {
-                ViewUtil.showToast(HostLiveActivity.this, "消息发送失败: " + module + "|" + errCode + "|" + errMsg);
+                Log.d("NYLive", "send message error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
+                ViewUtil.showToast(HostLiveActivity.this, "消息发送失败: module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
             }
         });
     }

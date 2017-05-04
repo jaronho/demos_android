@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -71,11 +72,12 @@ public class MainActivity extends AppCompatActivity {
             ILiveLoginManager.getInstance().iLiveLogin(mUserid, mSig, new ILiveCallBack() {
                 @Override
                 public void onSuccess(Object data) {
+                    Log.d("NYLive", "live login success");
                     ViewUtil.showToast(MainActivity.this, "登陆TSL成功");
                 }
-
                 @Override
                 public void onError(String module, int errCode, String errMsg) {
+                    Log.d("NYLive", "live login error, module: " + module + ", errCode: " + errCode + ", errMsg: " + errMsg);
                     ViewUtil.showToast(MainActivity.this, "登陆TSL失败: " + module + " " + errCode + " " + errMsg);
                 }
             });
