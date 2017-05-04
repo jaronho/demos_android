@@ -5,22 +5,31 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edittext_host_id"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
         android:gravity="center"
-        android:text="是否退出直播？"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"/>
+        android:hint="请输入主播id"
+        android:background="@color/gray2"/>
+
+    <EditText
+        android:id="@+id/edittext_room_id"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:hint="请输入房间id"
+        android:background="@color/gray2"/>
 
     <TextView
         android:id="@+id/btn_sure"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:padding="5dp"
         android:gravity="center"
-        android:text="确定"
+        android:text="进入房间"
         android:textColor="#D63F41"
         android:textSize="18sp"
         android:background="@drawable/button_pressed"/>

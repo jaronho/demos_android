@@ -1,5 +1,6 @@
 package com.nongyi.nylive;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,10 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.jaronho.sdk.utils.ViewUtil;
 import com.nongyi.nylive.utils.NetHelper;
 import com.nongyi.nylive.utils.NetHelper.Callback;
+import com.nongyi.nylive.view.GuestLiveActivity;
 import com.nongyi.nylive.view.HostLiveActivity;
 import com.tencent.av.sdk.AVRoomMulti;
 import com.tencent.ilivesdk.ILiveCallBack;
@@ -24,6 +28,8 @@ import com.tencent.livesdk.ILVLiveRoomOption;
 public class MainActivity extends AppCompatActivity {
     private String mUserid = "he2";
     private String mSig;
+    private Dialog mCreateRoomDialog = null;
+    private Dialog mEnterRoomDialog = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnEnterRoom = (Button)findViewById(R.id.btn_enter_room);
         btnEnterRoom.setOnClickListener(onClickBtnEnterRoom);
+
+        initCreateRoomDialog();
+        initEnterRoomDialog();
     }
 
     OnClickListener onClickBtnGetSig = new OnClickListener() {
@@ -76,16 +85,83 @@ public class MainActivity extends AppCompatActivity {
     OnClickListener onClickBtnCreateRoom = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            startActivity(new Intent(MainActivity.this, HostLiveActivity.class));
+            if (!mCreateRoomDialog.isShowing()) {
+                mCreateRoomDialog.show();
+            }
         }
     };
 
     OnClickListener onClickBtnEnterRoom = new OnClickListener() {
-
         @Override
         public void onClick(View v) {
-//            startActivity(new Intent(MainActivity.this, LiveListActivity.class));
-//            startActivity(new Intent(MainActivity.this, HostLiveActivity.class));
+            if (!mEnterRoomDialog.isShowing()) {
+                mEnterRoomDialog.show();
+            }
         }
     };
+
+    // 初始创建房间对话框
+    private void initCreateRoomDialog() {
+        mCreateRoomDialog = new Dialog(this, R.style.dialog);
+        mCreateRoomDialog.setContentView(R.layout.dialog_create_room);
+        final EditText editTextRoomId = (EditText)mCreateRoomDialog.findViewById(R.id.edittext_room_id);
+        TextView tvSure = (TextView)mCreateRoomDialog.findViewById(R.id.btn_sure);
+        tvSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String roomIdStr = editTextRoomId.getText().toString();
+                if ("".equals(roomIdStr)) {
+                    return;
+                }
+                int roomId = Integer.parseInt(roomIdStr);
+                Bundle bundle = new Bundle();
+                bundle.putInt("room_id", roomId);    // 房间id
+                Intent intent = new Intent(MainActivity.this, HostLiveActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                mCreateRoomDialog.dismiss();
+            }
+        });
+        TextView tvCancel = (TextView)mCreateRoomDialog.findViewById(R.id.btn_cancel);
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCreateRoomDialog.dismiss();
+            }
+        });
+    }
+
+    // 初始进入房间对话框
+    private void initEnterRoomDialog() {
+        mEnterRoomDialog = new Dialog(this, R.style.dialog);
+        mEnterRoomDialog.setContentView(R.layout.dialog_enter_room);
+        final EditText editTextHostId = (EditText)mEnterRoomDialog.findViewById(R.id.edittext_host_id);
+        final EditText editTextRoomId = (EditText)mEnterRoomDialog.findViewById(R.id.edittext_room_id);
+        TextView tvSure = (TextView)mEnterRoomDialog.findViewById(R.id.btn_sure);
+        tvSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String hostId = editTextHostId.getText().toString();
+                String roomIdStr = editTextRoomId.getText().toString();
+                if ("".equals(hostId) || "".equals(roomIdStr)) {
+                    return;
+                }
+                int roomId = Integer.parseInt(roomIdStr);
+                Bundle bundle = new Bundle();
+                bundle.putString("host_id", hostId);    // 主播id
+                bundle.putInt("room_id", roomId);    // 房间id
+                Intent intent = new Intent(MainActivity.this, GuestLiveActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                mEnterRoomDialog.dismiss();
+            }
+        });
+        TextView tvCancel = (TextView)mEnterRoomDialog.findViewById(R.id.btn_cancel);
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEnterRoomDialog.dismiss();
+            }
+        });
+    }
 }

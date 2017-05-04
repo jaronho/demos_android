@@ -41,4 +41,5 @@ dependencies {
     compile files('libs/JHSdk_1.0.0.jar')
     compile files('libs/okhttp-3.6.0.jar')
     compile files('libs/okio-1.10.0.jar')
+	compile files('libs/picasso-2.5.2.jar')
 }

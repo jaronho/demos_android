@@ -118,9 +118,9 @@ public class HostLiveActivity extends AppCompatActivity {
         // 切换相机图片
         ImageView imageviewSwitchCamera = (ImageView)findViewById(R.id.imageview_switch_camera);
         imageviewSwitchCamera.setOnClickListener(onClickImageviewSwitchCamera);
-        // 物品图片
-        ImageView imageviewGoods = (ImageView)findViewById(R.id.imageview_goods);
-        imageviewGoods.setOnClickListener(onClickImageviewGoods);
+        // 房间详情图片
+        ImageView imageviewRoomDetails = (ImageView)findViewById(R.id.imageview_room_details);
+        imageviewRoomDetails.setOnClickListener(onClickImageviewRoomDetails);
         // 飘心
         mHeartLayout = (HeartLayout)findViewById(R.id.heart_layout);
         // 直播时间
@@ -224,21 +224,6 @@ public class HostLiveActivity extends AppCompatActivity {
         mChatView.getView().addItemDecoration(new SpaceItemDecoration(false, (int)getResources().getDimension(R.dimen.chat_item_space)));
     }
 
-    // 获取房间id
-    private int getRoomId() {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        int roomId = sp.getInt("room_id", 0);
-        if (0 == roomId) {
-            roomId = 1000;
-        } else {
-            roomId += 1;
-        }
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putInt("room_id", roomId);
-        editor.apply();
-        return roomId;
-    }
-
     // 初始房间
     private void initRoom() {
         // step1:AV视频控件
@@ -281,7 +266,8 @@ public class HostLiveActivity extends AppCompatActivity {
                 .cameraId(ILiveConstants.FRONT_CAMERA)  // 摄像头前置后置
                 .videoRecvMode(AVRoomMulti.VIDEO_RECV_MODE_SEMI_AUTO_RECV_CAMERA_VIDEO);    // 是否开始半自动接收
         // step3:创建房间
-        ILVLiveManager.getInstance().createRoom(getRoomId(), hostOption, new ILiveCallBack() {
+        int roomId = getIntent().getExtras().getInt("room_id");
+        ILVLiveManager.getInstance().createRoom(roomId, hostOption, new ILiveCallBack() {
             @Override
             public void onSuccess(Object data) {
                 mAVRootView.getViewByIndex(0).setRotate(true);
@@ -317,7 +303,7 @@ public class HostLiveActivity extends AppCompatActivity {
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mQuitDialog.cancel();
+                mQuitDialog.dismiss();
             }
         });
     }
@@ -338,7 +324,7 @@ public class HostLiveActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onError(String module, int errCode, String errMsg) {
-                        Log.d("NYLive", "ILVB-SXB|quitRoom->failed:" + module + "|" + errCode + "|" + errMsg);
+                        Log.d("NYLive", "quitRoom->failed:" + module + "|" + errCode + "|" + errMsg);
                         mAVRootView.clearUserView();
                         finish();
                     }
@@ -524,7 +510,7 @@ public class HostLiveActivity extends AppCompatActivity {
     };
 
     // 点击物品
-    private OnClickListener onClickImageviewGoods = new OnClickListener() {
+    private OnClickListener onClickImageviewRoomDetails = new OnClickListener() {
         @Override
         public void onClick(View v) {
             ViewUtil.showToast(HostLiveActivity.this, "房间id: " + ILiveRoomManager.getInstance().getRoomId());

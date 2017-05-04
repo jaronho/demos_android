@@ -92,9 +92,9 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
         // 红包图片
         ImageView imageviewMoney= (ImageView)findViewById(R.id.imageview_money);
         imageviewMoney.setOnClickListener(onClickImageviewMoney);
-        // 物品图片
-        ImageView imageviewGoods = (ImageView)findViewById(R.id.imageview_goods);
-        imageviewGoods.setOnClickListener(onClickImageviewGoods);
+        // 房间详情图片
+        ImageView imageviewRoomDetails = (ImageView)findViewById(R.id.imageview_room_details);
+        imageviewRoomDetails.setOnClickListener(onClickImageviewRoomDetails);
         // 飘心
         mHeartLayout = (HeartLayout)findViewById(R.id.heart_layout);
         // 观众列表
@@ -228,7 +228,7 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
             }
         });
         // step2:进入房间配置选项
-        String hostId = "";
+        String hostId = getIntent().getExtras().getString("host_id");
         ILVLiveRoomOption memberOption = new ILVLiveRoomOption(hostId)
                 .controlRole("NormalGuest")    // 角色设置
                 .autoCamera(false)
@@ -238,7 +238,7 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
                 .videoRecvMode(AVRoomMulti.VIDEO_RECV_MODE_SEMI_AUTO_RECV_CAMERA_VIDEO)
                 .autoMic(false);
         // step3:进入房间
-        int roomId = 0;
+        int roomId = getIntent().getExtras().getInt("room_id");
         int ret = ILVLiveManager.getInstance().joinRoom(roomId, memberOption, new ILiveCallBack() {
             @Override
             public void onSuccess(Object data) {
@@ -293,7 +293,7 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mQuitDialog.cancel();
+                mQuitDialog.dismiss();
             }
         });
     }
@@ -439,8 +439,8 @@ public class GuestLiveActivity extends AppCompatActivity implements ILiveRoomOpt
         }
     };
 
-    // 点击物品
-    OnClickListener onClickImageviewGoods = new OnClickListener() {
+    // 点击房间详情
+    OnClickListener onClickImageviewRoomDetails = new OnClickListener() {
         @Override
         public void onClick(View v) {
             ViewUtil.showToast(GuestLiveActivity.this, "房间id: " + ILiveRoomManager.getInstance().getRoomId());
