@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/tixian_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_tishi2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="系统以"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/edit_yanzhengma"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="11dip"
+                android:layout_marginRight="80dp"
+                android:background="@null"
+                android:hint="验证码"
+                android:singleLine="true"
+                android:textSize="18sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#b3b3b3"/>
+
+            <TextView
+                android:id="@+id/tv_tijiao"
+                android:layout_width="85dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignRight="@+id/edit_yanzhengma"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_one"
+                android:gravity="center"
+                android:text="提交申请"
+                android:textColor="#ffffff"
+                android:textSize="16dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/view_my_order"/>
+
+
+    <LinearLayout
+        android:weightSum="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/my_jibenxinxi"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            >
+
+            <ImageView
+                android:id="@+id/iv_my_jibenxinxi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/wodeziliao"/>
+
+            <TextView
+                android:id="@+id/tv_my_jibenxinxi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_my_jibenxinxi"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="基本信息"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_daijin"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            >
+
+            <ImageView
+                android:id="@+id/iv_my_daijin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/daijinjuan"/>
+
+            <TextView
+                android:id="@+id/tv_my_daijin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_my_daijin"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="代金券"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/my_authorization"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            >
+
+            <ImageView
+                android:id="@+id/iv_my_authorization"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/pinpaishouquan"/>
+
+            <TextView
+                android:id="@+id/tv_my_authorization"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_my_authorization"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="签约授权"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_xiugai"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            >
+
+            <ImageView
+                android:id="@+id/iv_my_xiugai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/shezhi"/>
+
+            <TextView
+                android:id="@+id/tv_my_xiugai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_my_xiugai"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="账号密码"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/nongyi_linear"/>
+
+    <LinearLayout
+        android:weightSum="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+
+        <RelativeLayout
+            android:id="@+id/my_tixian"
+            android:onClick="onTabClicked"
+            style="@style/my_nongyi_item">
+
+            <ImageView
+                android:id="@+id/iv_Classification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/tixian"/>
+
+            <TextView
+                android:id="@+id/tv_Classification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_Classification"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="我的提现"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_receipt"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            >
+
+            <ImageView
+                android:id="@+id/iv_my_receipt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/fapiao"/>
+
+            <TextView
+                android:id="@+id/tv_my_receipt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_my_receipt"
+                android:layout_centerHorizontal="true"
+                android:text="我的发票"
+                android:layout_marginTop="3dp"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/my_daigou_rules"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            >
+
+            <ImageView
+                android:id="@+id/iv_my_daigou_rules"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/guize"/>
+
+            <TextView
+                android:id="@+id/tv_my_daigou_rules"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_my_daigou_rules"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="代购规则"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/my_bangding"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            >
+
+            <ImageView
+                android:id="@+id/iv_my_bangding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/binding_phone"/>
+
+            <TextView
+                android:id="@+id/tv_my_bangding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_my_bangding"
+                android:layout_centerHorizontal="true"
+                android:text="绑定手机"
+                android:layout_marginTop="3dp"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/nongyi_linear"/>
+
+    <LinearLayout
+        android:weightSum="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_score"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            android:visibility="visible"
+            >
+
+            <ImageView
+                android:id="@+id/iv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/integral"/>
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_score"
+                android:layout_centerHorizontal="true"
+                android:text="我的积分"
+                android:layout_marginTop="3dp"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_tuiguang"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/iv_my_tuiguang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/shouyi"/>
+
+            <TextView
+                android:id="@+id/tv_my_tuiguang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_my_tuiguang"
+                android:layout_centerHorizontal="true"
+                android:text="我的收益"
+                android:layout_marginTop="3dp"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/authorization_layout"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/iv_authorization_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/authorized_areas_order"/>
+
+            <TextView
+                android:id="@+id/tv_authorization_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_authorization_layout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="授权区域订单"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/product_inquire"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/iv_product_inquire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/product_inquiries"/>
+
+            <TextView
+                android:id="@+id/tv_product_inquire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_product_inquire"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="产品查询"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/set_pay_password1"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/iv_set_pay_password1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/mima"/>
+
+            <TextView
+                android:id="@+id/tv_set_pay_password1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_set_pay_password1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="支付密码"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/nongyi_linear"/>
+
+    <LinearLayout
+        android:weightSum="4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/set_pay_password"
+            style="@style/my_nongyi_item"
+            android:onClick="onTabClicked"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/iv_set_pay_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#00000000"
+                android:src="@drawable/mima"/>
+
+            <TextView
+                android:id="@+id/tv_set_pay_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_set_pay_password"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="支付密码"
+                android:textColor="@drawable/tab_menu_deal_text"
+                android:textSize="11sp"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

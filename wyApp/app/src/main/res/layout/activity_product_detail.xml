@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <include
+        layout="@layout/view_product_detail2"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_snap_up_rules"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:background="#aa000000"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_snap_up_rules"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="25dp"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+
+    <!--标题栏-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@color/topBar_bg"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:id="@+id/img_back"
+            android:layout_width="@dimen/size_50dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/arrow_back"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品详情"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_share"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/rl_top_shoppingcar"
+            android:background="@drawable/product_share"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_top_shoppingcar"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/iv_top_car"
+                android:layout_width="29dp"
+                android:layout_height="27dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/shoppingcar"
+                />
+
+            <TextView
+                android:id="@+id/tv_top_dot"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/shoppingcar_dot_bg"
+                android:gravity="center"
+                android:text="5"
+                android:textColor="@color/white"
+                android:textSize="9sp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/topBar"
+        android:background="@color/bar_linear"/>
+
+    <!--底部选择栏-->
+    <include
+        layout="@layout/view_product_bottom"
+        android:visibility="visible"/>
+
+    <!--底部选择栏 秒杀-->
+    <include
+        layout="@layout/view_product_bottom_sec_kill"
+        android:visibility="gone"/>
+
+    <!-- 弹窗显示配送的地址 -->
+    <include layout="@layout/view_product_address"/>
+
+</FrameLayout>

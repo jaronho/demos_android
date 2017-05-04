@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/huo_coupon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+
+        <TextView
+            android:id="@+id/huode_coupon_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="购买此产品可获得优惠券，"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/chakanfafang_ruler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查看发放规则"
+            android:textColor="#ff4b00" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fafang_ruler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/text_huoqu_ruler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查看使用"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+</LinearLayout>

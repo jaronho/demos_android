@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/all_layout"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="#efefef"
+             android:orientation="vertical">
+
+    <include layout="@layout/view_home_top_bar"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/topBar"
+        android:background="@color/bar_linear"/>
+
+
+    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipeToLoadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="49.5dp"
+        android:background="@color/style_window_background"
+        app:default_to_loading_more_scrolling_duration="500"
+        app:default_to_refreshing_scrolling_duration="1000"
+        app:load_more_complete_delay_duration="0"
+        app:load_more_final_drag_offset="@dimen/load_more_final_offset_google"
+        app:load_more_trigger_offset="@dimen/load_more_trigger_offset_google"
+        app:refresh_complete_delay_duration="0"
+        app:refresh_final_drag_offset="@dimen/refresh_final_offset_google"
+        app:refresh_trigger_offset="@dimen/refresh_trigger_offset_google"
+        app:swipe_style="above">
+
+        <include
+            android:id="@+id/swipe_refresh_header"
+            layout="@layout/layout_google_hook_header"/>
+
+        <ScrollView
+            android:id="@+id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--首页轮播图-->
+                <include layout="@layout/view_home_carousel"/>
+
+                <!--中部导航-->
+                <include layout="@layout/view_home_navigate"/>
+
+                <!--中部通栏-->
+                <include layout="@layout/view_home_banner"/>
+
+                <!--热门商品-->
+                <include layout="@layout/view_home_hot"/>
+
+                <!--优惠券专区-->
+                <include layout="@layout/view_home_coupon"/>
+
+                <!--产品分类-->
+                <include layout="@layout/view_home_product"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+
+    <!--抢代金券-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:weightSum="3"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+        </View>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/iv_coupon"
+                android:layout_width="@dimen/size_100dp"
+                android:layout_height="@dimen/size_100dp"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout>

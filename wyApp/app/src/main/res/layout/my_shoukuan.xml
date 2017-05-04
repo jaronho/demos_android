@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/layou_shoukuan"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#eeeeee"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topBar"
+        android:background="@color/topBar_bg"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="收款方式"
+            android:textColor="@color/topBar_text_bg"
+            android:textSize="20sp"/>
+
+        <include layout="@layout/view_layout_back"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:id="@+id/weitainxie_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="16dp">
+
+                    <Button
+                        android:id="@+id/btn_zhifu"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="#4b90cb"
+                        android:text="支付宝"/>
+
+                    <Button
+                        android:id="@+id/btn_yinhangka"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:text="银行卡"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <EditText
+                        android:id="@+id/edit_kahao"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:hint="支付宝账号"
+                        android:maxLength="30"
+                        android:singleLine="true"
+                        android:textSize="18sp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#eeeeee"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <EditText
+                        android:id="@+id/edit_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:hint="姓名"
+                        android:maxLength="30"
+                        android:singleLine="true"
+                        android:textSize="18sp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#eeeeee"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/kaihu_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/edit_kaihuhang"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:hint="开户银行"
+                        android:maxLength="30"
+                        android:singleLine="true"
+                        android:textSize="18sp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#eeeeee"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/kaihu_layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/edit_kaihuhang1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:hint="省"
+                        android:maxLength="30"
+                        android:singleLine="true"
+                        android:textSize="18sp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#eeeeee"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/kaihu_layout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/edit_kaihuhang3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:hint="市"
+                        android:maxLength="30"
+                        android:singleLine="true"
+                        android:textSize="18sp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#eeeeee"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/kaihu_layout4"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/edit_kaihuhang4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:hint="县"
+                        android:maxLength="30"
+                        android:singleLine="true"
+                        android:textSize="18sp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#eeeeee"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/kaihu_layout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/edit_kaihuhang5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:hint="支行"
+                        android:maxLength="30"
+                        android:singleLine="true"
+                        android:textSize="18sp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#eeeeee"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:paddingTop="@dimen/size_10dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:gravity="center"
+                    android:text="收款信息只能绑定一次，请反复确认后再提交申请"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp">
+
+                    <Button
+                        android:id="@+id/btn_bangding"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/shape_one"
+                        android:text="绑定"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/yitainxie_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="收款方式:"/>
+
+                    <TextView
+                        android:id="@+id/text_fangshi2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="app"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#eeeeee"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <TextView
+                        android:id="@+id/text_huname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="银行卡号"/>
+
+                    <TextView
+                        android:id="@+id/text_kahao2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="app"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#eeeeee"/>
+
+                <RelativeLayout
+                    android:id="@+id/kaihu_layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="开户行"/>
+
+                    <TextView
+                        android:id="@+id/text_kahuhang2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="xingm"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#eeeeee"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#ffffff"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="姓名"/>
+
+                    <TextView
+                        android:id="@+id/text_mingzi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="app"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#eeeeee">
+                </View>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

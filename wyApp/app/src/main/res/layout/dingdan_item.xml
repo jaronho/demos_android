@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ffffff"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_30dp"
+        android:background="@color/white"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/text_dingdanhao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="订单号:"
+            android:textColor="#666666"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/text_zhuangtai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="待支付"
+            android:textColor="#ff4b00"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/product_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/text_money"
+            android:text="应付金额: "
+            android:textColor="#000000"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/text_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="5555"
+            android:textColor="#ff4b00"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#dddddd"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:gravity="right|center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <Button
+            android:id="@+id/btn_order_shape"
+            style="@style/btn_order"
+            android:text="分享订单"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_queren"
+            style="@style/btn_order"
+            android:text="确认订单"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_quxiao"
+            style="@style/btn_order"
+            android:text="取消订单"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_delete"
+            style="@style/btn_order"
+            android:text="删除订单"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_pay"
+            style="@style/btn_order"
+            android:text="支付"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_pay_dingjin"
+            style="@style/btn_order"
+            android:text="支付定金"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_pay_weikuan"
+            style="@style/btn_order"
+            android:text="支付尾款"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_chakan"
+            style="@style/btn_order"
+            android:text="查看详情"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_tuihuo"
+            style="@style/btn_order"
+            android:text="申请退货"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>

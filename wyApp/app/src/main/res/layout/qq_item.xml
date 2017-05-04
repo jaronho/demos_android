@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+      android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="#ffffff"
+        android:layout_height="40dp"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/text_kefu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="工作时间" 
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/text_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" 
+            android:textColor="#000000"/>
+
+    </LinearLayout>
+<View 
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="#eeeeee"
+	    android:paddingLeft="16dp"
+	    android:paddingRight="16dp"
+	     />
+</LinearLayout>

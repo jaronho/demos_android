@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_product_bottom_sec_kill"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_pressed"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_time_H"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/red"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_time_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="后开始活动"
+                android:textColor="@color/gray1"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_count_down"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_count_down_bg"
+            android:enabled="true"
+            android:text="立即购买"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+</LinearLayout>

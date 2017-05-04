@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#eeeeee"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topBar"
+        android:background="@color/topBar_bg">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="绑定手机"
+            android:textColor="@color/topBar_text_bg"
+            android:textSize="18sp"/>
+
+        <include layout="@layout/view_layout_back"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bangding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edit_bangdingphone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="11dip"
+                    android:background="@null"
+                    android:hint="手机号"
+                    android:singleLine="true"
+                    android:textSize="18sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#eeeeee"
+                    />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/fasong_code"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/code"
+                android:layout_weight="1"
+                android:background="@drawable/shape_one"
+                android:gravity="center"
+                android:text="发送验证码"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="#ffffff"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            >
+
+            <EditText
+                android:id="@+id/edit_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="11dip"
+                android:background="@null"
+                android:hint="手机验证码"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:textSize="18sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#eeeeee"
+
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:background="#ffffff"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <Button
+                android:id="@+id/btn_bangding"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_one"
+                android:text="绑定手机"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/image_duihao"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/icon_duihao_big"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/text_tishi"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="18sp"
+        android:visibility="gone"/>
+</LinearLayout>

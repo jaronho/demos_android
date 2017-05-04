@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginBottom="5dp"
+    android:background="#ffffff"
+    >
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/text_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="300:00元" 
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/text_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="提现中" 
+                android:textColor="#000000"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#b5b5b5" />
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="申请时间" 
+                android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/text_kaishi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="24124141241"
+                android:textColor="#000000" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#b5b5b5" />
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="处理时间" 
+                android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/text_jieshu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="24124141241" 
+                android:textColor="#000000"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#b5b5b5" />
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#ff4b00"
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="下级代购员"
+            android:textColor="#ffffff"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:id="@+id/layout_back"
+            android:layout_width="80dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="9dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/arrow_left" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="返回"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </RelativeLayout>
+	 <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <TextView
+            android:id="@+id/text_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="代购员用户名"
+            android:textSize="16dp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/text0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="总产品金额"
+            android:textSize="16dp"
+            android:textColor="#000000" />
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ListView>
+    <TextView
+            android:id="@+id/empty12"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/img_non_all" />
+
+</LinearLayout>
