@@ -84,18 +84,18 @@ public class ListFragment extends Fragment {
         }
 
         @Override
-        public void onPull(float offset, boolean isReady) {
-            Log.d("NYLive", "下拉刷新 == 下拉中: " + (isReady ? "可刷新" : "不可刷新"));
+        public void onPull(float offset, boolean isForward, boolean isReady) {
+            Log.d("NYLive", "刷新 == 拉动中: " + offset + ", " + (isForward ? "下拉" : "上拉") + ", " + (isReady ? "可刷新" : "不可刷新"));
         }
 
         @Override
         public void onPullAbort() {
-            Log.d("NYLive", "下拉刷新 == 取消刷新");
+            Log.d("NYLive", "刷新 == 取消");
         }
 
         @Override
         public void onRefreshing() {
-            Log.d("NYLive", "下拉刷新 == 刷新中");
+            Log.d("NYLive", "刷新 == 刷新中");
             mRefresh.restore();
         }
     };
@@ -108,18 +108,18 @@ public class ListFragment extends Fragment {
         }
 
         @Override
-        public void onPull(float offset, boolean isReady) {
-            Log.d("NYLive", "加载更多 == 上拉中: " + (isReady ? "可加载" : "不可加载"));
+        public void onPull(float offset, boolean isForward, boolean isReady) {
+            Log.d("NYLive", "加载 == 拉动中: " + offset + ", " + (isForward ? "上拉" : "下拉") + ", " + (isReady ? "可加载" : "不可加载"));
         }
 
         @Override
         public void onPullAbort() {
-            Log.d("NYLive", "加载更多 == 取消加载");
+            Log.d("NYLive", "加载 == 取消");
         }
 
         @Override
         public void onRefreshing() {
-            Log.d("NYLive", "加载更多 == 加载中");
+            Log.d("NYLive", "加载 == 加载中");
             mRefresh.restore();
         }
     };
