@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:drawable="@drawable/iconfont_shouye_xuanzhong" android:state_selected="true"/>
-    <item android:drawable="@drawable/iconfont_shouye4"/>
-
-</selector>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="my_order">我的订单</string>
-    <string name="order_unPay">待付款</string>
-    <string name="order_unReceiving">待收货</string>
-    <string name="num_0">0</string>
-    <string name="score_max_sum">9999﹢</string>
-</resources>
