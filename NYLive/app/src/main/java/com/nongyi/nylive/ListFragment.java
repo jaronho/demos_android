@@ -82,9 +82,13 @@ public class ListFragment extends Fragment {
         public View createView(Context context, RelativeLayout parent) {
             return LayoutInflater.from(getContext()).inflate(R.layout.chunk_header_refresh, parent, false);
         }
+		
+		@Override
+		public void onPullReady() {
+		}
 
         @Override
-        public void onPull(float offset, boolean isForward, boolean isReady) {
+        public void onPull(float maxOffset, float offset, boolean isForward, boolean isReady) {
             Log.d("NYLive", "刷新 == 拉动中: " + offset + ", " + (isForward ? "下拉" : "上拉") + ", " + (isReady ? "可刷新" : "不可刷新"));
         }
 
@@ -106,9 +110,13 @@ public class ListFragment extends Fragment {
         public View createView(Context context, RelativeLayout parent) {
             return LayoutInflater.from(getContext()).inflate(R.layout.chunk_footer_load, parent, false);
         }
+		
+		@Override
+		public void onPullReady() {
+		}
 
         @Override
-        public void onPull(float offset, boolean isForward, boolean isReady) {
+        public void onPull(float maxOffset, float offset, boolean isForward, boolean isReady) {
             Log.d("NYLive", "加载 == 拉动中: " + offset + ", " + (isForward ? "上拉" : "下拉") + ", " + (isReady ? "可加载" : "不可加载"));
         }
 
