@@ -1,0 +1,169 @@
+ImSDK 2.5.4
+1. 修复若干Bug
+
+ImSDK 2.5.3
+1. 增加查找消息接口（详情请查看TIMConversation下的findMessages）
+2. sendOnlineMessage接口支持群组类型消息，消息不存本地、不存离线、不计入未读
+3. APNS推送新增接收端不播放提示音且不振动的配置选项（参见TIMMessageOfflinePushSettings.IOSSettings.NO_SOUND_NO_VIBRATION）
+4. 网络优化，增强SDK对弱网络场景的抗性
+
+接口变更：
+1. TIMMessageOfflinePushSettings.AndroidSettings及TIMMessageOfflinePushSettings.IOSSettings构造方式变更。
+详情请参见官网文档（https://www.qcloud.com/document/product/269/3899）。
+
+ImSDK 2.5.2
+1. 修复偶现发包返回超时的问题（返回码6205）
+
+ImSDK 2.5.1
+1. 限制ImSDK单个LOG文件的大小为最大50M
+2. Android修复文件偶现图片、文件、语音等下载失败问题
+3. Android优化ImSDK性能
+
+ImSDK 2.5.0
+
+1. 单条消息的离线推送配置类TIMMessageOfflinePushSettings的优化调整（接口有变更）
+2. 优化网络操作
+
+
+ImSDK 2.4.1
+
+1. 修复TIMGroupAssistant在进入AVChatRoom后异常拉取群组资料的bug
+2. 修复禁用控制台打印失效的bug
+3. Android端修复初始化后登录前登出导致各种监听器失效问题
+
+ImSDK 2.4.0
+
+1. TIMManager中增加在拉取最近联系人时禁止抛出最近联系人消息的开关接口disableRecentContactNotify
+2. TIMMessage提供copyFrom接口，可以跳过下载步骤，直接拷贝图片、文件等消息后直接转发
+3. 优化拉取群组漫游消息流程
+4. 优化语音、文件、微视频上传下载流程
+5. TIMGroupEventListener接口返回当前群成员数目，支持AVChatRoom群组动态更新群成员数
+
+ImSDK 2.3.1
+
+1. Android版本增加离线推送自定义标题、扩展字段功能
+2. 小米、华为推送通过设置特定通知模式后，点击通知栏消息后应用可以收到点击回调
+
+ImSDK 2.3
+
+1. 增加带回调的setOfflinePushToken接口
+2. 增加google推送支持（FCM实现）
+3. 拉取消息接口，自动过滤状态为DELETED的消息
+4. 获取会话列表接口，自动过滤消息数为0的会话
+
+
+ImSDK 2.2.1
+
+1. 修复C2C漫游消息相关问题
+2. Android版本添加已读回执监听TIMMessageReceiptListener
+
+
+ImSDK 2.2.0
+
+1、接口调用增加无网络错误码，可区分是无网络原因导致失败
+2、从旧到新遍历消息
+3、增加会话草稿功能
+4、TIMMessage消息增加推送的ext和声音，可对某些消息设置推送信息
+5、设置某一个会话不存储消息，提升消息处理性能
+6、增加stopQALService接口，可以在退出应用的时候关掉QALService
+
+
+ImSDK 2.1.0
+
+1、修复消息内带用户自定义资料误写到群成员资料的BUG，如果之前有使用消息内用户自定义资料，需要修改
+2、进出群通知带群内人数
+3、TIMChat增加正在输入逻辑
+4、增加已读回执功能
+5、资料关系链增加性别、生日、地址、语言这几种标准字段
+6、针对小米、华为手机增加小米、华为推送可配置项
+
+ImSDK 2.0.0
+
+1、多终端已读同步，可以做到多终端在线情况保持未读计数的同步
+2、APP迁移过程中历史消息导入
+3、群消息增加群接收选项
+4、消息优先级设置
+
+ImSDK 1.9.2
+
+1.增加票据过期回调
+2.推流录制添加水印、多码率等参数
+3.修复被踢后仍然发送心跳包的问题（qalsdk）
+
+ImSDK 1.9.1
+
+1、在1.9.0基础上修复消息去重BUG，变更参考 1.9.0
+
+ImSDK 1.9.0
+
+接口变更（重要）：
+
+1、重要：获取非好友资料 GetFriendsProfile 变更为 GetUsersProfile
+2、配置变更，需要参考 ReadMe.txt 进行配置
+
+功能增加：
+
+1、增加关系链存储和缓存（TIMManager enableFriendshipProxy）
+2、增加关系链同步获取接口和变更回调（需要开启存储）（TIMFriendshipProxy）
+3、增加群资料存储和缓存（TIMManager enableGroupAssistant）
+4、增加群资料同步获取接口和变更回调（需要开启存储）（TIMGroupAssistant）
+5、获取好友资料（包括备注、分组） GetFriendsProfile
+6、设置关系链默认拉取字段（TIMManager initFriendshipSetting）
+7、设置群资料默认拉取字段（TIMManager initGroupSetting）
+8、禁用拉取最近联系人（disableRecentContact）
+9、会话列表增加同步获取最后一条消息
+10、增加创建大群接口（不限制群内人数，适用直播场景）
+11、分优先级发送消息（红包、普通消息、点赞消息）
+12、优化群消息处理性能
+13、指定拉取某些群成员的群资料（如群名片等）
+14、语音消息和文件消息支持传入文件路径（可支持消息重发）
+15、适配6.0动态权限问题
+16、隐藏service后台运行的图标（涉及到AndroidManifest.xml配置变更）
+17、优化被踢时候的回调逻辑（加上user id）
+18、收到离线push后拉起主进程，增加加载持久化存储的账号信息逻辑，push可以带上userid。
+
+ImSDK 1.8.1
+
+1、优化自启动流程（需要修改配置，请参考 ReadMe.txt 进行配置）
+2、增加C2C发在线消息接口（只有对方在线能收到，离线情况下不存储消息）
+3、增加多发消息接口
+4、灯塔SDK更换包名，增加禁用接口
+5、修改性能瓶颈
+
+ImSDK 1.8.0
+
+1、增加离线推送通知（这项更新需要app增加相应的配置，详情请参考发布包下的ReadMe.txt文件）
+2、增加检测是否好友接口
+3、增加关系链自定义字段接口
+4、增加消息自定义本地存储（可以标识语音是否已读等状态）
+5、多帐号同时登录（内测）
+6、图片压缩接口
+7、自定义消息sound字段
+
+ImSDK 1.7.1
+
+1. 联网上报的db 的cursor没有关闭，会导致内存泄露
+2. 已有账号在线，新账号重复注册，某种情况下会导致注册失败
+3. 将exception抛到了java层
+4. 全量获取好友分组
+5. 修复写log乱码，可能导致crash的问题
+
+
+ImSDK 1.7.0
+
+1、群资料和群成员资料增加自定义消息字段
+2、OnNewMessage消息增加昵称、群名片
+3、TIMGroupReportElem 增加用户昵称
+4、群转让接口
+5、群未决请求漫游接口
+
+
+ImSDK 1.6.0
+
+1、增加好友分组功能
+2、增加群名片功能
+3、群成员按照角色过滤
+4、增加微视频消息类型
+5、SDK接口优化，initSdk需要传入sdkappid
+6、批量删除本地消息
+7、修复BUG

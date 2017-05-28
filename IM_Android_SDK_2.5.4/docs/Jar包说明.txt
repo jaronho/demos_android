@@ -1,0 +1,6 @@
+bugly_1.2.8_imsdk_release.jar	crash上报jar包 
+imsdk.jar			SDK的jar包
+mobilepb.jar			protobuffer处理相关jar包
+qalsdk.jar			SDK网络层jar包
+tls_sdk.jar			帐号系统jar包
+wup-1.0.0-SNAPSHOT.jar		无线统一协议jar包
