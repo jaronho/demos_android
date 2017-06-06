@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:minHeight="105dp"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_gravity="bottom">
+
+    <LinearLayout
+        android:id="@+id/exposure_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="调整曝光"
+            android:textColor="#FF888888"
+            android:textSize="16sp" />
+        <SeekBar
+            android:id="@+id/exposure_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="18dp"
+            android:maxHeight="4.0dip"
+            android:minHeight="4.0dip"
+            android:visibility="visible"
+            android:progressDrawable="@drawable/seekbar_progress_drawable"
+            android:thumb="@drawable/circle"
+            android:max="20"
+            android:progress="10"
+            android:indeterminate="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/beauty_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="美颜效果"
+            android:textColor="#FF888888"
+            android:textSize="16sp" />
+        <SeekBar
+            android:id="@+id/beauty_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="18dp"
+            android:maxHeight="4.0dip"
+            android:minHeight="4.0dip"
+            android:visibility="visible"
+            android:progressDrawable="@drawable/seekbar_progress_drawable"
+            android:thumb="@drawable/circle"
+            android:max="7"
+            android:progress="5"
+            android:indeterminate="false" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/whitening_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="美白效果"
+            android:textColor="#FF888888"
+            android:textSize="16sp" />
+        <SeekBar
+            android:id="@+id/whitening_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="18dp"
+            android:maxHeight="4.0dip"
+            android:minHeight="4.0dip"
+            android:visibility="visible"
+            android:progressDrawable="@drawable/seekbar_progress_drawable"
+            android:thumb="@drawable/circle"
+            android:max="9"
+            android:progress="3"
+            android:indeterminate="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bigeye_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="大眼效果"
+            android:textColor="#FF888888"
+            android:textSize="16sp" />
+        <SeekBar
+            android:id="@+id/bigeye_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="18dp"
+            android:maxHeight="4.0dip"
+            android:minHeight="4.0dip"
+            android:visibility="visible"
+            android:progressDrawable="@drawable/seekbar_progress_drawable"
+            android:thumb="@drawable/circle"
+            android:max="9"
+            android:progress="0"
+            android:indeterminate="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/facelift_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="瘦脸效果"
+            android:textColor="#FF888888"
+            android:textSize="16sp" />
+        <SeekBar
+            android:id="@+id/facelift_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="18dp"
+            android:maxHeight="4.0dip"
+            android:minHeight="4.0dip"
+            android:visibility="visible"
+            android:progressDrawable="@drawable/seekbar_progress_drawable"
+            android:thumb="@drawable/circle"
+            android:max="9"
+            android:progress="0"
+            android:indeterminate="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/filter_ll"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="滤镜效果"
+            android:textColor="#FF888888"
+            android:textSize="16sp" />
+
+        <com.tencent.rtmp.demo.common.widget.TXHorizontalPickerView
+            android:id="@+id/filterPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@android:id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center" />
+        </com.tencent.rtmp.demo.common.widget.TXHorizontalPickerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/green_ll"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="绿幕效果"
+            android:textColor="#FF888888"
+            android:textSize="16sp" />
+
+        <com.tencent.rtmp.demo.common.widget.TXHorizontalPickerView
+            android:id="@+id/greenPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@android:id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center" />
+        </com.tencent.rtmp.demo.common.widget.TXHorizontalPickerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/motion_ll"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="动效效果"
+            android:textColor="#FF888888"
+            android:textSize="16sp" />
+
+        <com.tencent.rtmp.demo.common.widget.TXHorizontalPickerView
+            android:id="@+id/dynamicEffectPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@android:id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center" />
+        </com.tencent.rtmp.demo.common.widget.TXHorizontalPickerView>
+    </LinearLayout>
+</LinearLayout>

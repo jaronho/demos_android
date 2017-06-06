@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0d0d0d"
+                android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_editer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="41dp">
+
+            <LinearLayout
+                android:id="@+id/back_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/btn_back_gray"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/back_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14dp"
+                    android:textColor="#ffffff"
+                    android:text="返回" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:text="@string/video_edit"/>
+            <TextView
+                android:id="@+id/btn_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:textColor="#ffffff"
+                android:layout_gravity="right|center_vertical"
+                android:textSize="18dp"
+                android:text="完成" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/layout_player"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/black">
+
+            <FrameLayout
+                android:id="@+id/video_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ImageButton
+                android:id="@+id/btn_play"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:src="@drawable/ic_pause"/>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_player">
+
+            <TextView
+                android:id="@+id/tv_duration"
+                style="@style/TimelineItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="#777777"
+                android:textSize="@dimen/h4"/>
+
+            <TextView
+                android:id="@+id/tv_current"
+                style="@style/TimelineItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/tv_duration"
+                android:textColor="#777777"
+                android:textSize="@dimen/h4"/>
+        </RelativeLayout>
+
+        <com.tencent.rtmp.demo.videoeditor.TCVideoEditView
+            android:id="@+id/timelineItem"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_cut"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_cut"/>
+
+            <ImageButton
+                android:id="@+id/btn_beauty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_beautiful"/>
+
+            <ImageButton
+                android:id="@+id/btn_music"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_music"/>
+
+            <ImageButton
+                android:id="@+id/btn_word"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_word"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="225dp"
+        android:layout_height="10dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+</RelativeLayout>

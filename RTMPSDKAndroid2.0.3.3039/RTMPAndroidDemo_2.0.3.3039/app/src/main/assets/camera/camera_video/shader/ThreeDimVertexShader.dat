@@ -1,0 +1,60 @@
+attribute vec4 position;
+attribute vec4 inputTextureCoordinate;
+attribute vec4 color;
+varying vec2 TexCoordOut;
+varying vec4 TexColor;
+
+uniform vec3 texRotate;
+uniform mat4 u_MVPMatrix;
+
+mat4 texMatRotate = mat4(1.0, 0.0, 0.0, 0.0,
+                         0.0, 1.0, 0.0, 0.0,
+                         0.0, 0.0, 1.0, 0.0,
+                         0.0, 0.0, 0.0, 1.0);
+
+mat4 mat4RotationYXZ(mat4 m, float xRadians, float yRadians, float zRadians) {
+    /*
+     |  cycz + sxsysz   czsxsy - cysz   cxsy  0 |
+ M = |  cxsz            cxcz           -sx    0 |
+     |  cysxsz - czsy   cyczsx + sysz   cxcy  0 |
+     |  0               0               0     1 |
+
+     where cA = cos(A), sA = sin(A) for A = x,y,z
+     */
+
+    float cx = cos(xRadians);
+    float sx = sin(xRadians);
+    float cy = cos(yRadians);
+    float sy = sin(yRadians);
+    float cz = cos(zRadians);
+    float sz = sin(zRadians);
+
+    m[0][0] = (cy * cz) + (sx * sy * sz);
+    m[0][1] = cx * sz;
+    m[0][2] = (cy * sx * sz) - (cz * sy);
+    m[0][3] = 0.0;
+
+    m[1][0] = (cz * sx * sy) - (cy * sz);
+    m[1][1] = cx * cz;
+    m[1][2] = (cy * cz * sx) + (sy * sz);
+    m[1][3] = 0.0;
+
+    m[2][0] = cx * sy;
+    m[2][1] = -sx;
+    m[2][2] = cx * cy;
+    m[2][3] = 0.0;
+
+    m[3][0] = 0.0;
+    m[3][1] = 0.0;
+    m[3][2] = 0.0;
+    m[3][3] = 1.0;
+
+    return m;
+}
+
+void main() {
+    texMatRotate = mat4RotationYXZ(texMatRotate, texRotate.x, texRotate.y, texRotate.z);
+    gl_Position = u_MVPMatrix * texMatRotate * position;
+    TexCoordOut = inputTextureCoordinate.xy;
+    TexColor = color;
+}

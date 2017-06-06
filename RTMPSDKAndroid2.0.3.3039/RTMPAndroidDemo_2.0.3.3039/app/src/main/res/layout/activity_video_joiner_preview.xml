@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/layout_joiner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/progressBar"
+        android:layout_toRightOf="@+id/progressBar">
+
+        <FrameLayout
+            android:id="@+id/layout_title"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_alignParentTop="true"
+            android:background="#181818">
+
+            <LinearLayout
+                android:id="@+id/back_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/btn_back_gray"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/back_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14dp"
+                    android:textColor="#ffffff"
+                    android:text="返回" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="18dp"
+                android:text="视频预览"/>
+            <TextView
+                android:id="@+id/btn_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:textColor="#ffffff"
+                android:layout_gravity="right|center_vertical"
+                android:textSize="14dp"
+                android:text="完成" />
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_player"
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:layout_below="@+id/layout_title"
+            android:background="@color/black">
+
+            <FrameLayout
+                android:id="@+id/video_view"
+                android:layout_width="match_parent"
+                android:layout_height="225dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_play"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:src="@drawable/ic_pause"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="225dp"
+        android:layout_height="10dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+</RelativeLayout>
