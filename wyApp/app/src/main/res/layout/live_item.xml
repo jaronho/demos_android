@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#D3D3D3"
+        android:layout_alignParentTop="true"/>
+
+    <ImageView
+        android:id="@+id/imageview_snapshoot"
+        android:layout_width="match_parent"
+        android:layout_height="305dp"
+        android:src="@drawable/banner"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <View
+        android:id="@+id/view_describe_bg"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/black_trans"
+        android:layout_alignLeft="@+id/imageview_snapshoot"
+        android:layout_alignRight="@+id/imageview_snapshoot"
+        android:layout_alignBottom="@+id/imageview_snapshoot"/>
+
+    <TextView
+        android:id="@+id/textview_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2017年05月05日21:00直播（未开始）"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/imageview_snapshoot"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:id="@+id/textview_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="标题"
+        android:textColor="@color/gray2"
+        android:textSize="14sp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageview_snapshoot"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:id="@+id/imageview_watch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/people"
+        android:layout_below="@+id/textview_title"
+        android:layout_alignLeft="@+id/textview_title"/>
+
+    <TextView
+        android:id="@+id/textview_watch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1239"
+        android:textColor="@color/gray2"
+        android:textSize="12sp"
+        android:layout_toRightOf="@+id/imageview_watch"
+        android:layout_alignBottom="@+id/imageview_watch"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/textview_type"
+        android:layout_width="66dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:text="进入直播"
+        android:textColor="#00AA00"
+        android:textSize="14sp"
+        android:background="@drawable/live_shape_enter_border"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/imageview_watch"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#D3D3D3"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

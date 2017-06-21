@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chunk_beauty_setting"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button_manager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设置为管理员"
+        android:textSize="18sp"
+        android:textColor="#000000"/>
+
+    <Button
+        android:id="@+id/button_words"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="禁止发言"
+        android:textSize="18sp"
+        android:textColor="#000000"/>
+
+    <Button
+        android:id="@+id/button_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="踢出房间"
+        android:textSize="18sp"
+        android:textColor="#FF0000"/>
+
+</LinearLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layout_beauty"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/textview_score_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="余额:"
+            android:textColor="@color/gray2"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textview_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textview_score_title"
+            android:layout_alignBottom="@+id/textview_score_title"
+            android:layout_marginLeft="5dp"
+            android:text="0"
+            android:textColor="@color/gray2"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textview_score_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textview_score"
+            android:layout_alignBottom="@+id/textview_score"
+            android:layout_marginLeft="5dp"
+            android:text="积分"
+            android:textColor="@color/gray1"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textview_send"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/gray2"
+            android:gravity="center"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+
+        <com.jaronho.sdk.utils.view.RefreshView
+            android:id="@+id/refreshview_gift_list"
+            android:layout_width="match_parent"
+            android:layout_height="205dp"
+            android:layout_above="@+id/textview_send"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:scrollbars="vertical"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

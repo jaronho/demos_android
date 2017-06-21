@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="主播已离开，是否退出直播？"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/btn_sure"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="#D63F41"
+        android:textSize="18sp"
+        android:background="@drawable/live_button_pressed"/>
+
+    <TextView
+        android:id="@+id/btn_cancel"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#D63F41"
+        android:textSize="18sp"
+        android:background="@drawable/live_button_pressed"/>
+
+</LinearLayout>

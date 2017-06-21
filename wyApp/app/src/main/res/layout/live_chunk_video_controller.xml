@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/imageview_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/live_btn_play"/>
+
+    <TextView
+        android:id="@+id/textview_time_current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="-5dp"
+        android:text="00:00"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+    <SeekBar
+        android:id="@+id/seekbar_video"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_centerVertical="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxHeight="3dp"
+        android:minHeight="3dp"
+        android:progressDrawable="@drawable/live_seekbar_video"
+        android:thumb="@mipmap/live_btn_thumb"/>
+
+    <TextView
+        android:id="@+id/textview_time_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="-10dp"
+        android:text="00:00"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+</LinearLayout>

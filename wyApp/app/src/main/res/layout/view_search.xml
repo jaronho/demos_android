@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="49dp"
+    android:background="#fafafa"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/size_5dp"
+    android:paddingTop="@dimen/size_5dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/btn_search_back"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="18dp"
+            android:background="@drawable/iconfont_fanhui"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_searchWord"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:background="@drawable/search_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="19dp"
+            android:background="@drawable/sousuo"/>
+
+        <EditText
+            android:id="@+id/et_searchWord"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:background="@null"
+            android:ems="10"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1">
+        </EditText>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="搜索"
+        android:textSize="16sp"
+        />
+
+</LinearLayout>
+
+    

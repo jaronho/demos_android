@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#eeeeee">
+
+        <TextView
+            android:id="@+id/btn_chucao"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/more"
+            android:textColor="#4b90cb"
+            android:textSize="14sp"
+
+            />
+
+        <TextView
+            android:id="@+id/chucaoji_texts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:text="除草剂"
+            android:textColor="#131313"
+            android:textSize="16sp"/>
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/ll_weeding"
+        layout="@layout/view_home_products_list"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/layout_chucao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+
+        <ListView
+            android:id="@+id/claess_chucao_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:divider="@null"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#eeeeee">
+
+        <TextView
+            android:id="@+id/shachongji_texts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:text="杀虫剂"
+            android:textColor="#131313"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/btn_shachong"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/more"
+            android:textColor="#4b90cb"
+            android:textSize="14sp"
+            />
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/ll_insecticide"
+        layout="@layout/view_home_products_list"
+        android:visibility="gone"/>
+
+
+    <LinearLayout
+        android:id="@+id/layout_shachong"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+
+        <ListView
+            android:id="@+id/claess_shachong_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:divider="@null"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#eeeeee">
+
+        <TextView
+            android:id="@+id/shajunji_texts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:text="杀菌剂"
+            android:textColor="#131313"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/btn_shajun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBaseline="@+id/shajunji_texts"
+            android:layout_alignBottom="@+id/shajunji_texts"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp"
+            android:gravity="center"
+            android:text="@string/more"
+            android:textColor="#4b90cb"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/ll_sterilize"
+        layout="@layout/view_home_products_list"
+        android:visibility="gone"/>
+
+
+    <LinearLayout
+        android:id="@+id/layout_shajun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+
+        <ListView
+            android:id="@+id/claess_shajun_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:divider="@null"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#eeeeee">
+
+        <TextView
+            android:id="@+id/tiaojieji_texts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:text="植物营养及调节剂"
+            android:textColor="#131313"
+            android:textSize="16sp"/>
+
+
+        <TextView
+            android:id="@+id/btn_qita6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/more"
+            android:textColor="#4b90cb"
+            android:textSize="14sp"
+
+            />
+
+        <TextView
+            android:id="@+id/btn_qita"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="更多调节剂>>"
+            android:textColor="#4b90cb"
+            android:textSize="14dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/btn_qita5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="106dp"
+            android:gravity="center"
+            android:text="更多水溶肥>>"
+            android:textColor="#4b90cb"
+            android:textSize="14dp"
+            android:visibility="gone"
+            />
+
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/ll_nutrient"
+        layout="@layout/view_home_products_list"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/layout_qita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+
+        <ListView
+            android:id="@+id/claess_qita_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:divider="@null"
+            />
+
+    </LinearLayout>
+</LinearLayout>

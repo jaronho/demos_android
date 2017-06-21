@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.tencent.ilivesdk.view.AVRootView
+        android:id="@+id/view_av_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp">
+
+            <include
+                android:id="@+id/layout_head_up"
+                layout="@layout/live_chunk_info"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginLeft="5dp"/>
+
+            <ImageView
+                android:id="@+id/imageview_close"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/live_icon_close"/>
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/layout_money"
+            layout="@layout/live_chunk_score_and_guest"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_gift_send_1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="130dp"
+        android:gravity="center_horizontal"
+        android:visibility="invisible">
+
+        <include
+            layout="@layout/live_item_gift_send"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_gift_send_2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/layout_gift_send_1"
+        android:layout_marginTop="-15dp"
+        android:gravity="center_horizontal"
+        android:visibility="invisible">
+
+        <include
+            layout="@layout/live_item_gift_send"/>
+
+    </RelativeLayout>
+
+    <com.jaronho.sdk.utils.view.RefreshView
+        android:id="@+id/refreshview_message"
+        android:layout_width="220dp"
+        android:layout_height="180dp"
+        android:layout_above="@+id/layout_functions"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="25dp"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_functions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp">
+
+        <include
+            layout="@layout/live_chunk_functions_for_guest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageView
+            android:id="@+id/imageview_room_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="80dp"
+            android:src="@mipmap/live_icon_room_details"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+
+        <ImageView
+            android:id="@+id/imageview_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/live_icon_like_pressed"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+    <com.example.live.HeartLayout
+        android:id="@+id/heart_layout"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="-10dp"
+        android:focusable="true" />
+
+</RelativeLayout>

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#eeeeee">
+<RelativeLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#ff4b00"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="申请"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:id="@+id/layout_back"
+                android:layout_width="80dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="9dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/arrow_left" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="返回"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+        </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/weitainxie_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp" >
+
+            <Button
+                android:id="@+id/btn_zhifu"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="支付宝"
+                android:background="#4b90cb" />
+
+            <Button
+                android:id="@+id/btn_yinhangka"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="银行卡"
+                android:background="#ffffff" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="#ffffff"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp" >
+
+            <EditText
+                android:id="@+id/edit_kahao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:hint="支付宝账号"
+                android:maxLength="30"
+                android:singleLine="true"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#eeeeee"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="#ffffff"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp" >
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:hint="姓名"
+                android:maxLength="30"
+                android:singleLine="true"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                 android:background="#eeeeee"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/kaihu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:visibility="gone"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:background="#ffffff" >
+
+            <EditText
+                android:id="@+id/edit_kaihuhang"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:hint="开户行"
+                android:maxLength="30"
+                android:singleLine="true"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                 android:background="#eeeeee"
+                 />
+        </RelativeLayout>
+
+        <TextView
+            android:background="#ffffff"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:id="@+id/textView3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="收款信息只能绑定一次，请反复确认后再提交申请" 
+            android:textSize="14dp"
+            android:textColor="#aaaaaa"/>
+
+        <LinearLayout
+             android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" 
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:button="@drawable/check"
+                android:checked="true"
+                 />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我已阅读并了解" />
+
+            <TextView
+                android:id="@+id/text_zhaopin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《农一网农资代购人员招聘办法》"
+                android:textColor="#0000ff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+             android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp" 
+            android:gravity="center">
+        <Button
+            android:id="@+id/btn_bangding"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="提交申请"
+            android:background="#ff4b00" 
+            android:textColor="#ffffff"
+            android:textSize="16dp"/>
+           </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/yitainxie_layout"
+     >
+     <TextView  
+         android:layout_width="fill_parent"
+         android:layout_height="40dp"
+         android:layout_marginLeft="16dp"
+         android:gravity="center_vertical"
+         android:text="您已绑定收款方式。"/>
+     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp" 
+        android:background="#ffffff"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="收款方式" />
+
+        <TextView
+            android:id="@+id/text_fangshi2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="app" />
+
+        
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee" />
+     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp" 
+        android:background="#ffffff"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="银行卡号" />
+
+        <TextView
+            android:id="@+id/text_kahao2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="app" />
+
+        
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee" />
+     <RelativeLayout
+         android:id="@+id/kaihu_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="41dp" 
+        android:background="#ffffff"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="开户行" />
+
+        <TextView
+            android:id="@+id/text_kahuhang2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="xingm" />
+
+        
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee" 
+        android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#ffffff" 
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="姓名" />
+
+        <TextView
+            android:id="@+id/text_mingzi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="app" />
+
+        
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee" ></View>
+
+       <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp" 
+            android:background="#ffffff"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:button="@drawable/check"
+                 android:checked="true"
+                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我已阅读并了解" />
+
+            <TextView
+                android:id="@+id/text_zhaopin2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《农一网农资代购人员招聘办法》"
+                 android:textColor="#0000ff" />
+
+        </LinearLayout>
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp" 
+            android:background="#ffffff"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+       <Button
+            android:id="@+id/btn_bangding2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="申请" 
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:background="#ff4b00"/>
+        </LinearLayout>
+</LinearLayout>
+</LinearLayout>

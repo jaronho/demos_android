@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dp">
+
+    <RelativeLayout
+        android:id="@+id/layout_score"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/live_bg_score"
+        android:layout_marginLeft="-50dp">
+
+        <TextView
+            android:id="@+id/textview_score_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:text="积分"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/textview_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/textview_score_title"
+            android:layout_marginLeft="5dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:id="@+id/imageview_goto"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/textview_score"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/live_icon_right" />
+
+    </RelativeLayout>
+
+    <com.jaronho.sdk.utils.view.RefreshView
+        android:id="@+id/refreshview_guests"
+        android:layout_width="160dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"/>
+
+</RelativeLayout>
+

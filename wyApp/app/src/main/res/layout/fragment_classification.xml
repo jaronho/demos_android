@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ffffff"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topBar"
+        android:background="#fafafa">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="全部分类"
+            android:textColor="#000000"
+            android:textSize="18dp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bar_linear"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:background="#ffffff"
+            android:listSelector="#00000000"
+
+            >
+        </ListView>
+
+
+        <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/swipeToLoadLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="@color/style_window_background"
+            app:default_to_loading_more_scrolling_duration="500"
+            app:default_to_refreshing_scrolling_duration="1000"
+            app:load_more_complete_delay_duration="0"
+            app:load_more_final_drag_offset="@dimen/load_more_final_offset_google"
+            app:load_more_trigger_offset="@dimen/load_more_trigger_offset_google"
+            app:refresh_complete_delay_duration="0"
+            app:refresh_final_drag_offset="@dimen/refresh_final_offset_google"
+            app:refresh_trigger_offset="@dimen/refresh_trigger_offset_google"
+            app:swipe_style="above">
+
+            <include
+                android:id="@+id/swipe_refresh_header"
+                layout="@layout/layout_google_hook_header"/>
+
+
+            <ListView
+                android:id="@+id/swipe_target"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#eeeeee"
+                android:divider="#000000"
+                >
+            </ListView>
+        </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+    </LinearLayout>
+</LinearLayout>

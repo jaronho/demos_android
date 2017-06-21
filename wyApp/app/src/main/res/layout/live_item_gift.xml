@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="78dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageview_gift"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/shouyi"/>
+
+    <TextView
+        android:id="@+id/textview_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageview_gift"
+        android:text="飞碟"
+        android:textColor="@color/gray1"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/textview_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textview_name"
+        android:text="1积分"
+        android:textColor="@color/gray2"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:id="@+id/imageview_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/live_icon_yes"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
