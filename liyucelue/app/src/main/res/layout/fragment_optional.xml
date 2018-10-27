@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/v_fill"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/img_title_left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/content_spacing_16"
+            android:background="@mipmap/dynamic_nav_search_ic"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/mine_optional"
+            android:textColor="@color/text_black_333333"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:id="@+id/tv_title_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/content_spacing_16"
+            android:text="@string/edit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <View style="@style/View.Line" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv_stock_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:paddingLeft="@dimen/padding_def"
+        android:paddingRight="@dimen/padding_def"
+        android:scrollbars="none">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableLoadMore="false"
+        app:srlEnableRefresh="false">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#ebeef3" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="@dimen/content_spacing_16"
+                    android:paddingRight="@dimen/content_spacing_16"
+                    android:paddingTop="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mine_select_stock"
+                        android:textColor="@color/text_color_message_time_grey"
+                        android:textSize="@dimen/text_size_13" />
+
+                    <TextView
+                        android:id="@+id/tv_float_change"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:drawablePadding="5dp"
+                        android:drawableRight="@mipmap/icon_plate_rose_normal"
+                        android:text="@string/amount_of_increase"
+                        android:textColor="@color/text_color_message_time_grey"
+                        android:textSize="@dimen/text_size_13" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="80dp"
+                        android:layout_marginRight="80dp"
+                        android:layout_toLeftOf="@+id/tv_float_change"
+                        android:layout_toStartOf="@+id/tv_float_change"
+                        android:gravity="center_vertical|right"
+                        android:text="@string/now_price"
+                        android:textColor="@color/text_color_message_time_grey"
+                        android:textSize="@dimen/text_size_13" />
+
+                </RelativeLayout>
+
+                <View style="@style/View.Line" />
+
+                <include layout="@layout/layout_no_data" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcv_stock_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

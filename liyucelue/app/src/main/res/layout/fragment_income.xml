@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:overScrollMode="never"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp"
+            android:orientation="vertical"
+            android:background="@mipmap/bg_income">
+
+            <TextView
+                android:id="@+id/tv_income_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/tv_time_interval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:singleLine="true"
+                android:textColor="@color/text_white_fff0e0"
+                android:textSize="13sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/tv_my_income_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tv_user_profit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:singleLine="true"
+                    android:text="排名"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tv_user_rank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/view_no_data"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <include layout="@layout/layout_no_data" />
+
+        </LinearLayout>
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing_27"
+            android:layout_marginBottom="@dimen/padding_def"
+            android:gravity="center_horizontal"
+            android:textColor="@color/text_grey_c8c8c8"
+            android:textSize="@dimen/text_size_14"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

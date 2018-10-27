@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/bg_keyboard_gray"/>
+    <item android:drawable="@mipmap/icon_keymap"
+        android:bottom="12dp"
+        android:top="12dp"
+        android:left="13dp"
+        android:right="13dp"/>
+
+</layer-list>

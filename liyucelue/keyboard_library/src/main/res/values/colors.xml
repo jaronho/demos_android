@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="product_list_bac">#efeef4</color>
+    <color name="keyboard_blackground">#b2b2b2</color>
+    <color name="bg_key_gray">#bfbfbf</color>
+    <color name="bg_key_white">#ffffff</color>
+    <color name="bg_key_blue">#0084ff</color>
+    <color name="bg_key_shadow_gray">#9d9d9d</color>
+    <color name="black">#000</color>
+    <color name="text_black_333333">#333333</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_1a98ff">#1a98ff</color>
+    <color name="color_d8dbdf">#d8dbdf</color>
+
+    <color name="app_style">#03233b</color>
+    <color name="txt_orange">#ff6800</color>
+    <color name="text_orange_ff8400">#ff8400</color>
+</resources>

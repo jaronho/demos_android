@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|center_horizontal"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:paddingBottom="17dp"
+        android:paddingTop="17dp"
+        android:text="@string/edit_header"
+        android:textColor="@color/text_black_333333"
+        android:textSize="18sp" />
+
+    <View style="@style/View.Line" />
+
+    <TextView
+        android:id="@+id/tv_take_picture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:paddingBottom="17dp"
+        android:paddingTop="17dp"
+        android:text="@string/take_photo"
+        android:textColor="@color/text_black_333333"
+        android:textSize="18sp" />
+
+    <View style="@style/View.Line" />
+
+
+    <TextView
+        android:id="@+id/tv_select_album"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:paddingBottom="17dp"
+        android:paddingTop="17dp"
+        android:text="@string/select_photo_from_phone_albums"
+        android:textColor="@color/text_black_333333"
+        android:textSize="18sp" />
+
+    <View
+        style="@style/View.Blank"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:paddingBottom="17dp"
+        android:paddingTop="17dp"
+        android:text="@string/cancel"
+        android:textColor="@color/text_orange_ff8200"
+        android:textSize="18sp" />
+
+</LinearLayout>

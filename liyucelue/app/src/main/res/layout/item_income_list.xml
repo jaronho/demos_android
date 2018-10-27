@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="73dp"
+    android:paddingLeft="22dp">
+
+    <TextView
+        android:id="@+id/tv_position"
+        android:layout_width="24dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@mipmap/icon_income_first"
+        android:gravity="center_vertical"
+        android:textColor="@color/text_grey_999999"
+        android:textSize="15sp" />
+
+    <com.liyuu.strategy.widget.CircleImageView
+        android:id="@+id/iv_head"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/tv_position"
+        android:src="@mipmap/icon_default_header" />
+
+    <LinearLayout
+        android:id="@+id/layout_income_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="22dp">
+
+        <TextView
+            android:id="@+id/tv_show_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="收益率"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_13" />
+
+        <TextView
+            android:id="@+id/tv_show_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="50%"
+            android:textColor="@color/text_orange_ff8200"
+            android:textSize="@dimen/text_size_13" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/content_spacing_10"
+        android:layout_marginRight="@dimen/content_spacing_10"
+        android:layout_toLeftOf="@id/layout_income_rate"
+        android:layout_toRightOf="@id/iv_head"
+        android:layout_weight="1"
+        android:text="小星星"
+        android:textColor="@color/text_black_333333"
+        android:textSize="@dimen/text_size_16" />
+
+    <View
+        android:id="@+id/view_line"
+        style="@style/View.Line"
+        android:layout_alignLeft="@id/iv_head"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

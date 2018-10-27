@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_dialog"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/padding_def"
+    android:paddingRight="@dimen/padding_def">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_def"
+            android:paddingTop="@dimen/padding_def"
+            android:text="@string/stock_detail"
+            android:textColor="@color/text_black_333333"
+            android:textSize="@dimen/text_size_16" />
+
+        <ImageView
+            android:id="@+id/v_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="14dp"
+            android:src="@mipmap/icon_close" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ysf_grey_fafafa"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_stock_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/content_spacing_39"
+                android:paddingTop="@dimen/content_spacing_10"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:id="@+id/tv_stock_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/content_spacing_13"
+                android:paddingLeft="@dimen/content_spacing_39"
+                android:paddingTop="@dimen/content_spacing_5"
+                android:textColor="@color/text_grey_999999"
+                android:textSize="@dimen/text_size_12" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_stock_last_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/content_spacing_10"
+                android:textColor="@color/stock_red_f16262"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:id="@+id/tv_stock_float_precent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/content_spacing_13"
+                android:paddingTop="@dimen/content_spacing_5"
+                android:textColor="@color/stock_red_f16262"
+                android:textSize="@dimen/text_size_12" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/kline_height"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="@dimen/padding_def"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/kline_height"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <com.liyuu.strategy.ui.stock.other.mychart.MyLineChart
+                    android:id="@+id/line_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/optional_2_4data_bg"
+                    android:clipChildren="false"
+                    android:clipToPadding="false" />
+
+            </RelativeLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="09:30"
+                    android:textColor="@color/text_grey_999999"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="10:30"
+                    android:textColor="@color/text_grey_999999"
+                    android:textSize="7sp"
+                    app:layout_constraintHorizontal_bias="0.225"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11:30/13:00"
+                    android:textColor="@color/text_grey_999999"
+                    android:textSize="7sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:text="14:00"
+                    android:textColor="@color/text_grey_999999"
+                    android:textSize="7sp"
+                    app:layout_constraintHorizontal_bias="0.775"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15:00"
+                    android:textColor="@color/text_grey_999999"
+                    android:textSize="7sp"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <com.liyuu.strategy.ui.stock.other.mychart.MyBarChart
+                android:id="@+id/bar_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@drawable/optional_1_4data_bg" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/kline_height"
+            android:layout_weight="5"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/content_spacing_8"
+                android:layout_marginTop="@dimen/content_spacing_8"
+                android:gravity="center"
+                android:text="五档"
+                android:textColor="#373e56"
+                android:textSize="@dimen/text_size_11" />
+
+            <View style="@style/View.Line" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rcv_sell"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <View style="@style/View.Line" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rcv_buy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

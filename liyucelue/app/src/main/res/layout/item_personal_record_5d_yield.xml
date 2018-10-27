@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_def">
+
+        <TextView
+            android:id="@+id/tv_settle_day"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:id="@+id/tv_total_deposit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:id="@+id/tv_s_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:id="@+id/tv_profit_loss"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:singleLine="true"
+            android:textColor="@color/stock_red_color"
+            android:textSize="@dimen/text_size_13" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        style="@style/View.Line"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

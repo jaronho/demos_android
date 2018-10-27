@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="14dp"
+        android:text="名称代码"
+        android:textColor="@color/text_black_333333"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_stock_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="100dp"
+        android:text="HC234423"
+        android:textColor="@color/text_grey_666666"
+        android:textSize="14sp" />
+
+    <View
+        style="@style/View.Line"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/tv_name" />
+
+</RelativeLayout>

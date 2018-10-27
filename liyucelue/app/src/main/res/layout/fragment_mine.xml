@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_ui"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="@string/tab_mine"
+        android:textColor="@color/text_black_333333"
+        android:textSize="@dimen/text_size_18" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_head"
+                android:layout_width="match_parent"
+                android:layout_height="89dp"
+                android:layout_marginTop="@dimen/padding_def"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/padding_def"
+                android:paddingRight="@dimen/padding_def">
+
+                <com.liyuu.strategy.widget.CircleImageView
+                    android:id="@+id/img_header"
+                    android:layout_width="59dp"
+                    android:layout_height="59dp"
+                    android:src="@mipmap/icon_no_login_header" />
+
+                <TextView
+                    android:id="@+id/tv_nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:drawableRight="@mipmap/arrow_right"
+                    android:text="@string/click_to_login"
+                    android:textColor="@color/text_black_333333"
+                    android:textSize="@dimen/text_size_18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_def"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_my_record"
+                    style="@style/View.TextViewMine"
+                    android:drawableLeft="@mipmap/icon_my_record"
+                    android:text="@string/mine_record" />
+
+                <View
+                    android:id="@+id/v_line_1"
+                    style="@style/View.Line"
+                    android:layout_marginLeft="48dp" />
+
+                <TextView
+                    android:id="@+id/tv_my_invite_friend"
+                    style="@style/View.TextViewMine"
+                    android:drawableLeft="@mipmap/icon_my_invite_friend"
+                    android:text="@string/invite_friend" />
+
+                <View
+                    android:id="@+id/v_line_2"
+                    style="@style/View.Line"
+                    android:layout_marginLeft="48dp" />
+
+                <TextView
+                    android:id="@+id/tv_my_news"
+                    style="@style/View.TextViewMine"
+                    android:drawableLeft="@mipmap/icon_my_news"
+                    android:text="@string/menu_news" />
+
+                <View
+                    android:id="@+id/v_line_3"
+                    style="@style/View.Line"
+                    android:layout_marginLeft="48dp" />
+
+                <TextView
+                    android:id="@+id/tv_my_live_service"
+                    style="@style/View.TextViewMine"
+                    android:drawableLeft="@mipmap/icon_my_live_service"
+                    android:text="@string/online_customer_service"
+                    android:visibility="gone" />
+
+                <View
+                    style="@style/View.Line"
+                    android:layout_marginLeft="48dp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/layout_service_wx"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp">
+
+                    <TextView
+                        android:id="@+id/tv_contact_us"
+                        style="@style/View.TextViewMine"
+                        android:layout_width="wrap_content"
+                        android:drawableLeft="@mipmap/icon_my_live_service"
+                        android:drawableRight="@null"
+                        android:text="@string/service_wx" />
+
+                    <TextView
+                        android:id="@+id/tv_wx"
+                        style="@style/View.TextViewMine"
+                        android:gravity="right|center_vertical"
+                        android:drawablePadding="@dimen/content_spacing_10"
+                        android:textColor="@color/text_blue_21a4ff"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/View.Line"
+                    android:layout_marginLeft="48dp" />
+
+
+                <TextView
+                    android:id="@+id/tv_my_message"
+                    style="@style/View.TextViewMine"
+                    android:drawableLeft="@mipmap/icon_my_message"
+                    android:text="@string/message" />
+
+                <View
+                    style="@style/View.Line"
+                    android:layout_marginLeft="48dp" />
+
+                <TextView
+                    android:id="@+id/tv_my_setting"
+                    style="@style/View.TextViewMine"
+                    android:drawableLeft="@mipmap/icon_my_setting"
+                    android:text="@string/setting" />
+
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_news_banner"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="@dimen/padding_def"
+                android:layout_marginLeft="@dimen/padding_def"
+                android:layout_marginRight="@dimen/padding_def"
+                android:contentDescription="@null"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:elevation="0dp">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        app:navigationIcon="@mipmap/arrow_back">
+
+        <TextView
+            android:id="@+id/tv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:textColor="@color/text_color_title_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/View.TextViewTitle"
+            android:layout_gravity="center"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:paddingRight="@dimen/content_spacing_16"
+            android:gravity="center"
+            android:textColor="@color/text_orange_ff8200"
+            android:textSize="16sp" />
+
+    </android.support.v7.widget.Toolbar>
+</android.support.design.widget.AppBarLayout>

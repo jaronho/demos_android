@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_ui">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/View.TextViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:gravity="center"
+        android:text="@string/my_trading"
+        android:background="@color/white"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nsv_trading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="22dp"
+                android:paddingBottom="26dp"
+                android:background="@mipmap/bg_simulated_trading">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="20dp"
+                        android:paddingRight="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_user_all_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/zero_d"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_17"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:singleLine="true"
+                            android:text="@string/assert_total"
+                            android:textColor="@color/text_grey_c8c8c8"
+                            android:textSize="@dimen/text_size_13"/>
+
+                        <TextView
+                            android:id="@+id/tv_user_margin_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="23dp"
+                            android:singleLine="true"
+                            android:text="@string/zero_d"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_17"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:singleLine="true"
+                            android:text="@string/frozen_deposit"
+                            android:textColor="@color/text_grey_c8c8c8"
+                            android:textSize="@dimen/text_size_13"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingRight="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_user_balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/zero_d"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_17"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:singleLine="true"
+                            android:text="@string/available_balance"
+                            android:textColor="@color/text_grey_c8c8c8"
+                            android:textSize="@dimen/text_size_13"/>
+
+                        <TextView
+                            android:id="@+id/tv_user_market_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="23dp"
+                            android:singleLine="true"
+                            android:text="@string/zero_d"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_17"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:singleLine="true"
+                            android:text="@string/market_value"
+                            android:textColor="@color/text_grey_c8c8c8"
+                            android:textSize="@dimen/text_size_13"/>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_go_trading"
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center"
+                            android:text="+ 发起交易"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_15"
+                            android:background="@mipmap/bg_go_trading"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="right"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_user_profit_loss"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="23dp"
+                                android:singleLine="true"
+                                android:text="@string/zero_d"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_17"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:singleLine="true"
+                                android:text="@string/floating_pl"
+                                android:textColor="@color/text_grey_c8c8c8"
+                                android:textSize="@dimen/text_size_13"/>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_go_login"
+                    android:layout_width="155dp"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="@dimen/content_spacing_25"
+                    android:background="@drawable/shape_trading_bg"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/go_login"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_17"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_news_welfare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/padding_def"
+                android:layout_marginLeft="@dimen/padding_def"
+                android:layout_marginRight="@dimen/padding_def"
+                android:paddingBottom="@dimen/content_spacing_20"
+                android:background="@drawable/bg_white_corner"
+                android:visibility="gone">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_18"
+                    android:overScrollMode="never"/>
+
+                <ImageView
+                    android:id="@+id/iv_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="115dp"
+                    android:layout_marginTop="@dimen/content_spacing_23"
+                    android:layout_marginLeft="@dimen/padding_def"
+                    android:layout_marginRight="@dimen/padding_def"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_register_get"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/padding_def"
+                android:layout_marginRight="@dimen/padding_def"
+                android:layout_marginTop="@dimen/content_spacing_20"
+                android:layout_marginBottom="@dimen/content_spacing_20"
+                android:enabled="true"
+                android:background="@drawable/selector_btn_bg_orange"
+                android:gravity="center"
+                android:text="@string/register_get"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

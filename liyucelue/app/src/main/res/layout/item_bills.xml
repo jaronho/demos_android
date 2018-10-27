@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_def"
+        android:paddingRight="@dimen/padding_def"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_user_operate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="充值"
+            android:textColor="@color/text_black_333333"
+            android:textSize="@dimen/text_size_16"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="2018-05-01 10:10"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_12"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/padding_def"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="+1000"
+        android:textColor="@color/text_black_333333"
+        android:textSize="@dimen/text_size_18"/>
+
+    <View style="@style/View.Line" android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

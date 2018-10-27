@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_def"
+        android:paddingRight="@dimen/padding_def"
+        android:paddingTop="@dimen/content_spacing_12"
+        android:paddingBottom="6dp"
+        android:background="@color/bg_ui">
+        
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="时间"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="保证金"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="股票"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="盈亏"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_13"/>
+        
+    </LinearLayout>
+
+    <include layout="@layout/fragment_personal_record_list" />
+    
+</LinearLayout>

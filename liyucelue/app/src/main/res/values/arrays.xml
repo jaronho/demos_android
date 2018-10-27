@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="share_name">
+        <!--<item>新浪微博</item>-->
+        <item>微信好友</item>
+        <item>朋友圈</item>
+        <!--<item>QQ好友</item>-->
+        <!--<item>QQ空间</item>-->
+        <item>复制链接</item>
+    </array>
+
+    <array name="select_stock_one">
+        <item>今开</item>
+        <item>成交量</item>
+        <item>昨收</item>
+        <item>换手率</item>
+    </array>
+
+    <array name="select_stock_two">
+        <item>最高</item>
+        <item>最低</item>
+        <item>内盘</item>
+        <item>外盘</item>
+        <item>市盈率TTM</item>
+        <item>振幅</item>
+        <item>总市值</item>
+        <item>流通市值</item>
+    </array>
+
+</resources>

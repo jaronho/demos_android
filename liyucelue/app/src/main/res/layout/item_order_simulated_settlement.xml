@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="9dp"
+    android:paddingTop="9dp">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/content_spacing_12"
+        android:textColor="@color/text_grey_999999"
+        android:textSize="@dimen/text_size_12" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginRight="@dimen/padding_def"
+        android:background="@drawable/bg_personal_record_item"
+        android:paddingBottom="@dimen/padding_def"
+        android:paddingTop="@dimen/content_spacing_13">
+
+        <LinearLayout
+            android:id="@+id/layout_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/padding_def"
+            android:paddingRight="@dimen/padding_def">
+
+            <TextView
+                android:id="@+id/tv_stock_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15" />
+
+            <TextView
+                android:id="@+id/tv_symbol"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:textColor="@color/text_grey_999999"
+                android:textSize="@dimen/text_size_12" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/text_size_12" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_line"
+            style="@style/View.Line"
+            android:layout_below="@id/layout_stock"
+            android:layout_marginTop="@dimen/content_spacing_12" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_line"
+            android:layout_marginTop="@dimen/content_spacing_14"
+            android:paddingLeft="@dimen/padding_def"
+            android:paddingRight="@dimen/padding_def">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_deposit_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:id="@+id/tv_stock_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:id="@+id/tv_stock_buy_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:id="@+id/tv_stock_trade_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_stop_loss_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:id="@+id/tv_keep_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:id="@+id/tv_stock_sale_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:id="@+id/tv_stock_loss_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

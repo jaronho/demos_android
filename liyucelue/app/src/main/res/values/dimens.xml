@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_height">45dp</dimen>
+    <dimen name="padding_def">15dp</dimen>
+    <dimen name="line_height">44dp</dimen>
+    <dimen name="line_space">10dp</dimen>
+    <dimen name="kline_height">220dp</dimen>
+
+    <!-- 间距 -->
+    <dimen name="content_spacing_16">16dp</dimen>
+    <dimen name="content_spacing_15">15dp</dimen>
+    <dimen name="content_spacing_17">17dp</dimen>
+    <dimen name="content_spacing_13">13dp</dimen>
+    <dimen name="content_spacing_10">10dp</dimen>
+    <dimen name="content_spacing_11">11dp</dimen>
+    <dimen name="content_spacing_12">12dp</dimen>
+    <dimen name="content_spacing_14">14dp</dimen>
+    <dimen name="content_spacing_8">8dp</dimen>
+    <dimen name="content_spacing_6">6dp</dimen>
+    <dimen name="content_spacing_5">5dp</dimen>
+    <dimen name="content_spacing_18">18dp</dimen>
+    <dimen name="content_spacing_20">20dp</dimen>
+    <dimen name="content_spacing_23">23dp</dimen>
+    <dimen name="content_spacing_25">25dp</dimen>
+    <dimen name="content_spacing_27">27dp</dimen>
+    <dimen name="content_spacing_28">28dp</dimen>
+    <dimen name="content_spacing_32">32dp</dimen>
+    <dimen name="content_spacing_39">39dp</dimen>
+    <dimen name="content_spacing_40">40dp</dimen>
+
+    <!-- 多行内容行间距 -->
+    <dimen name="line_spacing_extra_4">4sp</dimen>
+    <dimen name="line_spacing_extra_3">3sp</dimen>
+
+    <!-- 字体大小 -->
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_11">11sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_17">17sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+</resources>

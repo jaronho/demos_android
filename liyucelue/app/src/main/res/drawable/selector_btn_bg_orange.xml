@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="@color/btn_orange_light"/>
+            <corners android:radius="5dp"/>
+            <size android:height="44dp"/>
+        </shape>
+    </item>
+    <item android:state_enabled="true">
+        <shape>
+            <solid android:color="@color/text_orange_ff8200"/>
+            <corners android:radius="5dp"/>
+            <size android:height="44dp"/>
+        </shape>
+    </item>
+</selector>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/srl_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlEnableLoadMore="false"
+    app:srlEnableRefresh="true">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/v_fill"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tv_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/padding_def"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_search_shape"
+                    android:drawableLeft="@mipmap/icon_search"
+                    android:drawablePadding="11dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="11dp"
+                    android:text="@string/search_hint"
+                    android:textColor="@color/text_grey_999999"
+                    android:textSize="13sp" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_notify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="@dimen/padding_def">
+
+                    <ImageView
+                        android:id="@+id/img_notify"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerInside"
+                        android:src="@mipmap/icon_message" />
+
+                    <ImageView
+                        android:id="@+id/img_notify_hot"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/red_dot"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <com.liyuu.strategy.ui.view.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                app:banner_ViewPager_padding="@dimen/padding_def"
+                app:banner_pointWidth="4dp"/>
+
+            <LinearLayout
+                android:id="@+id/ll_home_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_def"
+                android:layout_marginTop="32dp"
+                android:drawableLeft="@mipmap/tip"
+                android:drawablePadding="8dp"
+                android:text="@string/market_index"
+                android:textColor="@color/text_black_333333"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rcv_stock_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:paddingLeft="@dimen/content_spacing_25"
+                android:paddingRight="@dimen/content_spacing_25"
+                android:background="@drawable/bg_market_index"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="@dimen/padding_def"
+                android:paddingRight="@dimen/padding_def">
+
+                <TextView
+                    android:id="@+id/tv_little_title_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:drawableLeft="@mipmap/tip"
+                    android:drawablePadding="8dp"
+                    android:text="@string/all_buy"
+                    android:textColor="@color/text_black_333333"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_go_to_trade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@mipmap/arrow_go_trading"
+                    android:drawablePadding="10dp"
+                    android:text="@string/go_trading"
+                    android:textColor="@color/text_orange_ff8400"
+                    android:textSize="@dimen/text_size_14" />
+
+            </RelativeLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cl_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_def"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="@dimen/content_spacing_15"
+                android:layout_marginRight="@dimen/padding_def"
+                android:background="@drawable/bg_grey_fill_conner"
+                android:paddingLeft="@dimen/content_spacing_11"
+                android:paddingTop="@dimen/content_spacing_16"
+                android:paddingRight="@dimen/content_spacing_16"
+                android:paddingBottom="@dimen/content_spacing_13">
+
+                <com.liyuu.strategy.widget.CircleImageView
+                    android:id="@+id/img_pay_header"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_pay_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/content_spacing_10"
+                    android:singleLine="true"
+                    android:textColor="@color/text_black_333333"
+                    android:textSize="@dimen/text_size_16"
+                    app:layout_constraintStart_toEndOf="@+id/img_pay_header" />
+
+                <TextView
+                    android:id="@+id/tv_pay_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_grey_b6b6b6"
+                    android:textSize="@dimen/text_size_13"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextSwitcher
+                    android:id="@+id/ts_pay_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:lineSpacingExtra="5dp"
+                    android:paddingLeft="@dimen/content_spacing_40"
+                    android:paddingRight="@dimen/content_spacing_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_pay_nickname" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <View style="@style/View.Blank" android:layout_height="@dimen/content_spacing_13"/>
+
+            <ImageView
+                android:id="@+id/img_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

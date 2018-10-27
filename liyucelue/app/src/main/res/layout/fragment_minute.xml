@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/kline_height"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/kline_height"
+        android:layout_weight="2"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="3dp"
+        android:paddingTop="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <com.liyuu.strategy.ui.stock.other.mychart.MyLineChart
+                android:id="@+id/line_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/optional_2_4data_bg"
+                android:clipChildren="false"
+                android:clipToPadding="false" />
+
+            <TextView
+                android:id="@+id/tv_load_failed_notify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="load_failed_please_reload"
+                android:textColor="@color/text_grey_999999"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="09:30"
+                android:textColor="@color/text_grey_999999"
+                android:textSize="8sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="10:30"
+                android:textColor="@color/text_grey_999999"
+                android:textSize="8sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="11:30/13:00"
+                android:textColor="@color/text_grey_999999"
+                android:textSize="8sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="14:00"
+                android:textColor="@color/text_grey_999999"
+                android:textSize="8sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="15:00"
+                android:textColor="@color/text_grey_999999"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+
+        <com.liyuu.strategy.ui.stock.other.mychart.MyBarChart
+            android:id="@+id/bar_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/optional_1_4data_bg" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/kline_height"
+        android:layout_weight="5"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            style="@style/View.Line"
+            android:layout_marginTop="2.5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/content_spacing_8"
+            android:layout_marginTop="@dimen/content_spacing_8"
+            android:gravity="center"
+            android:text="五档"
+            android:textColor="#373e56"
+            android:textSize="@dimen/text_size_11" />
+
+        <View style="@style/View.Line" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_sell"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <View style="@style/View.Line" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_buy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <View style="@style/View.Line" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/white" />
+    </LinearLayout>
+</LinearLayout>

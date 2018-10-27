@@ -1,0 +1,268 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
+
+    packagingOptions {
+//加上这些代码 More than one file was found with OS independent path 'META-INF/rxjava.property
+        pickFirst 'META-INF/*'
+    }
+
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+
+    signingConfigs {
+        release {
+//            keyAlias 'carp'
+//            keyPassword 's123456'
+//            storeFile file('../keystore.keystore')
+//            storePassword 's123456'
+            keyAlias 'strategy'
+            keyPassword 'st123456'
+            storeFile file('../strategy.jks')
+            storePassword 'st123456'
+            v2SigningEnabled false
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.szks.lycelue"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0.0"
+//        resConfigs "zh"
+        multiDexEnabled true
+        renderscriptTargetApi 26
+        renderscriptSupportModeEnabled true
+        buildConfigField 'String', 'APP_VERSION', '"1_0_0"'
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors {
+        dev { //测试环境
+            buildConfigField 'boolean', 'ENV_DEBUG', 'true'
+            buildConfigField 'boolean', 'SHOW_LOG', 'true'
+            flavorDimensions "debug"
+        }
+        pre { //正式环境，但是带日志输出
+            buildConfigField 'boolean', 'ENV_DEBUG', 'false'
+            buildConfigField 'boolean', 'SHOW_LOG', 'true'
+        }
+        //以下均是正式环境，无日志输出
+        website {}
+        anzhi {}
+        baidu {}
+        huawei {}
+        meizu {}
+        oppo {}
+        qihu360 {}
+        wandoujia {}
+        xiaomi {}
+        yingyongbao {}
+        vivo {}
+        sougou {} //搜狗
+        chuizi {}
+        pp {}
+        yingyonghui {}
+    }
+    productFlavors.all { flavor ->
+        if (name == 'dev') {
+            flavor.manifestPlaceholders = [
+                    UMENG_CHANNEL_VALUE: name,
+                    UMENG_KEY          : "5bad8992f1f5563f04000190",
+                    A_MAP_KEY          : "d874b816868b52005af6d46cf0478e50",
+                    XG_ACCESS_ID       : "2100308024",
+                    XG_ACCESS_KEY      : "A68988DALKWV",
+                    HW_APPID           : "10577734"
+            ]
+        } else {
+            flavor.manifestPlaceholders = [
+                    UMENG_CHANNEL_VALUE: name,
+                    UMENG_KEY          : "5bad8992f1f5563f04000190",
+                    A_MAP_KEY          : "9b7a98991d56ab5e3289f967c7d50643",
+                    XG_ACCESS_ID       : "2100308024",
+                    XG_ACCESS_KEY      : "A68988DALKWV",
+                    HW_APPID           : "10577734"
+            ]
+        }
+        if (!flavor.buildConfigFields.containsKey('ENV_DEBUG')) {
+            flavor.buildConfigField('boolean', 'ENV_DEBUG', 'false')
+        }
+        if (!flavor.buildConfigFields.containsKey('SHOW_LOG')) {
+            flavor.buildConfigField('boolean', 'SHOW_LOG', 'false')
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "../../apk/strategy-${variant.baseName}-${variant.versionName}.apk"
+        }
+    }
+    task qudaoTasks << {
+        println 'qudao finish'
+    }
+    qudaoTasks.dependsOn {
+        tasks.findAll { task ->
+            if (task.name.equals('assembleDRelease')) return false
+            if (task.name.equals('assemblePreRelease')) return false
+            if (task.name.equals('assembleRelease')) return false
+            if (task.name.startsWith('assemble') && task.name.endsWith('Release')) {
+                println task.name
+                return false
+            } else {
+                return false
+            }
+        }
+    }
+}
+
+def dependVersion = [
+        support    : "26.1.0",
+        retrofit   : "2.2.0",
+        okhttp     : "3.6.0",
+        dagger2    : "2.0.2",
+        butterknife: "8.6.0",
+        blockcanary: "1.5.0",
+        leakcanary : "1.6.1"
+]
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support:support-annotations:26.1.0'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test:rules:0.5'
+
+    //base
+    implementation "com.android.support:appcompat-v7:${dependVersion.support}"
+    implementation "com.android.support:design:${dependVersion.support}"
+    implementation "com.android.support:percent:${dependVersion.support}"
+
+    //ui
+    implementation 'com.prolificinteractive:material-calendarview:1.4.0'
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+    implementation 'net.opacapp:multiline-collapsingtoolbar:1.3.1'
+    implementation 'com.github.chrisbanes:PhotoView:1.3.0'
+    implementation 'org.sufficientlysecure:html-textview:3.1'
+
+    //glide
+    implementation('com.github.bumptech.glide:glide:4.7.1') {
+        exclude group: "com.android.support"
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    implementation 'jp.wasabeef:glide-transformations:1.2.1'
+
+    //rx
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.7'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+
+    //network
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${dependVersion.retrofit}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}"
+    implementation "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${dependVersion.okhttp}"
+    implementation 'org.jsoup:jsoup:1.10.1'
+
+    //di
+    implementation "com.google.dagger:dagger:${dependVersion.dagger2}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${dependVersion.dagger2}"
+    implementation "com.jakewharton:butterknife:${dependVersion.butterknife}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${dependVersion.butterknife}"
+
+    //AS3.0以后不支持apt了，改用annotationProcessor，否则打包时会有很多warning
+    implementation 'org.glassfish:javax.annotation:10.0-b28'
+
+    //other
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.orhanobut:logger:2.2.0'
+    implementation 'me.yokeyword:fragmentation:0.10.4'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-6'
+
+    //canary
+
+    //    implementation "com.github.markzhai:blockcanary-android:${dependVersion.blockcanary}"
+
+    //    implementation "com.squareup.leakcanary:leakcanary-android:${dependVersion.leakcanary}"
+
+    //    implementation "com.squareup.leakcanary:leakcanary-android-no-op:${dependVersion.leakcanary}"
+    implementation files('libs/tbs_sdk_thirdapp_v3.5.0.1004_43500_sharewithdownload_withoutGame_obfs_20170801_113025.jar')
+    implementation project(path: ':MPChartLib')
+    implementation project(path: ':keyboard_library')
+
+    //图片压缩
+    implementation 'me.shaohui.advancedluban:library:1.3.2'
+
+    // 网易七鱼
+    implementation 'com.qiyukf.unicorn:unicorn:4.2.1'
+
+    // 连连支付
+    implementation(name: 'securePay-180419-v3.2.1.3', ext: 'aar')
+
+    //信鸽jar
+    implementation 'com.tencent.xinge:xinge:3.2.2-release'
+
+    //wup包
+    implementation 'com.tencent.wup:wup:1.0.0.E-release'
+
+    //mid包
+    implementation 'com.tencent.mid:mid:4.0.6-release'
+    implementation 'com.tencent.xinge:xgmz:3.2.2-release'
+    implementation 'com.tencent.xinge:mipush:3.2.2-release'
+    implementation 'com.tencent.xinge:xghw:2.5.2.300-release'
+    implementation files('libs/umeng-common-1.5.3.jar')
+    implementation files('libs/umeng-share-core-6.9.3.jar')
+    implementation files('libs/umeng-share-wechat-simplify-6.9.3.jar')
+    implementation files('libs/umeng-sharetool-6.9.3.jar')
+    implementation files('libs/umeng-analytics-7.4.4.jar')
+}

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="@dimen/padding_def"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/name"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15"/>
+
+            <com.liyuu.strategy.ui.view.MyEditText
+                android:id="@+id/et_name"
+                style="@style/View.EditText"
+                android:layout_marginLeft="@dimen/content_spacing_10"
+                android:background="@null"
+                android:hint="@string/please_input_name"
+                android:maxLines="1"
+                android:inputType="text"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15"
+                android:maxLength="20"/>
+
+        </LinearLayout>
+
+        <View style="@style/View.Line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/id"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15"/>
+
+            <com.liyuu.strategy.ui.view.MyEditText
+                android:id="@+id/et_id"
+                style="@style/View.EditText"
+                android:layout_marginLeft="@dimen/content_spacing_10"
+                android:background="@null"
+                android:inputType="number"
+                android:hint="@string/please_input_id"
+                android:digits="@string/id_digits"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15"
+                android:maxLength="21"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_def"
+        android:paddingLeft="@dimen/padding_def"
+        android:paddingRight="10dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/bank_card"
+            android:textColor="@color/text_black_333333"
+            android:textSize="@dimen/text_size_15"/>
+
+        <com.liyuu.strategy.ui.view.MyEditText
+            android:id="@+id/et_bank_card"
+            style="@style/View.EditText"
+            android:layout_marginLeft="@dimen/content_spacing_10"
+            android:background="@null"
+            android:hint="@string/please_input_bank_card"
+            android:inputType="number"
+            android:textColor="@color/text_black_333333"
+            android:textSize="@dimen/text_size_15"
+            android:digits="@string/phone_digits"
+            android:maxLength="23"/>
+
+    </LinearLayout>
+
+    <View style="@style/View.Line" android:layout_marginLeft="@dimen/padding_def"/>
+
+    <LinearLayout
+        android:id="@+id/layout_bank"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:paddingLeft="@dimen/padding_def"
+        android:paddingRight="@dimen/padding_def"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_bank"
+            android:textColor="@color/text_black_333333"
+            android:textSize="@dimen/text_size_15"/>
+
+        <TextView
+            android:id="@+id/tv_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@mipmap/arrow_right"
+            android:drawablePadding="10dp"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_15"
+            android:gravity="right"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_def"
+        android:paddingRight="10dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/reserved_phone"
+            android:textColor="@color/text_black_333333"
+            android:textSize="@dimen/text_size_15"/>
+
+        <com.liyuu.strategy.ui.view.MyEditText
+            android:id="@+id/et_reserved_phone"
+            style="@style/View.EditText"
+            android:layout_marginLeft="@dimen/content_spacing_10"
+            android:background="@null"
+            android:hint="@string/input_reserved_phone"
+            android:inputType="number"
+            android:textColor="@color/text_black_333333"
+            android:textSize="@dimen/text_size_15"
+            android:digits="@string/phone_digits"
+            android:maxLength="11"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginRight="@dimen/padding_def"
+        android:enabled="false"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/confirm"
+        android:background="@drawable/selector_btn_bg_orange"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/padding_def"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:text="@string/bind_bank_card_note"-->
+        <!--android:textColor="@color/text_grey_999999"-->
+        <!--android:textSize="@dimen/text_size_12"/>-->
+
+</LinearLayout>

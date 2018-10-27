@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@mipmap/bg_personal_record">
+
+    <com.liyuu.strategy.widget.CircleImageView
+        android:id="@+id/iv_head"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="23dp"
+        android:src="@mipmap/icon_default_header"/>
+
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/content_spacing_10"
+        android:textColor="#fefefe"
+        android:textSize="@dimen/text_size_16"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_five_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:text="@string/five_day_yield_rate"
+                android:textColor="@color/text_white_ffeee0"
+                android:textSize="@dimen/text_size_13"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_count_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:text="@string/total_yield_rate"
+                android:textColor="@color/text_white_ffeee0"
+                android:textSize="@dimen/text_size_13"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_count_win_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:text="@string/total_win_rate"
+                android:textColor="@color/text_white_ffeee0"
+                android:textSize="@dimen/text_size_13"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_ui"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_ui"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/img_right_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:paddingLeft="25dp"
+                android:paddingRight="10dp"
+                android:src="@mipmap/arrow_back" />
+
+            <TextView
+                android:id="@+id/tv_stock_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_18" />
+
+            <TextView
+                android:id="@+id/tv_stock_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_stock_name"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_11" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_add_stock"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="@dimen/content_spacing_16"-->
+            <!--android:background="@drawable/bg_red_small_arc_with_transparent"-->
+            <!--android:drawablePadding="3dp"-->
+            <!--android:text="+ 自选"-->
+            <!--android:textColor="@color/stock_red_color"-->
+            <!--android:textSize="@dimen/text_size_12" />-->
+
+        </RelativeLayout>
+
+        <View style="@style/View.Line" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:text="--"
+                        android:textColor="@color/stock_grey_color"
+                        android:textSize="34sp" />
+
+                    <TextView
+                        android:id="@+id/tv_float_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_price"
+                        android:layout_marginLeft="20dp"
+                        android:text="--"
+                        android:textColor="@color/stock_grey_color"
+                        android:textSize="@dimen/text_size_16" />
+
+                    <TextView
+                        android:id="@+id/tv_float_precent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_price"
+                        android:layout_marginLeft="@dimen/content_spacing_16"
+                        android:layout_toRightOf="@+id/tv_float_price"
+                        android:text="--"
+                        android:textColor="@color/stock_grey_color"
+                        android:textSize="@dimen/text_size_16" />
+
+                    <TextView
+                        android:id="@+id/tv_pay_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_float_price"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="--"
+                        android:textColor="@color/text_grey_999999"
+                        android:textSize="@dimen/text_size_11" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rcv_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="14dp"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        android:visibility="gone">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_below="@+id/tv_pay_state"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="11dp"
+                        android:background="@color/line_color" />
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcv_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:overScrollMode="never"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="11dp"
+                    android:paddingBottom="3dp"
+                    android:scrollbars="none">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <!--<liyuuh.stocks.ui.view.bar.NavitationLayout&ndash;&gt;-->
+                <!--android:id="@+id/nl_kline"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="35dp">-->
+
+                <!--<!liyuuh.stocks.ui.view.bar.NavitationLayout>&ndash;&gt;-->
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tl_meun"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    app:tabIndicatorColor="@color/text_orange_ff8200"
+                    app:tabIndicatorHeight="2dp"
+                    app:tabSelectedTextColor="@color/text_orange_ff8200">
+
+                </android.support.design.widget.TabLayout>
+
+                <com.liyuu.strategy.ui.view.NoScrollViewPager
+                    android:id="@+id/vp_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/kline_height"
+                    android:fadingEdge="none">
+
+                </com.liyuu.strategy.ui.view.NoScrollViewPager>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_go_trading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginTop="22dp"
+        android:layout_marginRight="@dimen/padding_def"
+        android:layout_marginBottom="@dimen/padding_def"
+        android:background="@drawable/selector_btn_bg_orange"
+        android:enabled="true"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+
+</RelativeLayout>

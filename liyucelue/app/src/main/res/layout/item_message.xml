@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_message_type"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/padding_def" />
+
+    <TextView
+        android:id="@+id/tv_message_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="14dp"
+        android:layout_toRightOf="@+id/img_message_type"
+        android:singleLine="true"
+        android:text="公告消息"
+        android:textColor="@color/text_black_333333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_message_sketch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_message_type"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/img_message_type"
+        android:layout_alignLeft="@id/tv_message_type"
+        android:maxLines="1"
+        android:text="五一劳动节放假安排，五一劳动节放假安排，五一劳动节放假安排"
+        android:textColor="@color/text_grey_999999"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_show_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/padding_def"
+        android:layout_marginTop="@dimen/padding_def"
+        android:gravity="center"
+        android:text="5分钟前"
+        android:textColor="@color/text_grey_999999"
+        android:textSize="@dimen/text_size_12" />
+
+    <TextView
+        android:id="@+id/tv_unread_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/padding_def"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/vector_drawable_circle"
+        android:gravity="center"
+        android:text="11"
+        android:textColor="@color/white"
+        android:textSize="10sp" />
+
+    <View
+        android:id="@+id/v_bottom_line"
+        style="@style/View.Line"
+        android:layout_below="@+id/tv_message_sketch"
+        android:layout_alignLeft="@id/tv_message_type"
+        android:layout_marginTop="@dimen/padding_def" />
+
+</RelativeLayout>

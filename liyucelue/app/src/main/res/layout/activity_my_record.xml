@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_ui">
+
+    <include layout="@layout/toolbar_layout"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/padding_def"
+        android:paddingRight="@dimen/padding_def">
+
+        <View style="@style/View.Line" android:layout_width="0dp" android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_spacing_10"
+            android:layout_marginRight="@dimen/content_spacing_10"
+            android:text="历史交易记录"
+            android:textColor="@color/text_grey_666666"
+            android:textSize="@dimen/text_size_14"/>
+
+        <View style="@style/View.Line" android:layout_width="0dp" android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_no_data" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="9dp"
+            android:orientation="vertical"
+            android:overScrollMode="never"/>
+
+    </LinearLayout>
+
+</LinearLayout>

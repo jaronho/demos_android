@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_footer"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_layout" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/content_spacing_12"
+            android:paddingLeft="@dimen/content_spacing_16"
+            android:paddingRight="@dimen/content_spacing_16"
+            android:paddingTop="@dimen/content_spacing_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/designation"
+                android:textColor="@color/text_color_message_time_grey"
+                android:textSize="@dimen/text_size_13" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/drag"
+                android:textColor="@color/text_color_message_time_grey"
+                android:textSize="@dimen/text_size_13" />
+
+        </RelativeLayout>
+
+        <View style="@style/View.Line" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_footer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true">
+
+        <View style="@style/View.Line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_all_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="16dp">
+
+            <ImageView
+                android:id="@+id/img_all_select"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:background="@mipmap/optional_edit_select" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_select_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/content_spacing_10"
+            android:layout_toRightOf="@+id/rl_all_select"
+            android:gravity="center"
+            android:text="@string/all_item_select"
+            android:textColor="@color/text_color_message_type"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_delete_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/content_spacing_16"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
+            android:textColor="@color/stock_red_color"
+            android:textSize="@dimen/text_size_16" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

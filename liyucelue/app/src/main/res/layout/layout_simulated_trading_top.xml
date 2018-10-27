@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="22dp"
+    android:paddingBottom="24dp"
+    android:gravity="center_horizontal"
+    android:background="@mipmap/bg_simulated_trading">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="20dp"
+        android:paddingRight="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="245679.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_17"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:singleLine="true"
+            android:text="资产总额"
+            android:textColor="@color/text_grey_c8c8c8"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:singleLine="true"
+            android:text="1269.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_17"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:singleLine="true"
+            android:text="冻结保证金"
+            android:textColor="@color/text_grey_c8c8c8"
+            android:textSize="@dimen/text_size_13"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:paddingRight="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="2456345579.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_17"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:singleLine="true"
+            android:text="可用余额"
+            android:textColor="@color/text_grey_c8c8c8"
+            android:textSize="@dimen/text_size_13"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:singleLine="true"
+            android:text="1269.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_17"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:singleLine="true"
+            android:text="持仓市值"
+            android:textColor="@color/text_grey_c8c8c8"
+            android:textSize="@dimen/text_size_13"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="3dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="+ 发起交易"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15"
+            android:background="@mipmap/bg_go_trading"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:singleLine="true"
+                android:text="1269.00"
+                android:textColor="@color/text_orange_f47e7e"
+                android:textSize="@dimen/text_size_17"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:singleLine="true"
+                android:text="浮动盈亏"
+                android:textColor="@color/text_grey_c8c8c8"
+                android:textSize="@dimen/text_size_13"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

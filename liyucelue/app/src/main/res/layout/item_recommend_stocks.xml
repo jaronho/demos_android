@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_def"
+        android:paddingRight="@dimen/padding_def"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_stock_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="中国建筑"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_16"/>
+
+            <TextView
+                android:id="@+id/tv_stock_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:singleLine="true"
+                android:text="SZ 601668"
+                android:textColor="@color/text_grey_999999"
+                android:textSize="@dimen/text_size_12"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_stock_price"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="5.38"
+            android:textColor="@color/stock_red_color"
+            android:textSize="@dimen/text_size_18"/>
+
+        <TextView
+            android:id="@+id/tv_float_percent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text="+0.19%"
+            android:textColor="@color/stock_red_color"
+            android:textSize="@dimen/text_size_18"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        style="@style/View.Line"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_ui"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <View style="@style/View.Line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_feedback"
+            style="@style/View.TextViewMine"
+            android:text="@string/feedback" />
+
+        <View
+            style="@style/View.Line"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:id="@+id/tv_about_us"
+            style="@style/View.TextViewMine"
+            android:text="@string/about_us" />
+
+        <View
+            style="@style/View.Line"
+            android:layout_marginLeft="16dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_version_update"
+                style="@style/View.TextViewMine"
+                android:text="版本更新"/>
+
+            <TextView
+                android:id="@+id/tv_new"
+                android:text="NEW"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:background="@drawable/circle_ff0000"
+                android:layout_marginRight="35dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
+                android:visibility="gone"/>
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_version"-->
+            <!--android:visibility="gone"-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="13sp"-->
+            <!--android:textColor="@color/text_color_message_time_grey"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:padding="15dp"-->
+            <!--android:background="@color/white"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent" />-->
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_logout"
+        style="@style/View.TextViewMine"
+        android:layout_marginTop="20dp"
+        android:drawableRight="@null"
+        android:gravity="center"
+        android:text="@string/login_out"
+        android:textColor="@color/text_orange_ff8200" />
+
+</LinearLayout>

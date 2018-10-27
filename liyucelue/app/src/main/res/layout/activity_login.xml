@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/icon_close_login"
+            android:paddingLeft="@dimen/padding_def"/>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/View.TextViewTitle"
+            android:layout_centerInParent="true"
+            android:text="@string/login"/>
+
+    </RelativeLayout>
+
+    <View style="@style/View.Line"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/icon_default_header_login" />
+
+    <com.liyuu.strategy.ui.view.MyEditText
+        android:id="@+id/edt_phone"
+        style="@style/View.EditText"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginRight="@dimen/padding_def"
+        android:layout_marginTop="40dp"
+        android:hint="@string/please_input_phone_number"
+        android:inputType="phone"
+        android:digits="@string/phone_digits"
+        android:textColor="@color/text_black_333333"
+        android:textSize="15sp"
+        android:maxLength="11"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginRight="@dimen/padding_def">
+
+        <EditText
+            android:id="@+id/edt_verification"
+            style="@style/View.EditText"
+            android:hint="@string/input_password_notify_message"
+            android:inputType="textPassword"
+            android:digits="@string/pwd_digits"
+            android:textColor="@color/text_black_333333"
+            android:textSize="15sp"
+            android:maxLength="18"/>
+
+        <ImageView
+            android:id="@+id/img_see"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:src="@mipmap/icon_edt_not_see" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_forget_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/padding_def"
+        android:paddingTop="8dp"
+        android:paddingLeft="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/forget_password_question_mark"
+        android:textColor="@color/text_orange_ff8200"
+        android:textSize="@dimen/text_size_13" />
+
+    <TextView
+        android:id="@+id/tv_Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginRight="@dimen/padding_def"
+        android:layout_marginTop="22dp"
+        android:enabled="false"
+        android:background="@drawable/selector_btn_bg_orange"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="bottom|center"
+            android:text="@string/register_msg"
+            android:textColor="@color/text_orange_ff8200"
+            android:textSize="@dimen/text_size_13"/>
+
+    </FrameLayout>
+
+</LinearLayout>

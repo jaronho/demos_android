@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="@dimen/padding_def"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_system_message_show_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_time_message"
+        android:padding="5dp"
+        android:text="1小时前"
+        android:textColor="@color/white"
+        android:textSize="11sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginRight="@dimen/padding_def"
+        android:paddingLeft="@dimen/padding_def"
+        android:layout_marginTop="@dimen/content_spacing_16"
+        android:background="@drawable/bg_item_message"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_system_message_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="@dimen/padding_def"
+            android:singleLine="true"
+            android:text="五一劳动节放假公告"
+            android:textColor="@color/text_black_333333"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_system_message_sketch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="@dimen/padding_def"
+            android:maxLines="2"
+            android:text="五一劳动节假期，阿斯顿发送到发送到阿斯顿发送到风口浪尖阿斯顿发送大方撒到发送到"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_14" />
+
+        <View
+            android:id="@+id/v_system_message_line"
+            style="@style/View.Line"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableRight="@mipmap/icon_arrow_grey_right"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="13dp"
+            android:paddingTop="13dp"
+            android:paddingRight="@dimen/padding_def"
+            android:text="查看详情"
+            android:textColor="@color/text_grey_999999"
+            android:textSize="@dimen/text_size_14" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/kline_height"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@color/white">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/linechart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/optional_2_5data_bg">
+
+        </com.github.mikephil.charting.charts.LineChart>
+
+        <TextView
+            android:id="@+id/tv_load_failed_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/sure"
+            android:textColor="@color/text_grey_979eaf"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_date"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/content_spacing_15"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/optional_1_5data_bg">
+
+        </com.github.mikephil.charting.charts.BarChart>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/white" />
+
+</LinearLayout>

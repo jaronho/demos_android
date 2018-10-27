@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="9dp"
+    android:paddingBottom="9dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/tv_settle_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/content_spacing_12"
+        android:textColor="@color/text_grey_999999"
+        android:textSize="@dimen/text_size_12"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginRight="@dimen/padding_def"
+        android:paddingTop="@dimen/content_spacing_13"
+        android:paddingBottom="14dp"
+        android:background="@drawable/bg_personal_record_item">
+
+        <LinearLayout
+            android:id="@+id/layout_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/padding_def"
+            android:paddingRight="@dimen/padding_def">
+
+            <TextView
+                android:id="@+id/tv_stock_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="先河环保"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15"/>
+
+            <TextView
+                android:id="@+id/tv_symbol"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:singleLine="true"
+                android:text="(sz 100101)"
+                android:textColor="@color/text_grey_999999"
+                android:textSize="@dimen/text_size_12"/>
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="盈利"
+                android:textColor="@color/stock_red_color"
+                android:textSize="@dimen/text_size_12"
+                android:background="@drawable/shape_personal_record_profit"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_line"
+            style="@style/View.Line"
+            android:layout_marginTop="@dimen/content_spacing_12"
+            android:layout_below="@id/layout_stock"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_def"
+            android:paddingRight="@dimen/padding_def"
+            android:layout_marginTop="@dimen/content_spacing_12"
+            android:layout_below="@id/view_line">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_total_deposit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保证金：  1000"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14"/>
+
+                <TextView
+                    android:id="@+id/tv_stock_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:text="股数：  1000"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14"/>
+
+                <TextView
+                    android:id="@+id/tv_pay_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:text="买入价：  10.00"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14"/>
+
+                <TextView
+                    android:id="@+id/tv_trading_profit_or_loss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:text="交易盈亏：  +600"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_loss_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="止损价：  9.20"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14"/>
+
+                <TextView
+                    android:id="@+id/tv_period_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:text="持有天数：  2"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14"/>
+
+                <TextView
+                    android:id="@+id/tv_sell_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:text="卖出价：  10.50"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14"/>
+
+                <TextView
+                    android:id="@+id/tv_loss_deduction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/content_spacing_10"
+                    android:text="亏损抵扣：  0"
+                    android:singleLine="true"
+                    android:textColor="@color/text_grey_666666"
+                    android:textSize="@dimen/text_size_14"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

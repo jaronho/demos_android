@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_ui"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <include layout="@layout/layout_mine_record_header" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/content_spacing_27"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginRight="@dimen/padding_def"
+        android:layout_gravity="center_horizontal"
+        android:text="历史交易记录"
+        android:textColor="@color/text_grey_666666"
+        android:textSize="@dimen/text_size_14"/>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="27dp"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:paddingLeft="@dimen/padding_def"-->
+        <!--android:paddingRight="@dimen/padding_def">-->
+
+        <!--<View style="@style/View.Line" android:layout_width="0dp" android:layout_weight="1"/>-->
+
+        <!---->
+
+        <!--<View style="@style/View.Line" android:layout_width="0dp" android:layout_weight="1"/>-->
+
+    <!--</LinearLayout>-->
+
+    <include layout="@layout/fragment_personal_record_list"/>
+
+</LinearLayout>

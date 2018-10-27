@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NumberAddSubView">
+
+        <attr name="value" format="integer"/>
+        <attr name="minValue" format="integer"/>
+        <attr name="maxValue" format="integer"/>
+        <attr name="number_background" format="reference"/>
+        <attr name="sub_background" format="reference"/>
+        <attr name="add_background" format="reference"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_ui"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/old_password"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15"/>
+
+            <com.liyuu.strategy.ui.view.MyEditText
+                android:id="@+id/edt_old_pwd"
+                style="@style/View.EditText"
+                android:layout_marginLeft="@dimen/content_spacing_10"
+                android:background="@null"
+                android:hint="@string/please_input_password"
+                android:inputType="textPassword"
+                android:paddingRight="@dimen/padding_def"
+                android:digits="@string/pwd_digits"
+                android:textColor="@color/text_black_333333"
+                android:textSize="15sp"
+                android:maxLength="18"/>
+
+        </LinearLayout>
+
+        <View style="@style/View.Line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/new_password"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15"/>
+
+            <com.liyuu.strategy.ui.view.MyEditText
+                android:id="@+id/edt_pwd"
+                style="@style/View.EditText"
+                android:layout_marginLeft="@dimen/content_spacing_10"
+                android:background="@null"
+                android:hint="@string/input_password_notify_message"
+                android:inputType="textPassword"
+                android:paddingRight="@dimen/padding_def"
+                android:digits="@string/pwd_digits"
+                android:textColor="@color/text_black_333333"
+                android:textSize="15sp"
+                android:maxLength="18"/>
+
+        </LinearLayout>
+
+        <View style="@style/View.Line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/new_password_again"
+                android:textColor="@color/text_black_333333"
+                android:textSize="@dimen/text_size_15"/>
+
+            <com.liyuu.strategy.ui.view.MyEditText
+                android:id="@+id/edt_pwd_again"
+                style="@style/View.EditText"
+                android:layout_marginLeft="@dimen/content_spacing_10"
+                android:background="@null"
+                android:hint="@string/input_password_again"
+                android:digits="@string/pwd_digits"
+                android:paddingRight="@dimen/padding_def"
+                android:inputType="textPassword"
+                android:textColor="@color/text_black_333333"
+                android:textSize="15sp"
+                android:maxLength="18"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_forget_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/padding_def"
+        android:layout_marginTop="13dp"
+        android:text="@string/forget_password_question_mark"
+        android:textColor="@color/text_orange_ff8200"
+        android:textSize="@dimen/text_size_13" />
+
+    <TextView
+        android:id="@+id/tv_edit_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="@dimen/padding_def"
+        android:layout_marginRight="@dimen/padding_def"
+        android:layout_gravity="center"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="@string/confirm"
+        android:background="@drawable/selector_btn_bg_orange"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</LinearLayout>

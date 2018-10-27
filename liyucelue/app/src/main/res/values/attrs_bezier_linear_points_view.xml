@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="linearpointsview">
+        <attr name="count" format="integer" />
+        <attr name="select_color" format="color" />
+        <attr name="unselect_color" format="color" />
+        <attr name="pointsize" format="dimension" />
+        <attr name="pointstrokewidth" format="dimension" />
+        <attr name="anim_move_duration" format="integer" />
+        <attr name="anim_reset_duration" format="integer" />
+        <attr name="anim_shake_duration" format="integer" />
+        <attr name="islooper" format="boolean" />
+        <attr name="blur_radio" format="integer" />
+    </declare-styleable>
+
+</resources>

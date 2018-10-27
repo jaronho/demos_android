@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/content_spacing_16">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingBottom="9dp"
+        android:paddingTop="9dp">
+
+        <TextView
+            android:id="@+id/tv_stock_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_message_type"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_stock_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_stock_name"
+            android:layout_marginTop="1dp"
+            android:textColor="@color/text_color_message_time_grey"
+            android:textSize="@dimen/text_size_12" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_stock_now_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="132dp"
+        android:gravity="center_vertical|right"
+        android:textColor="@color/text_color_message_type"
+        android:textSize="@dimen/text_size_16" />
+
+    <TextView
+        android:id="@+id/tv_stock_float_precent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/content_spacing_16"
+        android:textColor="@color/stock_red_color"
+        android:textSize="@dimen/text_size_16" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/line_color" />
+
+</RelativeLayout>

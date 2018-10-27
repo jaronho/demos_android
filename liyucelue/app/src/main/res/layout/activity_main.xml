@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rg_navigation_activity_main" />
+
+    <RadioGroup
+        android:id="@+id/rg_navigation_activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/r_btn_home"
+            style="@style/View.RadioButton"
+            android:drawableTop="@drawable/tab_home"
+            android:tag="首页"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/r_btn_transaction"
+            style="@style/View.RadioButton"
+            android:drawableTop="@drawable/tab_transaction"
+            android:tag="交易"
+            android:text="交易" />
+
+        <RadioButton
+            android:id="@+id/r_btn_select"
+            style="@style/View.RadioButton"
+            android:drawableTop="@drawable/tab_transaction"
+            android:tag="自选"
+            android:text="自选" />
+
+        <RadioButton
+            android:id="@+id/r_btn_mine"
+            style="@style/View.RadioButton"
+            android:drawableTop="@drawable/tab_mine"
+            android:tag="我的"
+            android:text="我的" />
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@id/rg_navigation_activity_main"
+        android:background="#dedfe8" />
+</RelativeLayout>
