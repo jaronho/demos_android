@@ -6,7 +6,7 @@
             <corners android:radius="3dp" />
             <stroke
                 android:width="1px"
-                android:color="@color/text_orange_ff8200" />
+                android:color="@color/text_gold_bea85c" />
             <padding
                 android:bottom="3dp"
                 android:left="10dp"

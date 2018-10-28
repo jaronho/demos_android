@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="50%"
-            android:textColor="@color/text_orange_ff8200"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="@dimen/text_size_13" />
 
     </LinearLayout>

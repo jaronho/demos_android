@@ -33,7 +33,7 @@ public class BuyingAdapter extends BaseRecyclerViewAdapter<TradeIndexBean.Deposi
         TextView tvPrice = holder.getTextView(R.id.tv_stock_pay_price);
         tvPrice.setText(item.getName());
         tvPrice.setBackgroundResource(item.isSelect() ? R.drawable.btn_stock_pay_select : R.drawable.btn_stock_pay_normal);
-        tvPrice.setTextColor(context.getResources().getColor(item.isSelect() ? R.color.text_orange_ff8400 : R.color.text_black_333333));
+        tvPrice.setTextColor(context.getResources().getColor(item.isSelect() ? R.color.text_gold_bea85c : R.color.text_black_333333));
     }
 
     @Override

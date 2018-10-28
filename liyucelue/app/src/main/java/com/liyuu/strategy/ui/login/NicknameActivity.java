@@ -60,7 +60,6 @@ public class NicknameActivity extends BaseActivity<NicknamePresenter> implements
         setTitle(R.string.setting_nickname);
         tvRight = ButterKnife.findById(getToolbar(), R.id.tv_right);
         tvRight.setText(R.string.store);
-        tvRight.setTextColor(getResources().getColor(R.color.text_orange_ffdc83));
         tvRight.setEnabled(false);
 
         TextWatcher watcher = new SimpleTextWatcher() {
@@ -99,11 +98,9 @@ public class NicknameActivity extends BaseActivity<NicknamePresenter> implements
 
     private void setBtnEnabled() {
         if (TextUtils.isEmpty(edtNickname.getText())) {
-            tvRight.setTextColor(getResources().getColor(R.color.text_orange_ffdc83));
             tvRight.setEnabled(false);
             return;
         }
-        tvRight.setTextColor(getResources().getColor(R.color.text_orange_ff8200));
         tvRight.setEnabled(true);
     }
 

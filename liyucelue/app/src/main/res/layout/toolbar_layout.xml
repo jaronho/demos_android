@@ -29,6 +29,7 @@
             android:id="@+id/title"
             style="@style/View.TextViewTitle"
             android:layout_gravity="center"
+            android:textColor="@color/text_gold_644a11"
             tools:text="@string/app_name" />
 
         <TextView
@@ -38,7 +39,7 @@
             android:layout_gravity="right"
             android:paddingRight="@dimen/content_spacing_16"
             android:gravity="center"
-            android:textColor="@color/text_orange_ff8200"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="16sp" />
 
     </android.support.v7.widget.Toolbar>

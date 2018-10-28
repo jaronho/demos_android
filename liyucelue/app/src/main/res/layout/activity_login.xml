@@ -20,7 +20,8 @@
             android:id="@+id/title"
             style="@style/View.TextViewTitle"
             android:layout_centerInParent="true"
-            android:text="@string/login"/>
+            android:text="@string/login"
+            android:textColor="@color/text_gold_644a11"/>
 
     </RelativeLayout>
 
@@ -83,7 +84,7 @@
         android:paddingLeft="8dp"
         android:paddingBottom="8dp"
         android:text="@string/forget_password_question_mark"
-        android:textColor="@color/text_orange_ff8200"
+        android:textColor="@color/text_gold_bea85c"
         android:textSize="@dimen/text_size_13" />
 
     <TextView
@@ -95,10 +96,10 @@
         android:layout_marginRight="@dimen/padding_def"
         android:layout_marginTop="22dp"
         android:enabled="false"
-        android:background="@drawable/selector_btn_bg_orange"
+        android:background="@drawable/selector_btn_round"
         android:gravity="center"
         android:text="@string/login"
-        android:textColor="@color/white"
+        android:textColor="@color/text_gold_60460f"
         android:textSize="17sp" />
 
     <FrameLayout
@@ -113,7 +114,7 @@
             android:layout_marginBottom="30dp"
             android:layout_gravity="bottom|center"
             android:text="@string/register_msg"
-            android:textColor="@color/text_orange_ff8200"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="@dimen/text_size_13"/>
 
     </FrameLayout>

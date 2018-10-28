@@ -61,7 +61,7 @@
         android:paddingBottom="17dp"
         android:paddingTop="17dp"
         android:text="@string/cancel"
-        android:textColor="@color/text_orange_ff8200"
+        android:textColor="@color/text_gold_bea85c"
         android:textSize="18sp" />
 
 </LinearLayout>

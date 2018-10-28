@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_17" />
 
             <TextView
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_17" />
 
             <TextView
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_17" />
 
             <TextView
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_17" />
 
             <TextView
@@ -116,10 +116,9 @@
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="3dp"
-                android:background="@mipmap/bg_go_trading"
                 android:gravity="center"
-                android:text="+ 发起交易"
-                android:textColor="@color/white"
+                android:text="发起交易"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_15" />
 
             <LinearLayout
@@ -137,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="23dp"
                     android:singleLine="true"
-                    android:textColor="@color/text_orange_f47e7e"
+                    android:textColor="@color/stock_red_color"
                     android:textSize="@dimen/text_size_17" />
 
                 <TextView
@@ -160,10 +159,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:tabIndicatorColor="@color/text_orange_ff8200"
+        app:tabIndicatorColor="@color/text_gold_bea85c"
         app:tabIndicatorHeight="2dp"
         app:tabSelectedTextColor="@color/text_black_333333"
-        app:tabTextColor="@color/text_grey_999999" />
+        app:tabTextColor="@color/text_grey_959595" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

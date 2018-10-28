@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/text_gold_644a11"
                 android:textSize="20sp"/>
 
             <TextView
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:singleLine="true"
-                android:textColor="@color/text_white_fff0e0"
+                android:textColor="@color/text_gold_644a11"
                 android:textSize="13sp"/>
 
             <LinearLayout
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_644a11"
                     android:textSize="14sp"/>
 
                 <TextView
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_644a11"
                     android:textSize="20sp"/>
 
                 <TextView
@@ -70,7 +70,7 @@
                     android:layout_marginLeft="30dp"
                     android:singleLine="true"
                     android:text="排名"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_644a11"
                     android:textSize="14sp"/>
 
                 <TextView
@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_644a11"
                     android:textSize="20sp"/>
 
             </LinearLayout>
@@ -113,7 +113,7 @@
             android:layout_marginBottom="@dimen/padding_def"
             android:gravity="center_horizontal"
             android:textColor="@color/text_grey_c8c8c8"
-            android:textSize="@dimen/text_size_14"/>
+            android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
 

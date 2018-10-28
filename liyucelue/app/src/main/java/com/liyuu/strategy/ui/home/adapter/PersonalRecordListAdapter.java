@@ -44,7 +44,7 @@ public class PersonalRecordListAdapter extends BaseRefreshAdapter<RankTradeBean>
 
         boolean status = "1".equals(item.getStatus());
         TextView tvStatus = holder.getTextView(R.id.tv_status);
-        int textColor2 = context.getResources().getColor( status? R.color.stock_red_color : R.color.stock_green_color);
+        int textColor2 = context.getResources().getColor( status? R.color.stock_red_d4453d : R.color.stock_green_8ab56a);
         tvStatus.setText(status ? "盈利" : "亏损");
         tvStatus.setBackgroundResource(
                 status ?

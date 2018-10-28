@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="《隐私政策》"
-            android:textColor="@color/text_orange_ff8200"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="12sp" />
 
         <TextView
@@ -122,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="《用户服务协议》"
-            android:textColor="@color/text_orange_ff8200"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -135,11 +135,11 @@
         android:layout_marginLeft="@dimen/padding_def"
         android:layout_marginRight="@dimen/padding_def"
         android:layout_marginTop="40dp"
-        android:background="@drawable/selector_btn_bg_orange"
+        android:background="@drawable/selector_btn_round"
         android:enabled="false"
         android:gravity="center"
         android:text="@string/register"
-        android:textColor="@color/white"
+        android:textColor="@color/text_gold_60460f"
         android:textSize="18sp" />
 
     <FrameLayout
@@ -154,7 +154,7 @@
             android:layout_marginBottom="30dp"
             android:layout_gravity="bottom|center"
             android:text="@string/login_msg"
-            android:textColor="@color/text_orange_ff8200"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="@dimen/text_size_13"/>
 
     </FrameLayout>

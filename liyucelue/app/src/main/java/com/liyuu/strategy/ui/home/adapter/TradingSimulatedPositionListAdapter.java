@@ -86,7 +86,7 @@ public class TradingSimulatedPositionListAdapter extends BaseRecyclerViewAdapter
         tvStatus.setVisibility(View.VISIBLE);
         tvStatus.setTextColor(context.getResources().getColor(R.color.text_white_ffffff));
         tvStatus.setText("1".equals(item.getSaleStatus()) ? "卖出" : "新购");
-        tvStatus.setBackgroundResource(R.drawable.selector_btn_sale);
+        tvStatus.setBackgroundResource("1".equals(item.getSaleStatus()) ? R.drawable.btn_stock_sale : R.drawable.btn_stock_newbuy);
 
         tvStatus.setOnClickListener(new View.OnClickListener() {
             @Override

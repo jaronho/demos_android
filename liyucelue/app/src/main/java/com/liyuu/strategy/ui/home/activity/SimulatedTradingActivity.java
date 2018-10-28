@@ -124,7 +124,7 @@ public class SimulatedTradingActivity extends BaseActivity<SimulatedTradingPrese
         getTextView(R.id.tv_user_margin_money).setText(data.getFreezeMoney());
         getTextView(R.id.tv_user_market_value).setText(data.getMarketPrice());
         getTextView(R.id.tv_user_profit_loss).setText(data.getProfitLoss());
-        int color = getResources().getColor(StringUtils.parseDouble(data.getProfitLoss()) >= 0 ? R.color.stock_money_up_red : R.color.stock_money_down_green);
+        int color = getResources().getColor(StringUtils.parseDouble(data.getProfitLoss()) >= 0 ? R.color.stock_red_color : R.color.stock_green_color);
         getTextView(R.id.tv_user_profit_loss).setTextColor(color);
     }
 

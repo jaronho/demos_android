@@ -60,7 +60,7 @@ public class TradingSimulatedSettlementListAdapter extends BaseRecyclerViewAdapt
         holder.getTextView(R.id.tv_stock_loss_price).setText(String.format("亏损抵扣：  %s", item.getLossMoney()));
 
         TextView tvStatus = holder.getTextView(R.id.tv_status);
-        int color = context.getResources().getColor("1".equals(item.getStatus()) ? R.color.stock_red_f16262 : R.color.stock_green_73a848);
+        int color = context.getResources().getColor("1".equals(item.getStatus()) ? R.color.stock_red_color : R.color.stock_green_color);
         int bg = "1".equals(item.getStatus()) ? R.drawable.shape_personal_record_profit : R.drawable.shape_personal_record_loss;
         String text = "1".equals(item.getStatus()) ? "盈利" : "亏损";
         tvStatus.setBackgroundResource(bg);

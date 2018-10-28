@@ -45,7 +45,7 @@
     <string name="forget_trading_password">忘记交易密码?</string>
     <string name="login">登录</string>
     <string name="register_msg">还没账号?立即注册</string>
-    <string name="login_msg">已有账号?请登录</string>
+    <string name="login_msg">已有账号? 请登录</string>
     <string name="please_input_auth_code">请输入验证码</string>
     <string name="please_input_password">请输入密码</string>
     <string name="input_password_again">请再次输入密码</string>
@@ -60,7 +60,7 @@
     <string name="pwd_sure">确认密码</string>
     <string name="nickname">昵称</string>
     <string name="nickname_hint">请输入2-6位汉字</string>
-    <string name="setting_nickname">设置昵称</string>
+    <string name="setting_nickname">修改昵称</string>
     <string name="store">保存</string>
     <string name="register">注册</string>
     <string name="five_days_profit">近5个交易日盈利榜</string>
