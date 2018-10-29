@@ -33,7 +33,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:textColor="@color/text_black_333333"
+                android:textColor="@color/text_gold_644a11"
                 android:textSize="@dimen/text_size_18" />
 
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_below="@+id/tv_stock_name"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:textColor="@color/text_black_333333"
+                android:textColor="@color/text_gold_644a11"
                 android:textSize="@dimen/text_size_11" />
 
             <!--<TextView-->
@@ -84,7 +84,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
                         android:text="--"
-                        android:textColor="@color/stock_grey_color"
+                        android:textColor="@color/stock_red_e5462d"
                         android:textSize="34sp" />
 
                     <TextView
@@ -94,7 +94,7 @@
                         android:layout_below="@+id/tv_price"
                         android:layout_marginLeft="20dp"
                         android:text="--"
-                        android:textColor="@color/stock_grey_color"
+                        android:textColor="@color/stock_green_73a848"
                         android:textSize="@dimen/text_size_16" />
 
                     <TextView
@@ -105,7 +105,7 @@
                         android:layout_marginLeft="@dimen/content_spacing_16"
                         android:layout_toRightOf="@+id/tv_float_price"
                         android:text="--"
-                        android:textColor="@color/stock_grey_color"
+                        android:textColor="@color/stock_red_e5462d"
                         android:textSize="@dimen/text_size_16" />
 
                     <TextView
@@ -169,9 +169,10 @@
                     android:background="@color/white"
                     android:overScrollMode="never"
                     android:scrollbars="none"
-                    app:tabIndicatorColor="@color/text_orange_ff8200"
+                    app:tabIndicatorColor="@color/text_gold_bea85c"
                     app:tabIndicatorHeight="2dp"
-                    app:tabSelectedTextColor="@color/text_orange_ff8200">
+                    app:tabSelectedTextColor="@color/text_gold_644a11"
+                    app:tabTextColor="@color/text_grey_666666">
 
                 </android.support.design.widget.TabLayout>
 
@@ -198,10 +199,10 @@
         android:layout_marginTop="22dp"
         android:layout_marginRight="@dimen/padding_def"
         android:layout_marginBottom="@dimen/padding_def"
-        android:background="@drawable/selector_btn_bg_orange"
+        android:background="@drawable/selector_btn_round"
         android:enabled="true"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:textColor="@color/text_gold_60460f"
         android:textSize="17sp" />
 
 

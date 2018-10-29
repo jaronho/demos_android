@@ -33,7 +33,7 @@ public class BillListAdapter extends BaseRefreshAdapter<BillListBean.ListBean> {
         Resources res = context.getResources();
         TextView tv_value = holder.getTextView(R.id.tv_value);
         if ("2".equals(item.getStatus())) {
-            int color = res.getColor(R.color.text_orange_ff8200);
+            int color = res.getColor(R.color.text_gold_bea85c);
             tv_value.setTextColor(color);
         } else {
             int color = res.getColor(R.color.text_black_333333);

@@ -14,7 +14,8 @@
             android:id="@+id/title"
             style="@style/View.TextViewTitle"
             android:layout_centerInParent="true"
-            android:text="@string/my_trading"/>
+            android:text="@string/my_trading"
+            android:textColor="@color/text_gold_644a11"/>
 
         <TextView
             android:id="@+id/tv_right"
@@ -24,7 +25,7 @@
             android:paddingRight="@dimen/content_spacing_16"
             android:text="@string/bills"
             android:gravity="center"
-            android:textColor="@color/text_orange_ff8200"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="@dimen/text_size_15" />
 
     </RelativeLayout>
@@ -54,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_bea85c"
                     android:textSize="@dimen/text_size_17"/>
 
                 <TextView
@@ -72,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="23dp"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_bea85c"
                     android:textSize="@dimen/text_size_17"/>
 
                 <TextView
@@ -99,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_bea85c"
                     android:textSize="@dimen/text_size_17"/>
 
                 <TextView
@@ -117,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="23dp"
                     android:singleLine="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_bea85c"
                     android:textSize="@dimen/text_size_17"/>
 
                 <TextView
@@ -143,10 +144,9 @@
                     android:layout_marginTop="3dp"
                     android:layout_alignParentRight="true"
                     android:gravity="center"
-                    android:text="+ 发起交易"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_15"
-                    android:background="@mipmap/bg_go_trading"/>
+                    android:text="发起交易"
+                    android:textColor="@color/text_gold_bea85c"
+                    android:textSize="@dimen/text_size_15" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -163,7 +163,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
                         android:singleLine="true"
-                        android:textColor="@color/text_orange_f47e7e"
+                        android:textColor="@color/text_gold_bea85c"
                         android:textSize="@dimen/text_size_17"/>
 
                     <TextView
@@ -190,19 +190,22 @@
             <TextView
                 android:id="@+id/tv_withdraw"
                 style="@style/View.TextViewTrading"
-                android:text="@string/withdraw"/>
+                android:text="@string/withdraw"
+                android:textColor="@color/text_gold_bea85c"/>
 
             <TextView
                 android:id="@+id/tv_recharge"
                 style="@style/View.TextViewTrading"
                 android:text="@string/recharge"
-                android:layout_marginLeft="@dimen/content_spacing_20"/>
+                android:layout_marginLeft="@dimen/content_spacing_20"
+                android:textColor="@color/text_gold_bea85c"/>
 
             <TextView
                 android:id="@+id/tv_account_manage"
                 style="@style/View.TextViewTrading"
                 android:text="@string/account_manage"
-                android:layout_marginLeft="@dimen/content_spacing_20"/>
+                android:layout_marginLeft="@dimen/content_spacing_20"
+                android:textColor="@color/text_gold_bea85c"/>
 
         </LinearLayout>
 
@@ -213,10 +216,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:tabIndicatorColor="@color/text_orange_ff8200"
+        app:tabIndicatorColor="@color/text_gold_bea85c"
         app:tabIndicatorHeight="2dp"
-        app:tabSelectedTextColor="@color/text_black_333333"
-        app:tabTextColor="@color/text_grey_999999" />
+        app:tabSelectedTextColor="@color/text_gold_644a11"
+        app:tabTextColor="@color/text_grey_666666" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

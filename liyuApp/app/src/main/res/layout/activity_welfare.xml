@@ -39,7 +39,7 @@
                         android:id="@+id/tv_stock_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:textColor="@color/text_gold_bea85c"
                         android:textSize="@dimen/text_size_18" />
 
                     <TextView
@@ -47,7 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/text_gold_bea85c"
                         android:textSize="@dimen/text_size_12" />
 
                 </LinearLayout>
@@ -63,7 +63,7 @@
                         android:id="@+id/tv_stock_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:textColor="@color/text_gold_bea85c"
                         android:textSize="@dimen/text_size_18" />
 
                     <LinearLayout
@@ -75,7 +75,7 @@
                             android:id="@+id/tv_float_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_gold_bea85c"
                             android:textSize="@dimen/text_size_12" />
 
                         <TextView
@@ -83,7 +83,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_gold_bea85c"
                             android:textSize="@dimen/text_size_12" />
 
                     </LinearLayout>
@@ -382,7 +382,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:text="￥0.00"
-                android:textColor="@color/text_orange_ff8200"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_17" />
 
         </LinearLayout>
@@ -391,7 +391,7 @@
             android:id="@+id/tv_go_pay"
             android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:background="@color/text_orange_ff8200"
+            android:background="@color/text_gold_bea85c"
             android:gravity="center"
             android:text="@string/buying"
             android:textColor="@color/white"

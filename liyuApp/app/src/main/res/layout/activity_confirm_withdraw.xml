@@ -47,7 +47,7 @@
         android:paddingLeft="8dp"
         android:paddingBottom="8dp"
         android:text="@string/forget_trading_password"
-        android:textColor="@color/text_orange_ff8200"
+        android:textColor="@color/text_gold_bea85c"
         android:textSize="@dimen/text_size_13" />
 
     <TextView
@@ -61,8 +61,8 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="@string/confirm_withdraw"
-        android:background="@drawable/selector_btn_bg_orange"
-        android:textColor="@color/white"
+        android:background="@drawable/selector_btn_round"
+        android:textColor="@color/text_gold_60460f"
         android:textSize="18sp"/>
 
 </LinearLayout>

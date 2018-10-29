@@ -164,9 +164,10 @@
                 android:background="@color/white"
                 android:overScrollMode="never"
                 android:scrollbars="none"
-                app:tabIndicatorColor="@color/text_orange_ff8200"
+                app:tabIndicatorColor="@color/text_gold_bea85c"
                 app:tabIndicatorHeight="2dp"
-                app:tabSelectedTextColor="@color/text_orange_ff8200">
+                app:tabSelectedTextColor="@color/text_gold_644a11"
+                app:tabTextColor="@color/text_grey_666666">
 
             </android.support.design.widget.TabLayout>
 

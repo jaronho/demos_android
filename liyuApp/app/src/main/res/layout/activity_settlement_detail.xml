@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/content_spacing_16"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_bea85c"
                     android:textSize="@dimen/ysf_text_size_20"/>
 
                 <TextView
@@ -44,7 +44,7 @@
                     android:paddingBottom="0dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:textColor="@color/text_white_ffecd9"
+                    android:textColor="@color/text_gold_bea85c"
                     android:textSize="@dimen/text_size_13"
                     android:background="@drawable/shape_trading_bg"/>
 
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_stock_name"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_bea85c"
                     android:textSize="@dimen/text_size_13"/>
 
                 <TextView
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/tv_stock_code"
                     android:layout_alignParentRight="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_gold_bea85c"
                     android:textSize="@dimen/text_size_13"/>
 
                 <TextView

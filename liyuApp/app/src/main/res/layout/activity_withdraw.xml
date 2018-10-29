@@ -154,8 +154,8 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="@string/next"
-        android:background="@drawable/selector_btn_bg_orange"
-        android:textColor="@color/white"
+        android:background="@drawable/selector_btn_round"
+        android:textColor="@color/text_gold_60460f"
         android:textSize="18sp"/>
 
     <TextView

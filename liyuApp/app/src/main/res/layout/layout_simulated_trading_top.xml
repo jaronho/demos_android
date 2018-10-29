@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:text="245679.00"
-            android:textColor="@color/white"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="@dimen/text_size_17"/>
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_marginTop="23dp"
             android:singleLine="true"
             android:text="1269.00"
-            android:textColor="@color/white"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="@dimen/text_size_17"/>
 
         <TextView
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:text="2456345579.00"
-            android:textColor="@color/white"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="@dimen/text_size_17"/>
 
         <TextView
@@ -83,7 +83,7 @@
             android:layout_marginTop="23dp"
             android:singleLine="true"
             android:text="1269.00"
-            android:textColor="@color/white"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="@dimen/text_size_17"/>
 
         <TextView
@@ -108,10 +108,9 @@
             android:layout_marginTop="3dp"
             android:layout_alignParentRight="true"
             android:gravity="center"
-            android:text="+ 发起交易"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_15"
-            android:background="@mipmap/bg_go_trading"/>
+            android:text="发起交易"
+            android:textColor="@color/text_gold_bea85c"
+            android:textSize="@dimen/text_size_15"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
