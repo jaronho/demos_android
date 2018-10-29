@@ -161,7 +161,7 @@
         android:background="@color/white"
         app:tabIndicatorColor="@color/text_gold_bea85c"
         app:tabIndicatorHeight="2dp"
-        app:tabSelectedTextColor="@color/text_gold_644a11"
+        app:tabSelectedTextColor="@color/text_gold_bea85c"
         app:tabTextColor="@color/text_grey_666666" />
 
     <android.support.v4.view.ViewPager
