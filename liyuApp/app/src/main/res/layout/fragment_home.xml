@@ -93,7 +93,7 @@
                 android:drawableLeft="@mipmap/tip"
                 android:drawablePadding="8dp"
                 android:text="@string/market_index"
-                android:textColor="@color/text_black_333333"
+                android:textColor="@color/text_gold_644a11"
                 android:textSize="16sp" />
 
             <android.support.v7.widget.RecyclerView
@@ -124,7 +124,7 @@
                     android:drawableLeft="@mipmap/tip"
                     android:drawablePadding="8dp"
                     android:text="@string/all_buy"
-                    android:textColor="@color/text_black_333333"
+                    android:textColor="@color/text_gold_644a11"
                     android:textSize="16sp" />
 
                 <TextView
@@ -136,7 +136,7 @@
                     android:drawableRight="@mipmap/arrow_go_trading"
                     android:drawablePadding="10dp"
                     android:text="@string/go_trading"
-                    android:textColor="@color/text_orange_ff8400"
+                    android:textColor="@color/text_gold_bea85c"
                     android:textSize="@dimen/text_size_14" />
 
             </RelativeLayout>

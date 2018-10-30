@@ -57,8 +57,8 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"
-        android:background="@drawable/selector_btn_bg_orange"
+        android:background="@drawable/selector_btn_round"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:textColor="@color/text_gold_60460f"
         android:textSize="16sp" />
 </LinearLayout>

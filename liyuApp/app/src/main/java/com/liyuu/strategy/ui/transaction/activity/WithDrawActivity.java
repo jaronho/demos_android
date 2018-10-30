@@ -149,7 +149,7 @@ public class WithDrawActivity extends BaseActivity<WithdrawPresenter> implements
     public void loadData(CashIndexBean data) {
         ImageLoader.load(App.getInstance(), data.getLogo(), iv_bank_logo, R.mipmap.ic_img_def_grey_small);
         tv_bank_info.setText(String.format("%s(尾号%s)", data.getBankName(), data.getBankNo()));
-        int color = getResources().getColor(R.color.text_orange_ff8200);
+        int color = getResources().getColor(R.color.text_orange_ff8400);
         enable_cash_money = data.getEnableCashMoney();
         StringUtils.setColorFulText(tv_can_withdraw_money, String.format("可提现%s元", enable_cash_money), enable_cash_money, color);
         cash_fee = data.getCashFee();
@@ -165,7 +165,7 @@ public class WithDrawActivity extends BaseActivity<WithdrawPresenter> implements
     }
 
     private void setFeeView(String money) {
-        int color = getResources().getColor(R.color.text_orange_ff8200);
+        int color = getResources().getColor(R.color.text_orange_ff8400);
         if (TextUtils.isEmpty(money)) {
             StringUtils.setColorFulText(tv_fee, String.format("手续费：%s元", cash_fee), cash_fee, color);
             return;

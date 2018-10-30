@@ -136,7 +136,7 @@ public class RechargeActivity extends BaseActivity<RechargePresenter> implements
         desc = data.getDesc();
         etMoney.setHint(desc);
 
-        int color = getResources().getColor(R.color.text_orange_ff8200);
+        int color = getResources().getColor(R.color.text_orange_ff8400);
         String colorText = data.getRechargeFeePer() + "%";
         String totalText = "充值手续费率" + colorText;
         StringUtils.setColorFulText(tvFeeNote, totalText, colorText, color);

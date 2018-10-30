@@ -20,7 +20,7 @@
             android:paddingBottom="@dimen/padding_def"
             android:paddingTop="@dimen/padding_def"
             android:text="@string/stock_detail"
-            android:textColor="@color/text_black_333333"
+            android:textColor="@color/text_gold_644a11"
             android:textSize="@dimen/text_size_16" />
 
         <ImageView

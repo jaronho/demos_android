@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/content_spacing_10"
-        android:textColor="#fefefe"
+        android:textColor="@color/text_gold_bea85c"
         android:textSize="@dimen/text_size_16"/>
 
     <LinearLayout
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_18"/>
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_marginTop="10dp"
                 android:singleLine="true"
                 android:text="@string/five_day_yield_rate"
-                android:textColor="@color/text_white_ffeee0"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_13"/>
 
         </LinearLayout>
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_18"/>
 
             <TextView
@@ -78,7 +78,7 @@
                 android:layout_marginTop="10dp"
                 android:singleLine="true"
                 android:text="@string/total_yield_rate"
-                android:textColor="@color/text_white_ffeee0"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_13"/>
 
         </LinearLayout>
@@ -98,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_18"/>
 
             <TextView
@@ -107,7 +107,7 @@
                 android:layout_marginTop="10dp"
                 android:singleLine="true"
                 android:text="@string/total_win_rate"
-                android:textColor="@color/text_white_ffeee0"
+                android:textColor="@color/text_gold_bea85c"
                 android:textSize="@dimen/text_size_13"/>
 
         </LinearLayout>

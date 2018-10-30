@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="确定"
-        android:textColor="@color/text_orange_ff8200"
+        android:textColor="@color/text_gold_bea85c"
         android:textSize="@dimen/text_size_15"/>
 
 </LinearLayout>

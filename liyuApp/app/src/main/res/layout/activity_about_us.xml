@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textColor="@color/text_orange_ff8200"
+            android:textColor="@color/text_orange_ff8400"
             android:textSize="18sp" />
 
         <TextView

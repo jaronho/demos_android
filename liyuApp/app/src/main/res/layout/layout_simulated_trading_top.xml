@@ -127,7 +127,7 @@
                 android:layout_marginTop="23dp"
                 android:singleLine="true"
                 android:text="1269.00"
-                android:textColor="@color/text_orange_f47e7e"
+                android:textColor="@color/stock_red_f16262"
                 android:textSize="@dimen/text_size_17"/>
 
             <TextView

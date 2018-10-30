@@ -30,7 +30,7 @@
             android:layout_alignParentRight="true"
             android:gravity="center_vertical|right"
             android:paddingRight="@dimen/padding_def"
-            android:textColor="@color/text_orange_ff8200"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="16sp"
             android:visibility="visible" />
 
