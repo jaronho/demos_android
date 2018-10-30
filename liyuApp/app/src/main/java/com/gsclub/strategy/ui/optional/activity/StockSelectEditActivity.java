@@ -60,7 +60,7 @@ public class StockSelectEditActivity extends BaseActivity<StockSelectEditPresent
     @Override
     public void initUI() {
         super.initUI();
-        setTitle(getResources().getString(R.string.mine_optiona));
+        setTitle(getResources().getString(R.string.mine_optional));
         getToolbar().setNavigationIcon(null);
         TextView tvLeft = getToolbar().findViewById(R.id.tv_left);
         tvLeft.setText(getResources().getString(R.string.finish));

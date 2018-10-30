@@ -18,19 +18,27 @@
 
     <!-- 文本字体颜色 -->
     <color name="text_color_title_white">#eff0ff</color>
+    <color name="text_black_1d0f03">#1d0f03</color>
     <color name="text_black_333333">#333333</color>
+    <color name="text_grey_373737">#373737</color>
     <color name="text_grey_979eaf">#979eaf</color>
     <color name="text_grey_c1c1c1">#c1c1c1</color>
     <color name="text_grey_c8c8c8">#c8c8c8</color>
     <color name="text_grey_b3b3b3">#b3b3b3</color>
     <color name="text_grey_bfbfbf">#bfbfbf</color>
     <color name="text_grey_999999">#999999</color>
+    <color name="text_grey_979797">#979797</color>
     <color name="text_grey_b6b6b6">#b6b6b6</color>
     <color name="text_grey_666666">#666666</color>
     <color name="text_grey_e6e6e6">#e6e6e6</color>
+    <color name="text_grey_9e9e9e">#9e9e9e</color>
+    <color name="text_grey_f8f8f7">#f8f8f7</color>
     <color name="text_gold_644a11">#644a11</color>
+    <color name="text_gold_6f5211">#6f5211</color>
     <color name="text_gold_60460f">#60460f</color>
     <color name="text_gold_bea85c">#bea85c</color>
+    <color name="text_gold_bfa956">#bfa956</color>
+    <color name="text_gold_caaa4c">#caaa4c</color>
     <color name="text_gold_c3ae7e">#c3ae7e</color>
     <color name="text_gold_cdbe9f">#cdbe9f</color>
     <color name="text_gold_d4a957">#d4a957</color>
