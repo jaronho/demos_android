@@ -135,7 +135,7 @@
  -dontwarn com.tencent.**
  -keep class com.kakao.** {*;}
  -dontwarn com.kakao.**
- -keep public class com.liyuu.hongpan.R$*{
+ -keep public class com.gsclub.hongpan.R$*{
      public static final int *;
  }
  -keep public class com.linkedin.android.mobilesdk.R$*{

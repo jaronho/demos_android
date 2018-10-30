@@ -11,7 +11,7 @@
         android:background="@color/white"
         android:gravity="center"
         android:text="@string/tab_mine"
-        android:textColor="@color/text_black_333333"
+        android:textColor="@color/text_gold_644a11"
         android:textSize="@dimen/text_size_18" />
 
     <android.support.v4.widget.NestedScrollView
@@ -34,7 +34,7 @@
                 android:paddingLeft="@dimen/padding_def"
                 android:paddingRight="@dimen/padding_def">
 
-                <com.liyuu.strategy.widget.CircleImageView
+                <com.gsclub.strategy.widget.CircleImageView
                     android:id="@+id/img_header"
                     android:layout_width="59dp"
                     android:layout_height="59dp"

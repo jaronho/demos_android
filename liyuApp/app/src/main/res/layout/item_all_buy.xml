@@ -5,7 +5,7 @@
     android:paddingBottom="12dp"
     android:background="@drawable/shape_item_all_buy_bg">
 
-    <com.liyuu.strategy.widget.CircleImageView
+    <com.gsclub.strategy.widget.CircleImageView
         android:id="@+id/iv_head"
         android:layout_width="29dp"
         android:layout_height="29dp"

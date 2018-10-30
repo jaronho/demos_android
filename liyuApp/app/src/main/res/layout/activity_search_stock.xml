@@ -21,7 +21,7 @@
             android:paddingLeft="14dp"
             android:src="@mipmap/arrow_back" />
 
-        <com.liyuu.strategy.ui.view.MyEditText
+        <com.gsclub.strategy.ui.view.MyEditText
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="29dp"

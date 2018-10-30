@@ -68,7 +68,7 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <com.liyuu.strategy.ui.view.banner.Banner
+            <com.gsclub.strategy.ui.view.banner.Banner
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                 android:paddingRight="@dimen/content_spacing_16"
                 android:paddingBottom="@dimen/content_spacing_13">
 
-                <com.liyuu.strategy.widget.CircleImageView
+                <com.gsclub.strategy.widget.CircleImageView
                     android:id="@+id/img_pay_header"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

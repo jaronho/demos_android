@@ -6,7 +6,7 @@
     android:gravity="center_horizontal"
     android:background="@mipmap/bg_personal_record">
 
-    <com.liyuu.strategy.widget.CircleImageView
+    <com.gsclub.strategy.widget.CircleImageView
         android:id="@+id/iv_head"
         android:layout_width="45dp"
         android:layout_height="45dp"

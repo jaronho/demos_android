@@ -27,7 +27,7 @@
                 android:textColor="@color/text_black_333333"
                 android:textSize="@dimen/text_size_15"/>
 
-            <com.liyuu.strategy.ui.view.MyEditText
+            <com.gsclub.strategy.ui.view.MyEditText
                 android:id="@+id/et_name"
                 style="@style/View.EditText"
                 android:layout_marginLeft="@dimen/content_spacing_10"
@@ -56,7 +56,7 @@
                 android:textColor="@color/text_black_333333"
                 android:textSize="@dimen/text_size_15"/>
 
-            <com.liyuu.strategy.ui.view.MyEditText
+            <com.gsclub.strategy.ui.view.MyEditText
                 android:id="@+id/et_id"
                 style="@style/View.EditText"
                 android:layout_marginLeft="@dimen/content_spacing_10"
@@ -88,7 +88,7 @@
             android:textColor="@color/text_black_333333"
             android:textSize="@dimen/text_size_15"/>
 
-        <com.liyuu.strategy.ui.view.MyEditText
+        <com.gsclub.strategy.ui.view.MyEditText
             android:id="@+id/et_bank_card"
             style="@style/View.EditText"
             android:layout_marginLeft="@dimen/content_spacing_10"
@@ -148,7 +148,7 @@
             android:textColor="@color/text_black_333333"
             android:textSize="@dimen/text_size_15"/>
 
-        <com.liyuu.strategy.ui.view.MyEditText
+        <com.gsclub.strategy.ui.view.MyEditText
             android:id="@+id/et_reserved_phone"
             style="@style/View.EditText"
             android:layout_marginLeft="@dimen/content_spacing_10"

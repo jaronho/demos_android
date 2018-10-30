@@ -176,13 +176,13 @@
 
                 </android.support.design.widget.TabLayout>
 
-                <com.liyuu.strategy.ui.view.NoScrollViewPager
+                <com.gsclub.strategy.ui.view.NoScrollViewPager
                     android:id="@+id/vp_content"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/kline_height"
                     android:fadingEdge="none">
 
-                </com.liyuu.strategy.ui.view.NoScrollViewPager>
+                </com.gsclub.strategy.ui.view.NoScrollViewPager>
 
             </LinearLayout>
 

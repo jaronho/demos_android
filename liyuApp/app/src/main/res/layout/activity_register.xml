@@ -9,7 +9,7 @@
 
     <View style="@style/View.Line"/>
 
-    <com.liyuu.strategy.ui.view.MyEditText
+    <com.gsclub.strategy.ui.view.MyEditText
         android:id="@+id/edt_phone"
         style="@style/View.EditText"
         android:layout_marginLeft="@dimen/padding_def"

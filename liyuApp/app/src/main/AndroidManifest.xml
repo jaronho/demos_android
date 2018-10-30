@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.liyuu.strategy">
+    package="com.gsclub.strategy">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -52,7 +52,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.NoBackgroundAndTitleMain">
             <intent-filter>
-                <action android:name="com.liyuu.strategy.ui.MainActivity" />
+                <action android:name="com.gsclub.strategy.ui.MainActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -81,10 +81,10 @@
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.liyuu.strategy.android.intent.NOTIFICATION_OPENED" /> <!-- Required  用户注册SDK的intent -->
-                <action android:name="com.liyuu.strategy.android.intent.NOTIFICATION_CLICKED_RESULT" /> <!-- 通知被点开未重启应用 -->
-                <action android:name="com.liyuu.strategy.android.intent.NOTIFICATION_CLICKED_RESULT_RESTART" /> <!-- 通知被点开时重启应用 -->
-                <action android:name="com.liyuu.strategy.android.intent.SPLASH_STARTED" /> <!-- 启动页启动完毕intent -->
+                <action android:name="com.gsclub.strategy.android.intent.NOTIFICATION_OPENED" /> <!-- Required  用户注册SDK的intent -->
+                <action android:name="com.gsclub.strategy.android.intent.NOTIFICATION_CLICKED_RESULT" /> <!-- 通知被点开未重启应用 -->
+                <action android:name="com.gsclub.strategy.android.intent.NOTIFICATION_CLICKED_RESULT_RESTART" /> <!-- 通知被点开时重启应用 -->
+                <action android:name="com.gsclub.strategy.android.intent.SPLASH_STARTED" /> <!-- 启动页启动完毕intent -->
             </intent-filter>
         </receiver>
 
@@ -127,7 +127,7 @@
                 <action android:name="com.meizu.c2dm.intent.REGISTRATION" />
                 <action android:name="com.meizu.c2dm.intent.RECEIVE" />
 
-                <category android:name="com.liyuu.strategy" />
+                <category android:name="com.gsclub.strategy" />
             </intent-filter>
         </receiver>
 
@@ -225,7 +225,7 @@
             android:name=".ui.transaction.activity.SettlementDetailActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="liyuu.strategy.intent.SettlementDetailActivity" />
+                <action android:name="gsclub.strategy.intent.SettlementDetailActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -233,7 +233,7 @@
             android:name=".ui.transaction.activity.PositionDetailActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="com.liyuu.strategy.ui.transaction.activity.SettlementDetailActivity" />
+                <action android:name="com.gsclub.strategy.ui.transaction.activity.SettlementDetailActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

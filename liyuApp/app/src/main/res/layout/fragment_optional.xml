@@ -35,7 +35,7 @@
             android:gravity="center"
             android:singleLine="true"
             android:text="@string/mine_optional"
-            android:textColor="@color/text_black_333333"
+            android:textColor="@color/text_gold_644a11"
             android:textSize="@dimen/text_size_18" />
 
         <TextView

@@ -154,7 +154,7 @@
 
     </LinearLayout>
 
-    <com.liyuu.strategy.ui.view.CustomTabLayout
+    <com.gsclub.strategy.ui.view.CustomTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

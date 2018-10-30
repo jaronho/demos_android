@@ -14,7 +14,7 @@
         android:textColor="@color/text_grey_999999"
         android:textSize="15sp" />
 
-    <com.liyuu.strategy.widget.CircleImageView
+    <com.gsclub.strategy.widget.CircleImageView
         android:id="@+id/iv_head"
         android:layout_width="39dp"
         android:layout_height="39dp"

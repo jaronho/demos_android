@@ -216,7 +216,6 @@
     <string name="all_item_select">全选</string>
     <string name="delete">删除</string>
     <string name="cancle_all_select">取消全选</string>
-    <string name="mine_select">我的自选</string>
     <string name="finish">完成</string>
 
 </resources>

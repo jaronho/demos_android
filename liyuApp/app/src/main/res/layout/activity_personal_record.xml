@@ -14,7 +14,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <com.liyuu.strategy.widget.CircleImageView
+        <com.gsclub.strategy.widget.CircleImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginTop="23dp"
@@ -124,7 +124,7 @@
 
     </LinearLayout>
 
-    <com.liyuu.strategy.ui.view.CustomTabLayout
+    <com.gsclub.strategy.ui.view.CustomTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

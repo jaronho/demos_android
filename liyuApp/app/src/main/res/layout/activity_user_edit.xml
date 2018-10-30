@@ -29,7 +29,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/header"/>
 
-            <com.liyuu.strategy.widget.CircleImageView
+            <com.gsclub.strategy.widget.CircleImageView
                 android:id="@+id/iv_head"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
