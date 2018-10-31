@@ -165,7 +165,7 @@ public class BuyingActivity extends BaseActivity<BuyingPresenter>
         llStcokBg.setBackgroundColor(colorbg);
 
         int dTColor = getResources().getColor(
-                operator == 0.f ? R.color.text_orange_ff8400 : R.color.text_white_ffffff);
+                operator == 0.f ? R.color.text_gold_bea85c : R.color.text_white_ffffff);
         tvStockDetail.setTextColor(dTColor);
 
         Drawable leftDrawable = getResources().getDrawable(

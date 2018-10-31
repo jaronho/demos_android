@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:textColor="@color/text_orange_ff8400"
+            android:textColor="@color/text_gold_bea85c"
             android:textSize="@dimen/text_size_14" />
 
 

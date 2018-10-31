@@ -38,7 +38,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_black_333333"
-                    android:textSize="@dimen/text_size_16"/>
+                    android:textSize="@dimen/text_size_16"
+                    android:text="中国建设银行(尾号9643)"/>
 
                 <TextView
                     android:id="@+id/tv_can_withdraw_money"
@@ -46,7 +47,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/text_grey_666666"
-                    android:textSize="@dimen/text_size_13"/>
+                    android:textSize="@dimen/text_size_13"
+                    android:text="可提现654.00元"/>
 
             </LinearLayout>
 
@@ -129,7 +131,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textColor="@color/text_black_333333"
-                android:textSize="@dimen/text_size_13"/>
+                android:textSize="@dimen/text_size_13"
+                android:text="手续费: 2元"/>
 
             <TextView
                 android:id="@+id/tv_fee_tip"
@@ -137,7 +140,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/text_grey_999999"
-                android:textSize="@dimen/text_size_13"/>
+                android:textSize="@dimen/text_size_13"
+                android:text="(提现手续费2元/笔, 由支付通道收取)"/>
 
         </LinearLayout>
 
@@ -166,6 +170,8 @@
         android:paddingRight="@dimen/padding_def"
         android:layout_marginTop="@dimen/content_spacing_13"
         android:textColor="@color/text_grey_666666"
-        android:textSize="@dimen/text_size_13"/>
+        android:textSize="@dimen/text_size_13"
+        android:text="1、提现金额=账户余额-不可提现金额, 当日充值金额次日方可提现
+2、15:00前预计次日到账, 15:00后提现预计T+2日到账, 具体以银行到账时间为准"/>
 
 </LinearLayout>

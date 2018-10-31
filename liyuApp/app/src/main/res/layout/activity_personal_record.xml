@@ -26,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/content_spacing_10"
             android:textColor="@color/text_gold_644a11"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_16"
+            android:text="好运来"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +50,8 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textColor="@color/text_gold_644a11"
-                    android:textSize="@dimen/text_size_18" />
+                    android:textSize="@dimen/text_size_18"
+                    android:text="+10.00%"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,7 +80,8 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textColor="@color/text_gold_644a11"
-                    android:textSize="@dimen/text_size_18" />
+                    android:textSize="@dimen/text_size_18"
+                    android:text="+10.00%"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,7 +110,8 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textColor="@color/text_gold_644a11"
-                    android:textSize="@dimen/text_size_18" />
+                    android:textSize="@dimen/text_size_18"
+                    android:text="+5.00%"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -131,8 +135,8 @@
         android:background="@color/white"
         app:tabIndicatorColor="@color/text_gold_bea85c"
         app:tabIndicatorHeight="2dp"
-        app:tabSelectedTextColor="@color/text_gold_bea85c"
-        app:tabTextColor="@color/text_grey_666666" />
+        app:tabSelectedTextColor="@color/text_gold_644a11"
+        app:tabTextColor="@color/text_grey_999999" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

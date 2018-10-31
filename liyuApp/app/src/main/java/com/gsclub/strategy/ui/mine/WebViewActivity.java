@@ -122,7 +122,7 @@ public class WebViewActivity extends BaseActivity<WebviewPresenter> implements W
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
                 setTitle(title);
-                mCloseTv.setVisibility(mWebView.canGoBack() ? View.VISIBLE : View.GONE);
+//                mCloseTv.setVisibility(mWebView.canGoBack() ? View.VISIBLE : View.GONE);
             }
 
             @Override

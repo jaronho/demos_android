@@ -47,10 +47,10 @@ public class StockUtils {
 
     private static void drawStockColor(Context context, double f, TextView tv) {
         if (f > 0.f) {
-            tv.setTextColor(context.getResources().getColor(R.color.stock_red_e5462d));
+            tv.setTextColor(context.getResources().getColor(R.color.stock_red_d64438));
         } else if (f < 0.f) {
             //负数自带符号
-            tv.setTextColor(context.getResources().getColor(R.color.stock_green_73a848));
+            tv.setTextColor(context.getResources().getColor(R.color.stock_green_71a942));
         } else if (Double.isNaN(f)) {
             tv.setText("--");
         } else {

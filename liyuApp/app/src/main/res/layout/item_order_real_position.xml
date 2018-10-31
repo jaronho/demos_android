@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/content_spacing_12"
         android:textColor="@color/text_grey_999999"
-        android:textSize="@dimen/text_size_12" />
+        android:textSize="@dimen/text_size_12"
+        android:text="结算: 2018.06.20 10:10"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -37,8 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/text_black_333333"
-                android:textSize="@dimen/text_size_15" />
+                android:textColor="@color/text_gold_644a11"
+                android:textSize="@dimen/text_size_15"
+                android:text="先河环保"/>
 
             <TextView
                 android:id="@+id/tv_symbol"
@@ -48,14 +50,16 @@
                 android:layout_weight="1"
                 android:singleLine="true"
                 android:textColor="@color/text_grey_999999"
-                android:textSize="@dimen/text_size_12" />
+                android:textSize="@dimen/text_size_12"
+                android:text="(sz 100101)"/>
 
             <TextView
                 android:id="@+id/tv_status"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/text_size_12" />
+                android:gravity="center"
+                android:textSize="@dimen/text_size_12"
+                android:text="卖出"/>
 
         </LinearLayout>
 
@@ -85,7 +89,8 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textColor="@color/text_grey_666666"
-                    android:textSize="@dimen/text_size_14" />
+                    android:textSize="@dimen/text_size_14"
+                    android:text="保证金: 1000"/>
 
                 <TextView
                     android:id="@+id/tv_stock_buy_price"
@@ -94,7 +99,8 @@
                     android:layout_marginTop="@dimen/content_spacing_10"
                     android:singleLine="true"
                     android:textColor="@color/text_grey_666666"
-                    android:textSize="@dimen/text_size_14" />
+                    android:textSize="@dimen/text_size_14"
+                    android:text="买入价: 10.00"/>
 
                 <TextView
                     android:id="@+id/tv_stock_now_price"
@@ -103,7 +109,8 @@
                     android:layout_marginTop="@dimen/content_spacing_10"
                     android:singleLine="true"
                     android:textColor="@color/text_grey_666666"
-                    android:textSize="@dimen/text_size_14" />
+                    android:textSize="@dimen/text_size_14"
+                    android:text="现价: 10.00"/>
 
                 <TextView
                     android:id="@+id/tv_stock_float_precent"
@@ -112,7 +119,8 @@
                     android:layout_marginTop="@dimen/content_spacing_10"
                     android:singleLine="true"
                     android:textColor="@color/text_grey_666666"
-                    android:textSize="@dimen/text_size_14" />
+                    android:textSize="@dimen/text_size_14"
+                    android:text="涨跌幅: -0.37%"/>
 
             </LinearLayout>
 
@@ -128,7 +136,8 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textColor="@color/text_grey_666666"
-                    android:textSize="@dimen/text_size_14" />
+                    android:textSize="@dimen/text_size_14"
+                    android:text="止损价: 9.20"/>
 
                 <TextView
                     android:id="@+id/tv_stock_number"
@@ -137,7 +146,8 @@
                     android:layout_marginTop="@dimen/content_spacing_10"
                     android:singleLine="true"
                     android:textColor="@color/text_grey_666666"
-                    android:textSize="@dimen/text_size_14" />
+                    android:textSize="@dimen/text_size_14"
+                    android:text="股数: 3700"/>
 
                 <TextView
                     android:id="@+id/tv_stock_market_money"
@@ -146,7 +156,8 @@
                     android:layout_marginTop="@dimen/content_spacing_10"
                     android:singleLine="true"
                     android:textColor="@color/text_grey_666666"
-                    android:textSize="@dimen/text_size_14" />
+                    android:textSize="@dimen/text_size_14"
+                    android:text="市值: 39759.00"/>
 
                 <TextView
                     android:id="@+id/tv_stock_price_float"
@@ -155,7 +166,8 @@
                     android:layout_marginTop="@dimen/content_spacing_10"
                     android:singleLine="true"
                     android:textColor="@color/text_grey_666666"
-                    android:textSize="@dimen/text_size_14" />
+                    android:textSize="@dimen/text_size_14"
+                    android:text="浮动盈亏: -148.00"/>
 
             </LinearLayout>
 

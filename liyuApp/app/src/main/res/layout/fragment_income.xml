@@ -30,7 +30,8 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:textColor="@color/text_gold_644a11"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:text="近5个交易日收益率榜"/>
 
             <TextView
                 android:id="@+id/tv_time_interval"
@@ -39,7 +40,8 @@
                 android:layout_marginTop="3dp"
                 android:singleLine="true"
                 android:textColor="@color/text_gold_644a11"
-                android:textSize="13sp"/>
+                android:textSize="13sp"
+                android:text="2018-10-24 - 2018-10-31"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +55,8 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textColor="@color/text_gold_644a11"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:text="我的收益率"/>
 
                 <TextView
                     android:id="@+id/tv_user_profit"
@@ -62,7 +65,8 @@
                     android:layout_marginLeft="10dp"
                     android:singleLine="true"
                     android:textColor="@color/text_gold_644a11"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:text="-4.00%"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -80,7 +84,8 @@
                     android:layout_marginLeft="10dp"
                     android:singleLine="true"
                     android:textColor="@color/text_gold_644a11"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:text="16名"/>
 
             </LinearLayout>
 
@@ -113,7 +118,8 @@
             android:layout_marginBottom="@dimen/padding_def"
             android:gravity="center_horizontal"
             android:textColor="@color/text_grey_c8c8c8"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_14"
+            android:text="交易日16:00更新"/>
 
     </LinearLayout>
 

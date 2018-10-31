@@ -12,7 +12,8 @@
         android:drawableLeft="@mipmap/icon_income_first"
         android:gravity="center_vertical"
         android:textColor="@color/text_grey_999999"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:text="4"/>
 
     <com.gsclub.strategy.widget.CircleImageView
         android:id="@+id/iv_head"
