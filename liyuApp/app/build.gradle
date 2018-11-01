@@ -115,11 +115,11 @@ android {
         if (name == 'dev') {
             flavor.manifestPlaceholders = [
                     UMENG_CHANNEL_VALUE: name,
-                    UMENG_KEY          : "5bad8992f1f5563f04000190",
-                    A_MAP_KEY          : "d874b816868b52005af6d46cf0478e50",
-                    XG_ACCESS_ID       : "2100308024",
-                    XG_ACCESS_KEY      : "A68988DALKWV",
-                    HW_APPID           : "10577734"
+                    UMENG_KEY          : "5bdaf9eaf1f556fbc9000121",
+                    A_MAP_KEY          : "fd0f82753df2d4d581343822bbca2537",
+                    XG_ACCESS_ID       : "2100316204",
+                    XG_ACCESS_KEY      : "A213DHT5M9WB",
+                    HW_APPID           : "0697ecb6f65e1"
             ]
         } else {
             flavor.manifestPlaceholders = [
