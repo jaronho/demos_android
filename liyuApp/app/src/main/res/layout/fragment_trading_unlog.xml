@@ -12,7 +12,8 @@
         android:layout_height="@dimen/toolbar_height"
         android:gravity="center"
         android:text="@string/my_trading"
-        android:background="@color/white"/>
+        android:background="@color/white"
+        android:textColor="@color/text_gold_644a11"/>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nsv_trading"

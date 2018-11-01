@@ -163,6 +163,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
         titleView.setText(title);
     }
 
+    @Override
+    public void setTitleColor(int colorId) {
+        TextView titleView = ButterKnife.findById(this, R.id.title);
+        titleView.setTextColor(getResources().getColor(colorId));
+    }
+
     protected abstract void initInject();
 
     /**

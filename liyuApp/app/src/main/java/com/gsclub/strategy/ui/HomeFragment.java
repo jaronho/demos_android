@@ -204,7 +204,7 @@ public class HomeFragment extends BaseFragment<HomePresenter>
 
             @Override
             public void bindImage(ImageView imageView, BannerBean bannerModel) {
-                ImageLoader.loadBanner(App.getInstance(), bannerModel.getImgUrl(), 10, imageView);
+                ImageLoader.loadBanner(App.getInstance(), bannerModel.getImgUrl(), 0, imageView);
             }
         };
 
@@ -214,7 +214,7 @@ public class HomeFragment extends BaseFragment<HomePresenter>
                 mPresenter.bannerOnclick(getActivity(), banners.get(position));
             }
         });
-        banner.getLayoutParams().height = (int) ((ScreenUtil.getScreen(getActivity(), ScreenCode.WIDTH)-ScreenUtil.dp2px(getActivity(), 30)) *3/7);
+        banner.getLayoutParams().height = (int) (ScreenUtil.getScreen(getActivity(), ScreenCode.WIDTH) *3/7);
         banner.setBannerAdapter(adapter);
         banner.notifyDataHasChanged();
     }

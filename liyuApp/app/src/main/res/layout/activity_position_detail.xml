@@ -47,7 +47,8 @@
                         android:paddingRight="5dp"
                         android:paddingTop="0dp"
                         android:textColor="@color/text_white_ffecd9"
-                        android:textSize="@dimen/text_size_13" />
+                        android:textSize="@dimen/text_size_13"
+                        android:text="T+1"/>
 
                     <View
                         android:layout_width="1px"
@@ -302,12 +303,12 @@
                         android:layout_width="40dp"
                         android:layout_height="20dp"
                         android:layout_marginRight="@dimen/padding_def"
-                        android:background="@drawable/bg_yellow_stroke_shape"
+                        android:background="@drawable/shape_trading_bg"
                         android:gravity="center"
                         android:text="修改"
                         android:textColor="@color/text_gold_bea85c"
                         android:textSize="@dimen/text_size_13"
-                        android:visibility="gone"/>
+                        android:visibility="visible"/>
 
                 </LinearLayout>
 

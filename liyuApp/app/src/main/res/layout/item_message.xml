@@ -20,7 +20,7 @@
         android:layout_toRightOf="@+id/img_message_type"
         android:singleLine="true"
         android:text="公告消息"
-        android:textColor="@color/text_gold_bea85c"
+        android:textColor="@color/text_gold_644a11"
         android:textSize="16sp" />
 
     <TextView

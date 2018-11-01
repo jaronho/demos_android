@@ -50,6 +50,7 @@ public class MessageActivity extends BaseActivity<MessagePresenter>
     public void initUI() {
         super.initUI();
         setTitle(getString(R.string.message));
+        setTitleColor(R.color.text_black_333333);
         refreshLayout.setOnRefreshListener(this);
         rcvContent.setLayoutManager(new LinearLayoutManager(this));
         rcvContent.setHasFixedSize(true);

@@ -436,7 +436,8 @@ public class Banner extends RelativeLayout {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            RoundImageView view = new RoundImageView(mContext);
+//            RoundImageView view = new RoundImageView(mContext);
+            ImageView view = new ImageView(mContext);
             view.setScaleType(ImageView.ScaleType.CENTER_CROP);
 //            view.setScaleType(ImageView.ScaleType.FIT_CENTER);
             mBannerAdapter.setImageViewSource(view, position);

@@ -33,7 +33,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="0dp"
                     android:gravity="center"
-                    app:banner_ViewPager_padding="@dimen/padding_def"
+                    app:banner_ViewPager_padding="0dp"
                     app:banner_pointWidth="4dp"/>
 
                 <LinearLayout
