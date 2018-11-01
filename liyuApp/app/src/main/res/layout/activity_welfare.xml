@@ -40,7 +40,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_gold_bea85c"
-                        android:textSize="@dimen/text_size_18" />
+                        android:textSize="@dimen/text_size_18"
+                        android:text="先河环保"/>
 
                     <TextView
                         android:id="@+id/tv_stock_symbol"
@@ -48,7 +49,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/text_gold_bea85c"
-                        android:textSize="@dimen/text_size_12" />
+                        android:textSize="@dimen/text_size_12"
+                        android:text="000005.SZ"/>
 
                 </LinearLayout>
 
@@ -64,7 +66,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_gold_bea85c"
-                        android:textSize="@dimen/text_size_18" />
+                        android:textSize="@dimen/text_size_18"
+                        android:text="3433.18"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -76,7 +79,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/text_gold_bea85c"
-                            android:textSize="@dimen/text_size_12" />
+                            android:textSize="@dimen/text_size_12"
+                            android:text="-5.01"/>
 
                         <TextView
                             android:id="@+id/tv_float_percent"
@@ -84,7 +88,8 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp"
                             android:textColor="@color/text_gold_bea85c"
-                            android:textSize="@dimen/text_size_12" />
+                            android:textSize="@dimen/text_size_12"
+                            android:text="+0.13%"/>
 
                     </LinearLayout>
 

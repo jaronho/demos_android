@@ -1,5 +1,7 @@
 package com.gsclub.strategy.presenter.transaction;
 
+import android.util.Log;
+
 import com.gsclub.strategy.app.SPKeys;
 import com.gsclub.strategy.app.UrlConfig;
 import com.gsclub.strategy.base.RxPresenter;
@@ -36,6 +38,7 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
             public void onNext(Object o) {
                 super.onNext(o);
                 try {
+                    Log.i("AAAAA", GsonUtil.toString(o));
                     JSONObject obj = new JSONObject(GsonUtil.toString(o));
                     PreferenceUtils.put(SPKeys.FILE_COMMON, SPKeys.ACTIVITY_STATUS, obj.optInt("activity_status"));
                     PreferenceUtils.put(SPKeys.FILE_COMMON, SPKeys.JUMP_URL, obj.optString("jumpurl"));
@@ -71,6 +74,7 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
         post(false, mDataManager.fetchLoginInfo(url, params), new CommonSubscriber<UserIndexBean>(mView, url) {
             @Override
             public void onNext(UserIndexBean data) {
+                Log.i("AAAAA", data.toString());
                 super.onNext(data);
                 if (data == null) return;
                 mDataManager.setUserInfo(data);

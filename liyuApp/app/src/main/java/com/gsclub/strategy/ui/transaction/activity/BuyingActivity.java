@@ -149,34 +149,8 @@ public class BuyingActivity extends BaseActivity<BuyingPresenter>
         tvFloatPrecent.setText(String.format("%s%s%s", operatorString, pxchangeRate, "%"));
         tvFloatPrecent.setTextColor(colorOne);
 
-        int colorTwo = getResources().getColor(
-                operator == 0.f ?
-                        R.color.text_grey_666666 : R.color.text_white_ffffff);
         tvStockName.setText(stockName);
-        tvStockName.setTextColor(colorTwo);
         tvStockPrice.setText(lastPrice);
-        tvStockPrice.setTextColor(colorTwo);
-
-        int colorbg = getResources().getColor(R.color.bg_gray_d9d9d9);
-        if (operator > 0.f)
-            colorbg = getResources().getColor(R.color.bg_red_f64752);
-        else if (operator < 0.f)
-            colorbg = getResources().getColor(R.color.bg_green_00ba6a);
-        llStcokBg.setBackgroundColor(colorbg);
-
-        int dTColor = getResources().getColor(
-                operator == 0.f ? R.color.text_gold_bea85c : R.color.text_white_ffffff);
-        tvStockDetail.setTextColor(dTColor);
-
-        Drawable leftDrawable = getResources().getDrawable(
-                operator == 0.f ?
-                        R.mipmap.icon_stock_detail_orange : R.mipmap.icon_stock_detail_white);
-        tvStockDetail.setCompoundDrawablesWithIntrinsicBounds(leftDrawable, null, null, null);
-        tvStockDetail.setCompoundDrawablePadding(ScreenUtil.dip2px(this, 6));
-
-        int bg = operator == 0.f ?
-                R.drawable.bg_white_stock_detail_shape : R.drawable.bg_transparent_stock_detail_shape;
-        tvStockDetail.setBackgroundResource(bg);
     }
 
     @Override

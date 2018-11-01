@@ -42,7 +42,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_gold_bea85c"
-                        android:textSize="@dimen/text_size_18" />
+                        android:textSize="@dimen/text_size_18"
+                        android:text="先河环保"/>
 
                     <TextView
                         android:id="@+id/tv_stock_symbol"
@@ -50,7 +51,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/text_gold_bea85c"
-                        android:textSize="@dimen/text_size_12" />
+                        android:textSize="@dimen/text_size_12"
+                        android:text="sz 100101"/>
 
                 </LinearLayout>
 
@@ -66,7 +68,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_gold_bea85c"
-                        android:textSize="@dimen/text_size_18" />
+                        android:textSize="@dimen/text_size_18"
+                        android:text="3433.18"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -78,7 +81,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/text_gold_bea85c"
-                            android:textSize="@dimen/text_size_12" />
+                            android:textSize="@dimen/text_size_12"
+                            android:text="-5.01"/>
 
                         <TextView
                             android:id="@+id/tv_float_precent"
@@ -86,7 +90,8 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp"
                             android:textColor="@color/text_gold_bea85c"
-                            android:textSize="@dimen/text_size_12" />
+                            android:textSize="@dimen/text_size_12"
+                            android:text="+0.13%"/>
 
                     </LinearLayout>
 
@@ -96,11 +101,14 @@
                     android:id="@+id/tv_stock_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_transparent_stock_detail_shape"
+                    android:drawableLeft="@mipmap/icon_stock_detail_white"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="@dimen/padding_def"
                     android:drawablePadding="6dp"
                     android:gravity="center_vertical"
                     android:paddingLeft="13dp"
+                    android:textColor="@color/white"
                     android:text="@string/stock_detail"
                     android:textSize="@dimen/text_size_13" />
 

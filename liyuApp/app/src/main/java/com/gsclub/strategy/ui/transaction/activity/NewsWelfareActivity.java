@@ -173,8 +173,6 @@ public class NewsWelfareActivity extends BaseActivity<NewsWelfarePresenter>
         tvStockPrice.setText(stockPrice);
         tvFloatPrice.setText(String.format("%s%s", StringUtils.parseDouble(price) >= 0 ? "+" : "", price));
         tvFloatPercent.setText(String.format("%s%s%s", StringUtils.parseDouble(pricePercent) >= 0 ? "+" : "", pricePercent, "%"));
-        int color = getResources().getColor(StringUtils.parseDouble(price) >= 0 ? R.color.stock_red_color : R.color.bg_green_00ba6a);
-        layoutStock.setBackgroundColor(color);
     }
 
     @Override
