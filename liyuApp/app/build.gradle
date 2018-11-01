@@ -30,7 +30,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.szks.lycelue"
+        applicationId "com.gsclub.strategy"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1

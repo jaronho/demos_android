@@ -23,5 +23,5 @@ public interface AppConfig {
     /**
      * androidManifest 中配置的authorities
      */
-    String AUTHROES = "com.szks.lycelue.fileprovider";
+    String AUTHROES = "com.gsclub.strategy.fileprovider";
 }
