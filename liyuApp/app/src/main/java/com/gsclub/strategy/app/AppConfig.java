@@ -5,6 +5,7 @@ import com.gsclub.strategy.BuildConfig;
 public interface AppConfig {
 
     String DOMAIN = BuildConfig.ENV_DEBUG ? "huijindou.com" : "huijindou.com";
+//    String DOMAIN = BuildConfig.ENV_DEBUG ? "gushenclub.com" : "gushenclub.com";
     String API_IP = "http://api." + DOMAIN;
     //    String API_IP = "http://118.31.18.180:80";
     //    String API_IP = "https://api." + DOMAIN;
