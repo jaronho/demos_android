@@ -40,8 +40,7 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                 try {
                     Log.i("AAAAA", GsonUtil.toString(o));
                     JSONObject obj = new JSONObject(GsonUtil.toString(o));
-//                    PreferenceUtils.put(SPKeys.FILE_COMMON, SPKeys.ACTIVITY_STATUS, obj.optInt("activity_status"));
-                    PreferenceUtils.put(SPKeys.FILE_COMMON, SPKeys.ACTIVITY_STATUS, 2);
+                    PreferenceUtils.put(SPKeys.FILE_COMMON, SPKeys.ACTIVITY_STATUS, obj.optInt("activity_status"));
                     PreferenceUtils.put(SPKeys.FILE_COMMON, SPKeys.JUMP_URL, obj.optString("jumpurl"));
                 } catch (JSONException e) {
                     e.printStackTrace();

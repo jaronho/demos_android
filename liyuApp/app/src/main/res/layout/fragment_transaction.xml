@@ -137,13 +137,13 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <ImageView
+                <pl.droidsonroids.gif.GifImageView
                     android:id="@+id/tv_go_trading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:layout_alignParentRight="true"
-                    android:background="@mipmap/bg_go_trading" />
+                    android:src="@mipmap/bg_go_trading" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
