@@ -27,7 +27,7 @@
                 android:id="@+id/ll_stock_bg"
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
-                android:background="@color/bg_key_white"
+                android:background="@mipmap/bgn"
                 android:gravity="center_vertical">
 
                 <LinearLayout
@@ -108,6 +108,7 @@
                     android:drawablePadding="6dp"
                     android:gravity="center_vertical"
                     android:paddingLeft="13dp"
+                    android:paddingRight="13dp"
                     android:textColor="@color/white"
                     android:text="@string/stock_detail"
                     android:textSize="@dimen/text_size_13" />

@@ -134,20 +134,13 @@ public class BuyingActivity extends BaseActivity<BuyingPresenter>
     }
 
     private void setHeaderStockPlate(String symbol, String stockName, String lastPrice, String pxChange, String pxchangeRate, double operator) {
-        int colorOne = getResources().getColor(
-                operator == 0.f ?
-                        R.color.text_grey_999999 : R.color.text_white_ffffff);
-
         String operatorString = "";
         if (operator > 0.f)
             operatorString = "+";
 
         tvStockSymbol.setText(symbol);
-        tvStockSymbol.setTextColor(colorOne);
         tvFloatPrice.setText(String.format("%s%s", operatorString, pxChange));
-        tvFloatPrice.setTextColor(colorOne);
         tvFloatPrecent.setText(String.format("%s%s%s", operatorString, pxchangeRate, "%"));
-        tvFloatPrecent.setTextColor(colorOne);
 
         tvStockName.setText(stockName);
         tvStockPrice.setText(lastPrice);

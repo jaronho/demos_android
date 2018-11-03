@@ -1,6 +1,7 @@
 package com.gsclub.strategy.http;
 
 import android.os.Build;
+import android.util.Log;
 
 import com.gsclub.strategy.BuildConfig;
 import com.gsclub.strategy.app.App;

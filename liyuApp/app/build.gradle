@@ -17,14 +17,11 @@ android {
 
     signingConfigs {
         release {
-//            keyAlias 'carp'
-//            keyPassword 's123456'
-//            storeFile file('../keystore.keystore')
-//            storePassword 's123456'
             keyAlias 'strategy'
             keyPassword 'st123456'
             storeFile file('../strategy.jks')
             storePassword 'st123456'
+            v1SigningEnabled true
             v2SigningEnabled false
         }
     }

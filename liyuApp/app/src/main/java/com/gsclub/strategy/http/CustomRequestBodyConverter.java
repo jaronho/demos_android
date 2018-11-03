@@ -1,6 +1,7 @@
 package com.gsclub.strategy.http;
 
 import android.os.Build;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
@@ -56,6 +57,7 @@ public class CustomRequestBodyConverter<T> implements Converter<T, RequestBody> 
         request.put("en_key", AppConfig.EN_KEY);
         request.put("device_type", AppConfig.DEVICE_TYPE);
         String requestStr = transformers(request);
+        Log.i("AAAAA", "convert => params = " + oriParam + " | request = " + requestStr);
         LogUtil.d(LogUtil.TAG + " : " + AppConfig.API_IP + " : " + optAct + " : " + oriParam + " \n" + requestStr);
         return RequestBody.create(MEDIA_TYPE, requestStr);
     }
